@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
-  get 'favorites/index'
-  get 'lessons/top'
-  get 'lessons/about'
-  get 'lessons/index'
-  get 'lessons/show'
-  get 'lessons/create'
-  get 'lessons/complete'
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+	devise_for :users
+	root 'lessons#top'
+	get 'about' => 'lessons#about'
+	get 'user_page' => 'users#show'
+	patch 'user/withdrawal' => 'users#withdrawal'
+	get 'lessons/complete' => 'lessons#complete'
+	get 'searches/search' => 'searches#search'
+
+	resources :users, only: [:edit, :update]
+
+	resources :lessons, only: [:index, :show, :new, :create] do
+		resources :favorites, only: [:create, :destroy, :index]
+		resources :comments, only: [:create, :destroy]
+		resources :reservations, only: [:create, :index]
+	end
+
 end
