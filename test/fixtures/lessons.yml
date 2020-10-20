@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  category_id: 1
+  name: MyString
+  event_date: 2020-10-20 07:43:27
+  deadline: 2020-10-20 07:43:27
+  max_atendees: 1
+  category_name: 1
+
+two:
+  user_id: 1
+  category_id: 1
+  name: MyString
+  event_date: 2020-10-20 07:43:27
+  deadline: 2020-10-20 07:43:27
+  max_atendees: 1
+  category_name: 1
