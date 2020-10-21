@@ -16,21 +16,20 @@
       </div>
       <ul class="nav-item">
         <% if user_signed_in? %>
-          <span class="nav_toggle">
-            <i></i>
-            <i></i>
-            <i></i>
-          </span>
-          <nav class="nav">
-            <ul class="nav_menu_ul">
-              <li class="nav_menu_li"><%= link_to "ログアウト", destroy_user_session_path, :method=>:delete %></li>
-              <li class="nav_menu_li"><%= link_to "マイページ", user_page_path %></li>
-              <li class="nav_menu_li"><a href="#">BLOG</a></li>
-              <li class="nav_menu_li"><a href="#">CONTACT</a></li>
-            </ul>
-          </nav>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+            </div>
+
+            <nav class="globalMenuSp">
+              <ul>
+                <li><%= link_to "ログアウト", destroy_user_session_path, :method=>:delete %></li>
+                <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+              </ul>
+            </nav>
         <% else %>
-        
+
           <li class="nav-item__link">
             <%= link_to "新規登録", new_user_registration_path %>
           </li>

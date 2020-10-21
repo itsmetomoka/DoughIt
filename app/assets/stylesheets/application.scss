@@ -82,7 +82,7 @@ a.button-wide:before {
 	text-decoration: none;
 	color: $point-color;
 }
-.button-submits:before {
+.button-submit:before {
 	position: absolute;
 	content: '';
 	width: 100%;
@@ -93,68 +93,103 @@ a.button-wide:before {
 
 }
 
-.nav_toggle {
-    display: block;
-    position: relative;
-    width: 1.75rem;
-    height: 1.5rem;
+
+.hamburger {
+  display : block;
+  position: fixed;
+  z-index : 3;
+  right : 13px;
+  top   : 12px;
+  width : 42px;
+  height: 42px;
+  cursor: pointer;
+  text-align: center;
 }
-.nav_toggle i {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    position: absolute;
-    transition: transform .5s, opacity .5s;
+.hamburger span {
+  display : block;
+  position: absolute;
+  width   : 30px;
+  height  : 2px ;
+  left    : 6px;
+  background : #555;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition   : 0.3s ease-in-out;
+  transition        : 0.3s ease-in-out;
 }
-.nav_toggle i:nth-child(1) {
-    top: 0;
+.hamburger span:nth-child(1) {
+  top: 10px;
 }
-.nav_toggle i:nth-child(2) {
-    top: 0;
-    bottom: 0;
-    margin: auto;
+.hamburger span:nth-child(2) {
+  top: 20px;
 }
-.nav_toggle i:nth-child(3) {
-    bottom: 0;
+.hamburger span:nth-child(3) {
+  top: 30px;
 }
-.nav_toggle.show i:nth-child(1) {
-    transform: translateY(10px) rotate(-45deg);
+
+/* ナビ開いてる時のボタン */
+.hamburger.active span:nth-child(1) {
+  top : 16px;
+  left: 6px;
+  background :#fff;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform   : rotate(-45deg);
+  transform        : rotate(-45deg);
 }
-.nav_toggle.show i:nth-child(2) {
-    opacity: 0;
+
+.hamburger.active span:nth-child(2),
+.hamburger.active span:nth-child(3) {
+  top: 16px;
+  background :#fff;
+  -webkit-transform: rotate(45deg);
+  -moz-transform   : rotate(45deg);
+  transform        : rotate(45deg);
 }
-.nav_toggle.show i:nth-child(3) {
-    transform: translateY(-12px) rotate(45deg);
+
+nav.globalMenuSp {
+  position: fixed;
+  z-index : 2;
+  top  : 0;
+  left : 0;
+  color: #fff;
+  background: rgba(0,0,0,0.7);
+  text-align: center;
+  width: 100%;
+  opacity: 0;
+  transition: opacity .6s ease, visibility .6s ease;
 }
-.nav {
-    position: fixed;
-    top: 3rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 1rem;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .5s, visibility .5s;
-    background-color:rgba(0,18,31,0.8);
+
+nav.globalMenuSp ul {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
 }
-.nav_menu_ul {
-	list-style: none;
-	font-size: 50px;
-	margin-top: 50px;
-	
+
+nav.globalMenuSp ul li {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  transition: .4s all;
 }
-.nav_menu_ul a{
-	color: white;
+nav.globalMenuSp ul li:last-child {
+  padding-bottom: 0;
+}
+nav.globalMenuSp ul li:hover{
+  background :#ddd;
+}
+
+nav.globalMenuSp ul li a {
+  display: block;
+  color: #fff;
+  padding: 1em 0;
+  text-decoration :none;
+}
+
+/* このクラスを、jQueryで付与・削除する */
+nav.globalMenuSp.active {
+  opacity: 100;
 
 }
 
-.nav.show {
-    opacity: 1;
-    visibility: visible;
-
-}
 
 // ヘッダーの設定
 .navbar{

@@ -17,8 +17,30 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(function(){
-$('.nav_toggle').on('click', function () {
-    $('.nav_toggle, .nav').toggleClass('show');
+$(function() {
+    $('.hamburger').click(function() {
+        $(this).toggleClass('active');
+ 
+        if ($(this).hasClass('active')) {
+            $('.globalMenuSp').addClass('active');
+        } else {
+            $('.globalMenuSp').removeClass('active');
+        }
+    });
 });
-})
+
+
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#user_profile_image").change(function(){
+    readURL(this);
+  });
+});
