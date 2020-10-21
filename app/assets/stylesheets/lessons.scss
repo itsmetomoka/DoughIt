@@ -1,3 +1,86 @@
 // Place all the styles related to the lessons controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+	.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+	.main-visual {
+		background-image: image-url('chopstick.jpg');
+		background-size: cover;
+		height: 800px;
+		width: 100%;
+		margin-bottom: 150px;
+
+		&__text {
+		color: white;
+		font-size: 200px;
+		text-align: center;
+		padding-top: 10%;
+		}
+
+		&__sentence {
+			color: white;
+			font-size: 50px;
+			margin-top: 100px;
+			text-align: center;
+		}
+
+		&__line {
+			width: 50%;
+			height: 50px;
+			border-right: 1px solid white;
+
+		}
+	}
+
+	.introduction1 {
+		width: 90%;
+		margin-bottom: 100px;
+
+		&__visual {
+			width: 550px;
+			height: 350px;
+			background-image: image-url('bread.jpg');
+			background-size: cover;
+			margin:0 100px;
+			float: left;
+		}
+
+		&__highlight {
+			padding: 50px 0;
+
+		}
+	}
+
+	.introduction2 {
+		margin-left: 100px;
+		margin-bottom: 100px;
+		height: 350px;
+		float:left;
+
+		&__highlight {
+			width: 550px;
+			padding: 50px 0;
+		}
+
+		&__sentence {
+			width: 550px;
+		}
+	}
+		.visual2 {
+			width: 550px;
+			height: 350px;
+			background-image: image-url('lesson.jpg');
+			background-size: cover;
+			margin:0 100px;
+			float: left;
+		}
+		.registration-button {
+			width: 160px;
+			margin: 30px auto;
+		}

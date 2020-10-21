@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 	devise_for :users
-	root 'lessons#top'
-	get 'about' => 'lessons#about'
+	root 'lessons#about'
+	get 'top' => 'lessons#top'
 	get 'user_page' => 'users#show'
 	patch 'user/withdrawal' => 'users#withdrawal'
 	get 'lessons/complete' => 'lessons#complete'

@@ -10,6 +10,27 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="navbar">
+      <div class="navbar__logo">
+        <%= image_tag 'logo.png', :size => '90x90'%>
+      </div>
+
+    </div>
+    
+    <div class="content">
+      <%= yield %>
+    </div>
+
+  <footer>
+    <h3 class ="footer-logo">
+      DoughIt
+    </h3>
+    <div class="copy-right">
+      ©Copyright DoughIt, inc 2020
+    </div>
+      
+    </div>
+  </footer>
+
   </body>
 </html>
