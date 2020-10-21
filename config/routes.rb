@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 	devise_for :users,controllers:{
-		registrations: 'users/registrations',
-		sessions: 'users/sessions',
-		passwords:     'customers/passwords'
+		registrations: 'devise/registrations',
+		sessions: 'devise/sessions'
 	}
 	root 'lessons#about'
 	get 'top' => 'lessons#top'
@@ -12,10 +11,6 @@ Rails.application.routes.draw do
 	get 'searches/search' => 'searches#search'
 
 	resources :users, only: [:edit, :update]
-
-
-    
-
 
 	resources :lessons, only: [:index, :show, :new, :create] do
 		resources :favorites, only: [:create, :destroy, :index]

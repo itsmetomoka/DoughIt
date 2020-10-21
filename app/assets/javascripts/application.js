@@ -16,3 +16,9 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function(){
+$('.nav_toggle').on('click', function () {
+    $('.nav_toggle, .nav').toggleClass('show');
+});
+})
