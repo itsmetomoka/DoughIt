@@ -1,26 +1,48 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class ="container">
+  <div class="row">
+    <div class ="col-md-10 offset-md-1 mt-5">
+      <h2>Log in</h2>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="row my-3">
+      <div class="col-md-3 offset-md-1 text-right">
+        <p>メールアドレス</p>
+      </div>
+      <div class="col-md-4">
+        <%= f.email_field :email,class: "form-control", autofocus: true, autocomplete: "email" %>
+      </div>
+    </div>
+
+
+
+    <div class="row my-3">
+      <div class="col-md-3 offset-md-1 text-right">
+        <p>パスワード</p>
+      </div>
+      <div class="col-md-4">
+        <%= f.password_field :password,class: "form-control", autocomplete: "current-password" %>
+      </div>
+    </div>
+
+
+    
+
+    <div class="row mt-3">
+      <div class="col-md-4 offset-md-5 my-3">
+        <%= f.submit "Log in",class: "button-submit" %>
+      </div>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
 
-<%= render "users/shared/links" %>
+  <div class="row mt-5">
+    <div class ="col-md-6 offset-md-4">
+      <h5><%= link_to "登録がお済みではない方はこちら", new_user_registration_path,class:"button-wide"%></h5>
+    </div>
+  </div>
+</div>
+
+

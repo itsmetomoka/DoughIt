@@ -26,6 +26,8 @@
   min-height: 600px;
 }
 
+
+
 $point-color: #CCCCCC;
 
 
@@ -50,15 +52,71 @@ a.button:before {
 
 }
 
+a.button-wide {
+	position: relative;
+	display: block;
+	width: 400px;
+	padding: 10px;
+	text-align: center;
+	font-weight: bold;
+	text-decoration: none;
+	color: #73716d;
+}
+a.button-wide:before {
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 2px;
+	top:100%;
+	left: 0;
+	background:#73716d;
 
+}
+.button-submit {
+	position: relative;
+	display: block;
+	width: 160px;
+	padding: 10px;
+	text-align: center;
+	font-weight: bold;
+	text-decoration: none;
+	color: #73716d;
+}
+.button-submits:before {
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 2px;
+	top:100%;
+	left: 0;
+	background:#73716d;
+
+}
+
+// ヘッダーの設定
 .navbar{
 	width: 100%;
 	height: 100px;
 	background-color: $point-color;
 }
 
+.nav-item {
+	list-style: none;
+	overflow: hidden;
+	padding-right: 100px;
+
+	&__link {
+		float: left;
+		padding-left: 30px;
+	}
+
+	&__link a{
+		color: white;
+	}
+}
 
 
+// フッターの設定
 footer {
   width: 100%;
   height: 150px;
