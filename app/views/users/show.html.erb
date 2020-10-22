@@ -9,7 +9,7 @@
 	<div class="profile-box">
 		<div class="row mt-5 mx-5">
 			<div class="col-md-3 offset-md-1">
-				<%= attachment_image_tag @user, :profile_image, :fill, 150,150, class:"rounded-circle", fallback: "noimage.png" %>
+				<%= attachment_image_tag @user, :profile_image, :fill, 150,150, class:"rounded-circle", fallback: "noimage.png",size:"150x150" %>
 			</div>
 			<div class="col-md-6 offset-md-2">
 				<%= @user.introduction %>

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
+		@user = current_user
 	end
 
 	def update
@@ -13,6 +13,15 @@ class UsersController < ApplicationController
 		user.update(user_params)
 		redirect_to user_path(current_user.id)
 	end
+
+	def check
+	end
+
+	def withdrawal
+		current_user.destroy
+		current_user.update(is_active: false)
+		redirect_to root_path
+  	end
 
 
 	private
