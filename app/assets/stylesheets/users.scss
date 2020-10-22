@@ -1,3 +1,11 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$sub-color: #CCCCCC;
+$point-color: #73716d;
+
+.profile-box {
+	border: 2px solid $point-color;
+	margin: 50px auto;
+	padding-bottom: 30px;
+}
