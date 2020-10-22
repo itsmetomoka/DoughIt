@@ -74,6 +74,10 @@ gem "refile-mini_magick"
 # 論理削除
 gem 'paranoia'
 
-
+# 日本語
+gem 'rails-i18n'
+# カレンダー
+gem "bootstrap4-datetime-picker-rails"
+gem 'momentjs-rails'
 
 

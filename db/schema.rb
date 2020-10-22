@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_012749) do
+ActiveRecord::Schema.define(version: 2020_10_22_124509) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -32,10 +32,16 @@ ActiveRecord::Schema.define(version: 2020_10_22_012749) do
     t.string "name"
     t.datetime "event_date"
     t.datetime "deadline"
-    t.integer "max_atendees"
+    t.integer "max_attendees"
     t.integer "category_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "lesson_image_id"
+    t.integer "tuition"
+    t.text "content"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "reservations", force: :cascade do |t|

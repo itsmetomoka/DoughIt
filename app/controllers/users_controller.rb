@@ -9,9 +9,12 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		user = current_user
-		user.update(user_params)
-		redirect_to user_path(current_user.id)
+		@user = current_user
+		if @user.update(user_params)
+			redirect_to user_path(current_user.id)
+		else
+			render :edit
+		end
 	end
 
 	def check
@@ -21,7 +24,7 @@ class UsersController < ApplicationController
 		current_user.destroy
 		current_user.update(is_active: false)
 		redirect_to root_path
-  	end
+  end
 
 
 	private

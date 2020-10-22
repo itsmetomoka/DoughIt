@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      user: カスタマー
+    attributes:
+      user:
+        name: 名前
+        introduction: 自己紹介文
+        email: Eメール
+        
+ 

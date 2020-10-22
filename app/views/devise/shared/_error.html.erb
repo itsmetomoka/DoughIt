@@ -1,0 +1,14 @@
+<div class="error-message-box">
+	<div class="container">
+		<div class="row my-3 mx-5">
+      <h4><%= sth.errors.count %>件のエラーがあります</h4>
+    </div>
+    <div class="row my-3 mx-5">
+      <ul>
+        <% sth.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

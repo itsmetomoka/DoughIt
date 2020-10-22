@@ -4,7 +4,7 @@
     <title>Dough</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/188b0a3462.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -26,6 +26,7 @@
               <ul>
                 <li><%= link_to "ログアウト", destroy_user_session_path, :method=>:delete %></li>
                 <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+                <li><%= link_to "教室を開く", new_lesson_path %></li>
               </ul>
             </nav>
         <% else %>

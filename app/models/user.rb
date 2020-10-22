@@ -6,9 +6,17 @@ class User < ApplicationRecord
 
   # 論理削除
   acts_as_paranoid
-
+  # refile
   attachment :profile_image
+  # アソシエーション
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :reservations
+
+  validates :name, presence: true, length: {in: 2..20}
+  validates :introduction, length: {maximum: 300}
+  validates :email, presence: true, format: {with: /\A\S+@\S+\.\S+\z/,message: 'が正しくありません'}
+  
+
+
 end

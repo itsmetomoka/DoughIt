@@ -2,6 +2,11 @@
 	<div class="row mt-5 mx-5">
 		<h2>編集ページ</h2>
 	</div>
+	<% if @user.errors.any? %>
+		<%= render 'devise/shared/error', sth: @user %>
+	<% end %>
+
+
 	<%= form_for(@user) do |f| %>
 
 		<div class="row my-5 mx-5">
