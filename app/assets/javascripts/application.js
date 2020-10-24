@@ -48,20 +48,19 @@ $(document).on("turbolinks:load", function(){
     readURL(this);
   });
 });
-$(document).on("turbolinks:load", function(){
+
+
+$(function() {
   function readURL(input) {
-    if(input.files && input.files[0]){
+      if (input.files && input.files[0]) {
       var reader = new FileReader();
       reader.onload = function (e) {
-        $('#img_prev').attr('src', e.target.result);
+  $('#img_prev').attr('src', e.target.result);
       }
       reader.readAsDataURL(input.files[0]);
-    }
+      }
   }
-  $("#lesson_lesson_image").change(function(){
-    readURL(this);
+  $("#lesson_img").change(function(){
+      readURL(this);
   });
 });
-
-
-

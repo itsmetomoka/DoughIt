@@ -10,7 +10,7 @@
 		<% @lessons.each do |lesson| %>
 			<div class="col-md-3">
 				<%= link_to lesson_path(lesson.id) do %>
-					<%= attachment_image_tag lesson,:lesson_image, :fill, 250,180, class:"img-fluid" %>
+					<%= image_tag lesson.image.to_s, size:"250x180",class:"img-fluid" %>
 				<% end %>
 				<%= lesson.name %>
 			</div>

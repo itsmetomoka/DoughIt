@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 	}
 	root 'lessons#about'
 	get 'top' => 'lessons#top'
-	get 'lessons/confirm' => 'lessons#confirm'
+
 	get 'lessons/complete' => 'lessons#complete'
 	get 'searches/search' => 'searches#search'
 	get 'users/check' => 'users#check'
@@ -15,9 +15,13 @@ Rails.application.routes.draw do
 
 
 	resources :lessons, only: [:index, :show, :new, :create] do
+		collection do
+			post 'confirm' => 'lessons#confirm'
+		end
 		resources :favorites, only: [:create, :destroy, :index]
 		resources :comments, only: [:create, :destroy]
 		resources :reservations, only: [:create, :index]
+		
 	end
 
 end

@@ -3,7 +3,8 @@ class Lesson < ApplicationRecord
 	has_many :favorites, dependent: :destroy
 	has_many :reservations, dependent: :destroy
 	belongs_to :user
-	attachment :lesson_image
+	attr_accessor :image_cache
+	mount_uploader :image, ImageUploader
 
 	enum category_name: {洋食: 0, 和食: 1, パン: 2, ケーキ: 3}
 

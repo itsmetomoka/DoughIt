@@ -11,25 +11,19 @@ class LessonsController < ApplicationController
   end
 
   def confirm
-    @lesson = Lesson.new(lesson_params)
-    @lesson.name = params[:lesson][:name]
-    @lesson.event_date = params[:lesson][:event_date]
-    @lesson.deadline = params[:lesson][:deadline]
-    @lesson.max_attendees = params[:lesson][:max_attendees].to_i
-    @lesson.category_name = params[:lesson][:category_name]
-    @lesson.lesson_image = params[:lesson][:lesson_image]
-    @lesson.tuition = params[:lesson][:tuition].to_i
-    @lesson.content = params[:lesson][:content]
-    @lesson.address = params[:lesson][:address]
+    @lesson = current_user.lessons.new(lesson_params)
+    if !@lesson.image.present?
+      @lesson.image.retrieve_from_cache! @lesson.image_cache
+    end
+    @lesson.image_cache = @lesson.image.cache_name
   end
+
 
   def create
     @lesson = current_user.lessons.new(lesson_params)
-    if @lesson.save
-      redirect_to lessons_complete_path
-    else
-      render :new
-    end
+    @lesson.image.retrieve_from_cache! @lesson.image_cache
+    @lesson.save
+    redirect_to lessons_complete_path
   end
 
   def index
@@ -54,6 +48,6 @@ class LessonsController < ApplicationController
 
   private
   def lesson_params
-    params.require(:lesson).permit(:user_id, :name, :event_date, :tuition, :content, :address, :latitude, :longitude, :deadline, :max_attendees, :category_name, :lesson_image, :is_active)
+    params.require(:lesson).permit(:user_id, :name, :event_date, :tuition, :content, :address, :latitude, :longitude, :deadline, :max_attendees, :category_name, :image, :image_cache, :is_active)
   end
 end

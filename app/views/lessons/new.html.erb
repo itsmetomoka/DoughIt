@@ -11,17 +11,22 @@
 	<% end %>
 
 
-	<%= form_with model:@lesson, url:lessons_path, method: :post, data: {remote: false} do |f| %>
+	<%= form_with model:@lesson, url:confirm_lessons_path, method: :post, data: {remote: false} do |f| %>
 		<div class="row my-4">
 			<div class="col-md-10 offset-md-1">
 				<div class="row ml-5">
 					<div class="col-md-8 offset-md-2">
-						<%= attachment_image_tag @lesson, :lesson_image, :fill, 500, 300, id: "img_prev",fallback: "noimage.png", size:"500x300" %>
+						<% if @lesson.image.present? %>
+						  <%= image_tag @lesson.image,size:"500x300", id: :img_prev %>
+						<% else %>
+						  <%= image_tag "noimage.png",size:"500x300", id: :img_prev %>
+						<% end %>
 					</div>
 				</div>
 				<div class="row my-3">
 					<div class="col-md-4 offset-md-6">
-						<%= f.attachment_field :lesson_image %>
+						<%= f.file_field :image, id: :lesson_img %>
+						<%= f.hidden_field :image_cache %>
 					</div>
 				</div>
 				<div class="row my-5 mx-5">

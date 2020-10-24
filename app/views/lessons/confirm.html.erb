@@ -8,8 +8,7 @@
 	<%= form_with model:@lesson, url:lessons_path, method: :post, data: {remote: false} do |f| %>
 		<div class="row my-5">
 			<div class="col-md-6 offset-md-3">
-				<%#= image_tag(@lesson.lesson_image,:size =>'500x300') %>
-				<%= attachment_image_tag @lesson, :lesson_image, :fill, 500, 300, id: "img_prev",fallback: "noimage.png", size:"500x300" %>
+				<%= image_tag(@lesson.image.url,:size =>'500x300') %>
 			</div>
 		</div>
 		<div class="row my-5">
@@ -60,7 +59,8 @@
 				<%= f.hidden_field :tuition, :value => @lesson.tuition %>
 				<%= f.hidden_field :max_attendees, :value=> @lesson.max_attendees %>
 				<%= f.hidden_field :deadline, :value=> @lesson.deadline %>
-				<%= f.hidden_field :lesson_image, :value => @lesson.lesson_image %>
+				<%= f.hidden_field :image_cache %>
+				<%#= f.hidden_field :image, :image %>
 				<%= f.submit "レッスンを公開する", class:"button-submit" %>
 			</div>
 		</div>

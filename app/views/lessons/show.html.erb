@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row mt-5 mx-5">
 		<div class= "col-md-6">
-			<%= attachment_image_tag @lesson,:lesson_image, :fill, 500,400, class:"img-fluid" %>
+			<%= image_tag @lesson.image.to_s,size: "500x300", class:"img-fluid" %>
 		</div>
 		<div class="col-md-5 offset-md-1">
 			<div class="row mt-3">
