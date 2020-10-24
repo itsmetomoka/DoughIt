@@ -1,11 +1,26 @@
 ja:
   activerecord:
     models:
-      user: カスタマー
+      user: ユーザー
     attributes:
       user:
         name: 名前
         introduction: 自己紹介文
         email: Eメール
-        
- 
+      lesson:
+        name: レッスン名
+        content: レッスン内容
+        category: カテゴリー
+        event_date: 開催日時
+        deadline: 募集締め切り日
+        tuition: 受講料
+        address: 開催場所
+        lesson_image: レッスンのイメージ画像
+
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."

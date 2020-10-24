@@ -11,6 +11,7 @@ class User < ApplicationRecord
   # アソシエーション
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :lessons
   has_many :reservations
 
   validates :name, presence: true, length: {in: 2..20}

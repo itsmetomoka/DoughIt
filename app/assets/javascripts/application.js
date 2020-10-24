@@ -20,6 +20,7 @@
 //= require moment/ja.js
 //= require tempusdominus-bootstrap-4.js
 
+// ハンバーガーメニュー
 $(function() {
     $('.hamburger').click(function() {
         $(this).toggleClass('active');
@@ -32,7 +33,7 @@ $(function() {
     });
 });
 
-
+// 画像アップロード
 $(document).on("turbolinks:load", function(){
   function readURL(input) {
     if(input.files && input.files[0]){
@@ -47,7 +48,6 @@ $(document).on("turbolinks:load", function(){
     readURL(this);
   });
 });
-
 $(document).on("turbolinks:load", function(){
   function readURL(input) {
     if(input.files && input.files[0]){
@@ -62,4 +62,6 @@ $(document).on("turbolinks:load", function(){
     readURL(this);
   });
 });
+
+
 

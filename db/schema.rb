@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_124509) do
+ActiveRecord::Schema.define(version: 2020_10_24_050418) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_10_22_124509) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.boolean "is_active", default: true
   end
 
   create_table "reservations", force: :cascade do |t|

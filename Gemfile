@@ -80,4 +80,7 @@ gem 'rails-i18n'
 gem "bootstrap4-datetime-picker-rails"
 gem 'momentjs-rails'
 
+# ページネーション
+gem 'kaminari', '~>1.2.1'
+
 
