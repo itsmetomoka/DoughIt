@@ -58,13 +58,28 @@
 				<%= f.hidden_field :address, :value => @lesson.address %>
 				<%= f.hidden_field :tuition, :value => @lesson.tuition %>
 				<%= f.hidden_field :max_attendees, :value=> @lesson.max_attendees %>
-				<%= f.hidden_field :deadline, :value=> @lesson.deadline %>
+				<%= f.hidden_field :deadline, :value => @lesson.deadline %>
 				<%= f.hidden_field :image_cache %>
-				<%#= f.hidden_field :image, :image %>
-				<%= f.submit "レッスンを公開する", class:"button-submit" %>
+				<%= f.submit "公開する", class:"button-submit" %>
 			</div>
 		</div>
 	<% end %>
+	<div class = "row my-5">
+		<div class="col-md-4 offset-md-4">
+				<%= form_with model:@lesson, url:new_lessons_path, method: :post, data: {remote: false} do |f| %>
+					<%= f.hidden_field :name, :value => @lesson.name %>
+					<%= f.hidden_field :content, :value => @lesson.content %>
+					<%= f.hidden_field :category_name, :value => @lesson.category_name %>
+					<%= f.hidden_field :event_date, :value => @lesson.event_date %>
+					<%= f.hidden_field :address, :value => @lesson.address %>
+					<%= f.hidden_field :tuition, :value => @lesson.tuition %>
+					<%= f.hidden_field :max_attendees, :value=> @lesson.max_attendees %>
+					<%= f.hidden_field :deadline, :value => @lesson.deadline %>
+					<%= f.hidden_field :image_cache %>
+					<%= f.submit "戻る", class:"button-submit" %>
+			<% end %>
+		</div>
+	</div>
 </div>
 
 

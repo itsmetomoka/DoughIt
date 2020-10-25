@@ -9,6 +9,10 @@
 	<% if @lesson.errors.any? %>
 		<%= render 'devise/shared/error', sth: @lesson %>
 	<% end %>
+	<% if flash[:validate] %>
+		<p class ="alert error-message-box"><%= flash[:alert] %></p>
+	<% end %>
+
 
 
 	<%= form_with model:@lesson, url:confirm_lessons_path, method: :post, data: {remote: false} do |f| %>
@@ -17,7 +21,7 @@
 				<div class="row ml-5">
 					<div class="col-md-8 offset-md-2">
 						<% if @lesson.image.present? %>
-						  <%= image_tag @lesson.image,size:"500x300", id: :img_prev %>
+						  <%= image_tag @lesson.image.url,size:"500x300", id: :img_prev %>
 						<% else %>
 						  <%= image_tag "noimage.png",size:"500x300", id: :img_prev %>
 						<% end %>
@@ -97,7 +101,7 @@
 		</div>
 		<div class="row my-5">
 			<div class="col-md-4 offset-md-4">
-				<%= f.submit "確定画面に進む", class:"button-submit" %>
+				<%= f.submit "確認画面に進む", class:"button-submit" %>
 			</div>
 		</div>
 	<% end %>

@@ -16,20 +16,20 @@
       </div>
       <ul class="nav-item">
         <% if user_signed_in? %>
-          <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-            </div>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
 
-            <nav class="globalMenuSp">
-              <ul>
-                <li><%= link_to "ログアウト", destroy_user_session_path, :method=>:delete %></li>
-                <li><%= link_to "マイページ", user_path(current_user.id) %></li>
-                <li><%= link_to "教室を開く", new_lesson_path %></li>
-                <li><%= link_to "レッスン一覧", lessons_path %></li>
-              </ul>
-            </nav>
+        <nav class="globalMenuSp">
+            <ul>
+              <li><%= link_to "ログアウト", destroy_user_session_path, :method=>:delete %></li>
+              <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+              <li><%= link_to "教室を開く", new_lesson_path %></li>
+              <li><%= link_to "レッスン一覧", lessons_path %></li>
+            </ul>
+        </nav>
         <% else %>
           <li class="nav-item__link">
             <%= link_to "ABOUT US", root_path %>

@@ -15,7 +15,7 @@ ja:
         deadline: 募集締め切り日
         tuition: 受講料
         address: 開催場所
-        lesson_image: レッスンのイメージ画像
+        image: レッスンのイメージ画像
 
   views:
     pagination:

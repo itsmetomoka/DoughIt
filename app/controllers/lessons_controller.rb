@@ -10,12 +10,33 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new
   end
 
-  def confirm
+
+
+    def confirm
     @lesson = current_user.lessons.new(lesson_params)
-    if !@lesson.image.present?
-      @lesson.image.retrieve_from_cache! @lesson.image_cache
+    # 入力フォームに画像以外の不備がないか確認
+    if @lesson.invalid?
+      render :new
+    else
+      # new画面に戻った後画像を変更していなければ画像をcacheを使って復元
+      if !@lesson.image.present? && @lesson.image_cache.present?
+        @lesson.image.retrieve_from_cache! @lesson.image_cache
+        #画像が入っていなければ戻る
+      elsif !@lesson.image.present?&& params[:lesson][:image].blank?
+        flash[:validate] = "画像を選択してください"
+        render :new
+      end
+      @lesson.image_cache = @lesson.image.cache_name
     end
+
+  end
+
+
+  def back
+    @lesson = current_user.lessons.new(lesson_params)
+    @lesson.image.retrieve_from_cache! @lesson.image_cache
     @lesson.image_cache = @lesson.image.cache_name
+    render :new
   end
 
 

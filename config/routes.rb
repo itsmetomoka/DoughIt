@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
 	resources :lessons, only: [:index, :show, :new, :create] do
 		collection do
+			post :new, path: :new, as: :new, action: :back
 			post 'confirm' => 'lessons#confirm'
 		end
 		resources :favorites, only: [:create, :destroy, :index]

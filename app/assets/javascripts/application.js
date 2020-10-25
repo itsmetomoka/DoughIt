@@ -32,7 +32,6 @@ $(function() {
         }
     });
 });
-
 // 画像アップロード
 $(document).on("turbolinks:load", function(){
   function readURL(input) {

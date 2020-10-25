@@ -7,7 +7,7 @@
 		</div>
 	</div>
 	<div class="row mt-5 mx-5">
-		<% @lessons.each do |lesson| %>
+		<% @lessons.last(4).each do |lesson| %>
 			<div class="col-md-3">
 				<%= link_to lesson_path(lesson.id) do %>
 					<%= image_tag lesson.image.to_s, size:"250x180",class:"img-fluid" %>
