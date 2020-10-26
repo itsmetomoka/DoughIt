@@ -13,14 +13,16 @@
 			<div class="col-md-6">
 				<div class="row">
 					<div class="col-md-4 offset-md-4">
-						<div class="profile-image">
-		      		<%= attachment_image_tag @user, :profile_image, :fill, 200, 200, id: "img_prev", class: "rounded-circle", fallback: "noimage.png", size:"200x200" %>
-		    		</div>
+						<% if @user.image.present? %>
+						  <%= image_tag @user.image.url,size:"200x200", id: :img_prev, class: "rounded-circle" %>
+						<% else %>
+						  <%= image_tag "noimage.png",size:"200x200", id: :img_prev, class: "rounded-circle" %>
+						<% end %>
 					</div>
 				</div>
 				<div class="row mt-4">
 					<div class="col-md-6 offset-md-3">
-						<%= f.attachment_field :profile_image %>
+						<%= f.file_field :image, id: :lesson_img %>
 					</div>
 				</div>
 			</div>

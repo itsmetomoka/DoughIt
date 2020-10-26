@@ -22,13 +22,16 @@
 			<div class="row mt-2">
 				<h5>最大参加人数：<%= @lesson.max_attendees.to_s(:delimited) %>名</h5>
 			</div>
+			<div class="row mt-2">
+				<%= link_to "予約する",lesson_reservations_path(lesson_id: @lesson.id),class:"button button-center", method: :post %>
+			</div>
 		</div>
 	</div>
 	<div class="row mt-3 mx-5">
 		<div class="profile-box">
 			<div class="row mt-5 mx-2">
 				<div class="col-md-3 offset-md-1">
-					<%= attachment_image_tag @lesson.user, :profile_image, :fill, 150, 150, class:"rounded-circle" %>
+					<%= image_tag @lesson.user.image.to_s,size: "150x150", class:"rounded-circle" , fallback: "noimage.png",size:"150x150"%>
 				</div>
 				<div class="col-md-5 offset-md-1">
 					<div class="row mb-3">
@@ -50,7 +53,42 @@
 	</div>
 	<div class="row my-5 mx-5">
 		<div class="col">
-			<%= link_to "予約する",lesson_reservations_path(lesson_id: @lesson.id),class:"button button-center", method: :post %>
+			
 		</div>
 	</div>
+	<div class="row mt-5 mx-5">
+		<div class="col-md-2 offset-md-5">
+			<h3>コメント</h3>
+		</div>
+	</div>
+	<% @lesson.comments.each do |comment| %>
+		<div class="row mt-3">
+			<div class="col-md-1 offset-md-2">
+				<%= image_tag comment.user.image.to_s, size: "50x50",class:"rounded-circle img-fluid", fallback: "noimage.png",size:"50x50" %>
+			</div>
+			<div class="col-md-7">
+				<div class="row">
+
+					<%= link_to comment.user.name,user_path(comment.user.id) %>
+				</div>
+				<div class="row">
+					<div class="offset-md-1">
+					<%= comment.comment %>
+				</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+	<%= form_with model:[@lesson, @lesson.comments], url: lesson_comments_path(@lesson.id), method: :post, local: true  do |f| %>
+  <div class="row my-5">
+    <div class="col-md-6 offset-md-2">
+      <%= f.text_area :comment, class: "form-control",placeholder: "こちらにコメント" %>
+    </div>
+    <div class="col-md-2">
+    	<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+    </div>
+  </div>
+  
+<% end %>
+
 </div>

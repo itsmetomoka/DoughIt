@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   # 論理削除
   acts_as_paranoid
-  # refile
-  attachment :profile_image
+  # carrierwave
+  mount_uploader :image, ImageUploader
   # アソシエーション
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

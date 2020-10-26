@@ -22,32 +22,17 @@
 
 // ハンバーガーメニュー
 $(function() {
-    $('.hamburger').click(function() {
-        $(this).toggleClass('active');
- 
-        if ($(this).hasClass('active')) {
-            $('.globalMenuSp').addClass('active');
-        } else {
-            $('.globalMenuSp').removeClass('active');
-        }
-    });
-});
-// 画像アップロード
-$(document).on("turbolinks:load", function(){
-  function readURL(input) {
-    if(input.files && input.files[0]){
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#img_prev').attr('src', e.target.result);
+  $('.hamburger').on('click',function() {
+      $(this).toggleClass('active');
+      if ($(this).hasClass('active')) {
+          $('.globalMenuSp').addClass('active');
+      } else {
+          $('.globalMenuSp').removeClass('active');
       }
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-  $("#user_profile_image").change(function(){
-    readURL(this);
   });
 });
 
+// 画像アップロード
 
 $(function() {
   function readURL(input) {
