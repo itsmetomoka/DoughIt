@@ -86,4 +86,10 @@ gem 'momentjs-rails'
 # ページネーション
 gem 'kaminari', '~>1.2.1'
 
+# デプロイ
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+
 
