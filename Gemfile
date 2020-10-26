@@ -68,8 +68,6 @@ gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 
 # 画像投稿
-gem "refile",require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'
