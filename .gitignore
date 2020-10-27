@@ -32,6 +32,3 @@
 
 # DBのシークレットキー
 /.env
-
-# IAMのシークレットキー
-/config/initializers/carrierwave.rb
