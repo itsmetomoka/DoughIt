@@ -69,7 +69,6 @@ gem 'jquery-rails'
 
 # 画像投稿
 gem 'carrierwave'
-gem 'fog-aws'
 gem 'mini_magick'
 
 # 論理削除
