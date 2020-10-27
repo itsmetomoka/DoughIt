@@ -1,4 +1,14 @@
 <div class="container">
+		<%= month_calendar events: @my_lessons do |date, lessons| %>
+		  <%= date.day %>
+		  <% lessons.each do |lesson| %>
+		      <%= link_to lesson_path(lesson.id) do %>
+		        <%= lesson.name %>
+		      <% end %>
+		    </div>
+		  <% end %>
+		<% end %>
+
 	<div class="row mt-5">
 		<div class="col-md-2 offset-md-5">
 			<div class="underbar">
@@ -17,9 +27,10 @@
 		<% end %>
 	</div>
 	<div class="row my-5 mx-5">
-		<div class="col-md-2 offset-md-5">
+		<div class="col-md-2 offset-md-10">
 			<%= link_to "教室一覧を見る", lessons_path,class: "button" %>
 		</div>
 	</div>
 </div>
+
 

@@ -1,8 +1,14 @@
 <div class="container">
+	<% if flash[:validate] %>
+		<p class ="alert error-message-box"><%= flash[:validate] %></p>
+	<% end %>
 	<div class="row mt-5">
 		<div class="col-md-2 offset-md-5">
 			<h2>予約一覧</h2>
 		</div>
+	</div>
+	<div class ="row">
+
 	</div>
 	<div class="row my-5">
 		<div class="col-md-8 offset-md-2">
@@ -22,7 +28,6 @@
 						<td><%= l reservation.lesson.event_date %></td>
 						<td><%= reservation.lesson.content %></td>
 					</tr>
-
 				<% end %>
 			</table>
 		</div>

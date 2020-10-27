@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require simple_calendar
  */
 @import "bootstrap";
 @import "tempusdominus-bootstrap-4.css";
@@ -403,6 +404,7 @@ nav.globalMenuSp.active {
 
 // フッターの設定
 footer {
+  margin-top: 100px;
   width: 100%;
   height: 150px;
   background-color: $sub-color;

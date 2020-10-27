@@ -1,6 +1,7 @@
 class LessonsController < ApplicationController
   def top
     @lessons = Lesson.all
+    @my_lessons = current_user.lessons
   end
 
   def about
@@ -23,7 +24,7 @@ class LessonsController < ApplicationController
         @lesson.image.retrieve_from_cache! @lesson.image_cache
         #画像が入っていなければ戻る
       elsif !@lesson.image.present?&& params[:lesson][:image].blank?
-        flash[:validate] = "画像を選択してください"
+        flash[:validate_image] = "画像を選択してください"
         render :new
       end
       @lesson.image_cache = @lesson.image.cache_name
@@ -64,7 +65,7 @@ class LessonsController < ApplicationController
 
 
   def complete
-    @lesson = Lesson.order(created_at: :desc).limit(1)
+    @lesson = Lesson.last
   end
 
   private

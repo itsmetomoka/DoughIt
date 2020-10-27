@@ -1,6 +1,9 @@
 // Place all the styles related to the lessons controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// トップページ
 $point-color: #73716d;
 	.clearfix::after {
   content: "";
@@ -113,3 +116,11 @@ $point-color: #73716d;
 	left: 0;
 	background: $point-color;
 }
+
+
+.apologies {
+	color: red;
+	border-bottom: solid 1px red;
+}
+
+

@@ -90,4 +90,7 @@ group :production do
   gem 'mysql2'
 end
 
+# シンプルカレンダー
+gem "simple_calendar", "~> 2.0"
+
 

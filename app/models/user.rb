@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {in: 2..20}
   validates :introduction, length: {maximum: 300}
   validates :email, presence: true, format: {with: /\A\S+@\S+\.\S+\z/,message: 'が正しくありません'}
-  
+
 
 
 end

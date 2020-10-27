@@ -1,32 +1,5 @@
 <div class="container">
-	<div class="row mt-5 mx-5">
-		<div class= "col-md-6">
-			<%= image_tag @lesson.image.to_s,size: "500x300", class:"img-fluid" %>
-		</div>
-		<div class="col-md-5 offset-md-1">
-			<div class="row mt-3">
-				<h2><%= @lesson.name %></h2>
-			</div>
-			<div class="row mt-2">
-				<h4><%= @lesson.content %></h4>
-			</div>
-			<div class="row mt-5">
-				<h5>開催日：<%= l @lesson.event_date %></h5>
-			</div>
-			<div class="row mt-2">
-				<h5>開催場所：<%= @lesson.address%></h5>
-			</div>
-			<div class="row mt-2">
-				<h5>参加費：<%= @lesson.tuition.to_s(:delimited) %>円</h5>
-			</div>
-			<div class="row mt-2">
-				<h5>最大参加人数：<%= @lesson.max_attendees.to_s(:delimited) %>名</h5>
-			</div>
-			<div class="row mt-2">
-				<%= link_to "予約する",lesson_reservations_path(lesson_id: @lesson.id),class:"button button-center", method: :post %>
-			</div>
-		</div>
-	</div>
+	<%= render 'table', lesson: @lesson %>
 	<div class="row mt-3 mx-5">
 		<div class="profile-box">
 			<div class="row mt-5 mx-2">
@@ -53,7 +26,6 @@
 	</div>
 	<div class="row my-5 mx-5">
 		<div class="col">
-			
 		</div>
 	</div>
 	<div class="row mt-5 mx-5">

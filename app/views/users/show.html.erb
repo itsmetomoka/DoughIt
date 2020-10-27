@@ -19,21 +19,7 @@
 				<h4><%= @user.name%>さんの教室一覧</h4>
 			</div>
 		</div>
-		<div class="row mt-5 mx-5">
-			<% @lessons.each do |lesson| %>
-				<div class="col-md-3">
-					<%= link_to lesson_path(lesson.id) do %>
-						<%= image_tag lesson.image.to_s,size:"250x180", class:"img-fluid" %>
-					<% end %>
-					<%= lesson.name %>
-				</div>
-			<% end %>
-		</div>
-		<div class="row mt-5">
-			<div class="offset-md-4">
-				<%= paginate @lessons %>
-			</div>
-		</div>
+		<%= render 'lessons/list', lessons: @lessons %>
 	</div>
 
 	<div class="row my-5">

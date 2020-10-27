@@ -9,8 +9,8 @@
 	<% if @lesson.errors.any? %>
 		<%= render 'devise/shared/error', sth: @lesson %>
 	<% end %>
-	<% if flash[:validate] %>
-		<p class ="alert error-message-box"><%= flash[:alert] %></p>
+	<% if flash[:validate_image] %>
+		<p class ="alert error-message-box"><%= flash[:validate] %></p>
 	<% end %>
 
 

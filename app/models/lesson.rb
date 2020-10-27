@@ -14,9 +14,32 @@ class Lesson < ApplicationRecord
 		validates :content #, length: {in: 20..200}
 		validates :event_date
 		validates :deadline
-
 	end
+	validate :deadline_check
+	validate :date_not_before_today
 
 
+	# 募集締め切りが開催日よりも前の日付か
+	def deadline_check
+    errors.add(:deadline, "の日付を正しく記入してください。") unless
+    self.deadline < self.event_date
+  end
+
+# 開催日が当日以降であるか
+  def date_not_before_today
+  	errors.add(:event_date, "は今日以降に設定してください") unless
+  	 DateTime.now < self.event_date
+  end
+
+# 募集締め切り日が当日以降であるか
+  def date_not_before_today
+  	errors.add(:deadline, "は今日以降に設定してください") unless
+  	 DateTime.now < self.deadline
+  end
+
+
+  def start_time
+  	self.event_date
+  end
 
 end
