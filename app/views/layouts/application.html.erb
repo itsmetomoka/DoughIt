@@ -25,7 +25,6 @@
         <nav class="globalMenuSp">
             <ul>
               <li><%= link_to "トップページ", top_path %></li>
-              <li><%= link_to "マイページ", user_path(current_user.id) %></li>
               <li><%= link_to "教室を開く", new_lesson_path %></li>
               <li><%= link_to "レッスン一覧", lessons_path %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, :method=>:delete %></li>

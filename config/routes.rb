@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 	get 'top' => 'lessons#top'
 
 	get 'lessons/complete' => 'lessons#complete'
-	get 'searches/search' => 'searches#search'
+	get 'search' => 'searches#search'
 	get 'users/check' => 'users#check'
 	patch 'users/withdrawal' => 'users#withdrawal'
 

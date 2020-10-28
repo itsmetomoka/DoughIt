@@ -1,14 +1,24 @@
-<div class="container">
-		<%= month_calendar events: @my_lessons do |date, lessons| %>
-		  <%= date.day %>
-		  <% lessons.each do |lesson| %>
-		      <%= link_to lesson_path(lesson.id) do %>
-		        <%= lesson.name %>
-		      <% end %>
-		    </div>
-		  <% end %>
+<div class="container-fluid">
+	<div class="row category-bar">
+		<% Lesson.category_names.each do |name, num| %>
+			<div class="col-md-2 offset-md-1">
+				<%= link_to name, search_path(category_name: num)%>
+			</div>
 		<% end %>
-
+	</div>
+</div>
+<%= render 'searches/search-box'%>
+<div class="container">
+	<%= render 'users/profile', user: @user %>
+	<%= month_calendar events: @my_lessons do |date, lessons| %>
+	  <%= date.day %>
+	  <% lessons.each do |lesson| %>
+	      <%= link_to lesson_path(lesson.id) do %>
+	        <%= lesson.name %>
+	      <% end %>
+	    </div>
+	  <% end %>
+	<% end %>
 	<div class="row mt-5">
 		<div class="col-md-2 offset-md-5">
 			<div class="underbar">
@@ -32,5 +42,3 @@
 		</div>
 	</div>
 </div>
-
-

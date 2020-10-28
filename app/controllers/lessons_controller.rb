@@ -2,6 +2,7 @@ class LessonsController < ApplicationController
   def top
     @lessons = Lesson.all
     @my_lessons = current_user.lessons
+    @user = current_user
   end
 
   def about
@@ -52,6 +53,8 @@ class LessonsController < ApplicationController
     if params[:user_id]
       user = User.find(params[:user_id])
       all_lesson = user.lessons
+    elsif params[:category_name]
+      all_lesson = Lesson.where(params[:category_name])
     else
       all_lesson = Lesson.all
     end

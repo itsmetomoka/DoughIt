@@ -42,4 +42,12 @@ class Lesson < ApplicationRecord
   	self.event_date
   end
 
+  def self.search(word)
+  	@lesson = Lesson.where("name LIKE?","%#{word}%")
+  end
+
+  def self.search(category)
+  	@lesson = Lesson.where("category_name LIKE?","#{category}")
+  end
+
 end

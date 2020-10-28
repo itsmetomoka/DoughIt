@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// トップページ
+// アバウトページ
 $point-color: #73716d;
 	.clearfix::after {
   content: "";
@@ -92,7 +92,15 @@ $point-color: #73716d;
 		border-bottom: 2px solid rgba(74,56,55,1);
 		text-align: center;
 	}
+	// トップページ
+.category-bar {
+	background-color: rgba(69,79,92,0.7);
+	a {
+		color: white;
+	}
+}
 
+// レッスンページ
 	.profile-box {
 		border: 2px solid #660000;
 		width: 100%;
@@ -123,4 +131,17 @@ $point-color: #73716d;
 	border-bottom: solid 1px red;
 }
 
+
+.comment-headline{
+	background-color:rgba(48,49,89,0.2);
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+	border-bottom: solid 2px rgba(48,49,89,0.3);
+	border-radius: 0.5em;
+
+	&__center {
+		text-align: center;
+	}
+}
 

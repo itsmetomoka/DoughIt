@@ -1,0 +1,23 @@
+<div class ="container">
+		<div class ="row mt-5">
+			<div class = "underbar">
+				<h2>検索結果</h2>
+			</div>
+		</div>
+	<div class="container">
+		<% if @lessons.exists? %>
+			<div class="row mt-5">
+				<h4>検索ワード "<%= @word %>"</h4>
+				<h4>(全<%= @lessons_count %>件)</h4>
+			</div>
+			<%= render 'lessons/list', lessons: @lessons %>
+		<% else %>
+			<div class="row mt-5">
+				<h4>検索ワード "<%= @word %>"</h4>
+			</div>
+			<div class ="row mt-5">
+				<h3 class= "no-product">該当する商品はありませんでした</h3>
+			</div>
+		<% end %>
+	</div>
+</div>

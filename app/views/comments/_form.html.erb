@@ -1,0 +1,10 @@
+<%= form_with model:[lesson, lesson.comments], url: lesson_comments_path(lesson.id), method: :post do |f| %>
+  <div class="row my-5">
+    <div class="col-md-6 offset-md-2">
+      <%= f.text_area :comment, class: "form-control",placeholder: "こちらにコメント" %>
+    </div>
+    <div class="col-md-2">
+    	<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+    </div>
+  </div>
+<% end %>
