@@ -23,10 +23,12 @@
 			</div>
 			<div class="row mt-2">
 				<!-- 予約人数が制限に達しておらず、締め切り日も超えていない場合のみ予約ボタンを表示 -->
-				<% if lesson.reservations.count < lesson.max_attendees && DateTime.now < lesson.deadline %>
-					<%= link_to "予約する",lesson_reservations_path(lesson_id: lesson.id),class:"button button-center", method: :post %>
-				<% else %>
-						<p class="apologies">現在こちらのレッスンは予約できません。</p>
+				<% if lesson.user_id != current_user.id %>
+					<% if lesson.reservations.count < lesson.max_attendees && DateTime.now < lesson.deadline %>
+						<%= link_to "予約する",lesson_reservations_path(lesson_id: lesson.id),class:"button button-center", method: :post %>
+					<% else %>
+							<p class="apologies">現在こちらのレッスンは予約できません。</p>
+					<% end %>
 				<% end %>
 			</div>
 		</div>

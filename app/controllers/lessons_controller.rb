@@ -68,7 +68,7 @@ class LessonsController < ApplicationController
 
 
   def complete
-    @lesson = Lesson.last
+    @lesson = current_user.lessons.last
   end
 
   private
