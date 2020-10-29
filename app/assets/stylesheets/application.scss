@@ -156,6 +156,12 @@ a.button-wide:before {
   margin: auto;
 }
 
+.heighlighter {
+  border-bottom: 1px solid $point-color;
+  text-align: center;
+  margin: auto;
+  color: $point-color;
+}
 
 
 // ハンバーガーメニュー

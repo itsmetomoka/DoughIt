@@ -1,10 +1,29 @@
 <div class="container">
 	<%= render 'table', lesson: @lesson %>
-	<%= render 'users/profile', user: @lesson.user %>
-	<div class="row my-5 mx-5">
-		<div class="col">
+	<% if @lesson.user_id == current_user.id %>
+		<div class ="row mt-5">
+			<h3 class ="underbar">予約者一覧</h3>
 		</div>
-	</div>
+		<!-- 予約した人がいた場合、リンク先がプロフィールのアイコンを表示 -->
+		<% if @lesson.reservations.exists? %>
+			<div class ="row mt-4 mx-5">
+				<% @lesson.reservations.each do |reservation| %>
+					<div class="reservation-user">
+						<%= link_to user_path(reservation.user_id) do %>
+							<%= image_tag reservation.user.image.to_s, size:'80x80', class:'rounded-circle img-fluid', fallback: "noimage.png" %>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+		<% else %>
+		<!-- 予約した人がいなかった場合 -->
+			<div class="row mt-4 mx-5">
+				<h4 class ="heighlighter">予約したユーザーはいません</h4>
+			</div>
+		<% end %>
+	<% end %>
+	<%= render 'users/profile', user: @lesson.user %>
+	
 	<div class="comment-headline">
 		<div class="comment-headline__center">
 				<h3>コメント</h3>

@@ -10,15 +10,27 @@
 <%= render 'searches/search-box'%>
 <div class="container">
 	<%= render 'users/profile', user: @user %>
-	<%= month_calendar events: @my_lessons do |date, lessons| %>
+	<%= month_calendar events: @lessons do |date, lessons| %>
 	  <%= date.day %>
 	  <% lessons.each do |lesson| %>
+	  	<!-- 自分が開くレッスンの表示 -->
+	  	<% if lesson.user_id == current_user.id %>
 	      <%= link_to lesson_path(lesson.id) do %>
 	        <%= lesson.name %>
 	      <% end %>
-	    </div>
+	     <!-- 予約したレッスンの表示 -->
+	    <% elsif lesson.reservations.exists? %>
+	    	<% lesson.reservations.each do |reservation| %>
+	    		<% if reservation.user_id == current_user.id %>
+		      	<%= link_to lesson_path(lesson.id) do %>
+		        	<%= lesson.name %>
+		      	<% end %>
+		      <% end %>
+		    <% end %>
+	    <% end %>
 	  <% end %>
 	<% end %>
+
 	<div class="row mt-5">
 		<div class="col-md-2 offset-md-5">
 			<div class="underbar">

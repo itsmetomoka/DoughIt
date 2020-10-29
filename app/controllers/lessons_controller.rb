@@ -1,8 +1,9 @@
 class LessonsController < ApplicationController
   def top
     @lessons = Lesson.all
-    @my_lessons = current_user.lessons
     @user = current_user
+    @reserved_lessons = current_user.reservations
+
   end
 
   def about

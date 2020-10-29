@@ -19,5 +19,4 @@ class User < ApplicationRecord
   validates :email, presence: true, format: {with: /\A\S+@\S+\.\S+\z/,message: 'が正しくありません'}
 
 
-
 end
