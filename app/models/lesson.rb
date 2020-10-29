@@ -10,6 +10,10 @@ class Lesson < ApplicationRecord
 
   scope :only_active, -> { where(is_active: true) }
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
+
 	with_options presence: true do
 		validates :tuition
 		validates :name, length: {maximum:100}

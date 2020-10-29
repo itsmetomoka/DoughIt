@@ -92,5 +92,10 @@ end
 # シンプルカレンダー
 gem "simple_calendar", "~> 2.0"
 
+# バッチ処理
 gem 'whenever', require: false
+
+# グーグルマップ用に緯度経度取得
+gem 'geocoder'
+
 
