@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
 	def show
 		@user= User.find(params[:id])
-		@lessons = current_user.lessons.page(params[:page]).reverse_order
+		all_lessons = current_user.lessons.only_active
+		@lessons = all_lessons.page(params[:page]).reverse_order
 	end
 
 	def edit

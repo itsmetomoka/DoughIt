@@ -9,13 +9,13 @@
 			<% if @lessons.exists? %>
 				<div class="row mt-5 ml-5">
 					<h4></h4>
-					<%if params[:category_name] == "1" %>
+					<%if params[:category_name] == "0" %>
 						<h4>洋食一覧</h4>
-					<%elsif params[:category_name] == "2" %>
+					<%elsif params[:category_name] == "1" %>
 						<h4>和食一覧</h4>
-					<%elsif params[:category_name] == "3" %>
+					<%elsif params[:category_name] == "2" %>
 						<h4>パン一覧</h4>
-					<%elsif params[:category_name] == "4" %>
+					<%elsif params[:category_name] == "3" %>
 						<h4>ケーキ一覧</h4>
 					<% end %>
 					<h4>(全<%= @lessons_count %>件)</h4>

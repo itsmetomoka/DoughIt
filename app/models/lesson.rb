@@ -8,6 +8,8 @@ class Lesson < ApplicationRecord
 
 	enum category_name: {洋食: 0, 和食: 1, パン: 2, ケーキ: 3}
 
+  scope :only_active, -> { where(is_active: true) }
+
 	with_options presence: true do
 		validates :tuition
 		validates :name, length: {maximum:100}

@@ -9,8 +9,12 @@
 			<div class ="row mt-4 mx-5">
 				<% @lesson.reservations.each do |reservation| %>
 					<div class="reservation-user">
-						<%= link_to user_path(reservation.user_id) do %>
-							<%= image_tag reservation.user.image.to_s, size:'80x80', class:'rounded-circle img-fluid', fallback: "noimage.png" %>
+						<% unless reservation.user.nil? %>
+							<%= link_to user_path(reservation.user_id) do %>
+								<%= image_tag reservation.user.image.to_s, size:'80x80', class:'rounded-circle img-fluid', fallback: "noimage.png" %>
+							<% end %>
+						<% else %>
+							<%= image_tag 'no-user.jpg', size: '80x80', class:'rounded-circle img-fluid' %>
 						<% end %>
 					</div>
 				<% end %>
