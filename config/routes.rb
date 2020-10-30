@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 			post :new, path: :new, as: :new, action: :back
 			post 'confirm' => 'lessons#confirm'
 		end
-		resources :favorites, only: [:create, :destroy, :index]
+		resource :favorites, only: [:create, :destroy, :index]
 		resources :comments, only: [:create, :destroy]
 		resources :reservations, only: [:create, :index]
 		

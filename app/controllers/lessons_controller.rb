@@ -3,7 +3,7 @@ class LessonsController < ApplicationController
     @lessons = Lesson.all
     @user = current_user
     @reserved_lessons = current_user.reservations
-
+    @favorites = Favorite.where(user_id: current_user.id)
   end
 
   def about

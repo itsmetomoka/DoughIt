@@ -1,0 +1,1 @@
+$('.fav-<%= @lesson.id %>').html("<%= j(render partial: 'favorites/fav', locals:{ lesson: @lesson}) %>");

@@ -1,0 +1,15 @@
+<% if lesson.favorited_by?(current_user) %>
+	<li>
+	  <%= link_to lesson_favorites_path(lesson.id, :id), method: :delete, remote: true do %>
+	    <i class="fa fa-heart fa-lg" aria-hidden="true" style="color: #73716d;" ></i>
+	  <% end %>
+	  <%= lesson.favorites.count %>
+	</li>
+<% else %>
+	<li>
+	  <%= link_to lesson_favorites_path(lesson.id), method: :post, remote: true do %>
+	    <i class="fa fa-heart-o fa-lg" aria-hidden="true" style="color: #73716d;"></i>
+	  <% end %>
+	  <%= lesson.favorites.count %>
+	</li>
+<% end %>

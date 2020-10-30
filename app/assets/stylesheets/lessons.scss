@@ -100,7 +100,7 @@ $point-color: #73716d;
 	}
 }
 
-// レッスンページ
+// レッスン詳細ページ
 	.profile-box {
 		border: 2px solid #660000;
 		width: 100%;
@@ -131,6 +131,9 @@ $point-color: #73716d;
 	border-bottom: solid 1px red;
 }
 
+li {
+	list-style: none;
+}
 
 .comment-headline{
 	background-color:rgba(48,49,89,0.2);
@@ -154,5 +157,14 @@ $point-color: #73716d;
   height: 400px;
   width: 70%;
   margin: auto;
+}
+
+
+// 新規作成ページ
+
+.lesson-image-box {
+	width: 500px;
+	height: 300px;
+	margin: 0 auto;
 }
 

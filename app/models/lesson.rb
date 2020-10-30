@@ -43,11 +43,12 @@ class Lesson < ApplicationRecord
   	 DateTime.now < self.deadline
   end
 
-
+# カレンダー
   def start_time
   	self.event_date
   end
 
+  # 検索機能
   def self.search(word)
   	@lesson = Lesson.where("name LIKE?","%#{word}%")
   end
@@ -55,5 +56,12 @@ class Lesson < ApplicationRecord
   def self.search(category)
   	@lesson = Lesson.where("category_name LIKE?","#{category}")
   end
+
+  # いいね機能
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
+
+
 
 end
