@@ -100,17 +100,17 @@ a.button-wide:before {
 }
 
 // サブミットボタン
-.button-submit {
+.button-submit-sm {
 
 	display: block;
-	width: 160px;
-	padding: 10px;
+	width: 150px;
+	padding: 5px;
 	text-align: center;
 	font-weight: bold;
-
+  color: $point-color;
 
 }
-.button-submit:before {
+.button-submit-sm:before {
 	position: absolute;
 	content: '';
 	width: 100%;
@@ -426,5 +426,9 @@ footer {
 
 
 .link-center {
+  margin: 0 auto;
+}
+
+.headline-center {
   margin: 0 auto;
 }

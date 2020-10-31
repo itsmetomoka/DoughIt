@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_26_075528) do
+ActiveRecord::Schema.define(version: 2020_10_31_055955) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2020_10_26_075528) do
   create_table "reservations", force: :cascade do |t|
     t.integer "lesson_id"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "reviewer_id"
+    t.text "review"
+    t.float "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

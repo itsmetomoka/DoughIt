@@ -18,6 +18,7 @@
 //= require moment
 //= require moment/ja.js
 //= require tempusdominus-bootstrap-4.js
+//= require jquery.raty.js
 
 // ハンバーガーメニュー
 $(function() {
@@ -47,5 +48,13 @@ $(function() {
   });
 });
 
+$(function () {
+  $('#star').raty({　　　
+    size: 36,
+    starOff: "/assets/star-off.png",
+    starOn: "/assets/star-on.png",
+    scoreName: "score"
+  });
+});
 
   
