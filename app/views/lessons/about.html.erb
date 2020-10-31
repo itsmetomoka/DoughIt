@@ -1,41 +1,65 @@
 
-<div class="main-visual">
-	<p class="main-visual__text">
-		DoughIt
-	</p>
-	<p class="main-visual__sentence">
-		Scroll
-	</p>
-	<div class="main-visual__line"></div>
-</div>
-<div class="introduction1 clearfix">
-	<div class="introduction1__visual"></div>
-	<h1 class="introduction1__highlight">
-		DoughItとは？
-	</h1>
-	<h4 class="introduction1__sentence">
-		DoughIt とは生地を意味するDoughと<br>
-		やってみようを意味するDo itを合わせた単語です。<br>
-		洋食やパンお菓子などを学べる教室を探せます<br>
-		さあ、あなたも参加しよう！
-	</h4>
-</div>
-<div class="conteiner clearfix">
-	<div class="introduction2">
-		<h1 class="introduction2__highlight">
-			Start a cooking school.
-		</h1>
-		<h4 class="introduction2__sentence">
-			DoughItでは教室を開くこともできます<br>
-			レッスン内容を登録すれば簡単に募集できます<br>
-			あなたのスキルをみんなにシェアしよう！
-		</h4>
+	<div class="main-visual">
+		<p class="main-visual__text">
+			DoughIt
+		</p>
+		<p class="main-visual__sentence">
+			Scroll
+		</p>
+		<div class="main-visual__line"></div>
 	</div>
-	<div class="visual2"></div>
-</div>
-<div class="registration-button">
-	<%= link_to "新規登録",new_user_registration_path, class:"button"%>
-</div>
 
+<div class="contaienr about-page">
+	<div class="row mt-5">
+		<div class="col-md-6 ">
+			<div class="about-page__visual">
+				<%= image_tag 'bread.jpg', width: '550x350', class:'img-fluid' %>
+			</div>
+		</div>
+		<div class="col-md-6 ">
+			<div class="row mt-5">
+				<h1 class="introduction1__highlight">
+				DoughItとは？
+				</h1>
+			</div>
+			<div class="row mt-5">
+				<h4 class="introduction1__sentence">
+					DoughIt とは生地を意味するDoughと<br>
+					やってみようを意味するDo itを合わせた単語です。<br>
+					洋食やパンお菓子などを学べる教室を探せます<br>
+					さあ、あなたも参加しよう！
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-5">
+		<div class ="col-md-6">
+			<div class="row mt-5">
+				<h1 class="introduction2__highlight">
+					あなたも先生に
+				</h1>
+			</div>
+			<div class ="row mt-5">
+				<h4 class="introduction2__sentence">
+					DoughItでは教室を開くこともできます<br>
+					レッスン内容を登録すれば簡単に募集できます<br>
+					あなたのスキルをみんなにシェアしよう！
+				</h4>
+			</div>
+		</div>
+		<div class = "col-md-6">
+			<div class ="row">
+				<div class="visual2">
+					<%= image_tag 'lesson.jpg', size: '550x350', class:'img-fluid' %>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<div class = "row mt-5">
+		<div class="registration-button">
+			<%= link_to "新規登録",new_user_registration_path, class:"button"%>
+		</div>
+	</div>
+</div>
 

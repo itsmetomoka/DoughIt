@@ -7,8 +7,9 @@
 
 	<%= form_with model:@lesson, url:lessons_path, method: :post, data: {remote: false} do |f| %>
 		<div class="row my-5">
-			<div class="col-md-6 offset-md-3">
-				<%= image_tag(@lesson.image.url,:size =>'500x300') %>
+			<div class="lesson-image-box">
+				<%#= image_tag(@lesson.image.url,:size =>'500x300') %>
+				<%= image_tag @lesson.image.url,size: '500x300' %>
 			</div>
 		</div>
 		<div class="row my-5">
@@ -50,7 +51,7 @@
 			</div>
 		</div>
 		<div class="row my-5">
-			<div class="col-md-4 offset-md-4">
+			<div class="link-center">
 				<%= f.hidden_field :name, :value => @lesson.name %>
 				<%= f.hidden_field :content, :value => @lesson.content %>
 				<%= f.hidden_field :category_name, :value => @lesson.category_name %>
@@ -65,7 +66,7 @@
 		</div>
 	<% end %>
 	<div class = "row my-5">
-		<div class="col-md-4 offset-md-4">
+		<div class="link-center">
 				<%= form_with model:@lesson, url:new_lessons_path, method: :post, data: {remote: false} do |f| %>
 					<%= f.hidden_field :name, :value => @lesson.name %>
 					<%= f.hidden_field :content, :value => @lesson.content %>

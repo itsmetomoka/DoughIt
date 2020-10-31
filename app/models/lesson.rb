@@ -21,26 +21,31 @@ class Lesson < ApplicationRecord
 		validates :event_date
 		validates :deadline
 	end
-	validate :deadline_check
-	validate :date_not_before_today
+
+  validate :deadline_should_be_before_event_date
+  validate :event_date_should_be_after_today
+  validate :deadline_shoud_be_after_today
 
 
 	# 募集締め切りが開催日よりも前の日付か
-	def deadline_check
-    errors.add(:deadline, "の日付を正しく記入してください。") unless
-    self.deadline < self.event_date
+  def deadline_should_be_before_event_date
+    if deadline.present? && event_date.present? && self.event_date < self.deadline
+      errors.add(:deadline, "の日付を正しく記入してください。")
+    end
   end
 
 # 開催日が当日以降であるか
-  def date_not_before_today
-  	errors.add(:event_date, "は今日以降に設定してください") unless
-  	 DateTime.now < self.event_date
+  def event_date_should_be_after_today
+    if event_date.present? && self.event_date < DateTime.now
+  	   errors.add(:event_date, "は今日以降に設定してください")
+    end
   end
 
 # 募集締め切り日が当日以降であるか
-  def date_not_before_today
-  	errors.add(:deadline, "は今日以降に設定してください") unless
-  	 DateTime.now < self.deadline
+  def deadline_shoud_be_after_today
+    if deadline.present? && self.deadline < DateTime.now
+  	 errors.add(:deadline, "は今日以降に設定してください")
+    end
   end
 
 # カレンダー

@@ -41,48 +41,16 @@ $point-color: #73716d;
 		}
 	}
 
-	.introduction1 {
-		width: 90%;
-		margin-bottom: 100px;
+.about-page {
+	width: 90%;
+	margin: 0 auto;
 
-		&__visual {
-			width: 550px;
-			height: 350px;
-			background-image: image-url('bread.jpg');
-			background-size: cover;
-			margin:0 100px;
-			float: left;
-		}
-
-		&__highlight {
-			padding: 50px 0;
-
-		}
+	&__visual {
+		margin: 0 auto;
 	}
+}
 
-	.introduction2 {
-		margin-left: 100px;
-		margin-bottom: 100px;
-		height: 350px;
-		float:left;
 
-		&__highlight {
-			width: 550px;
-			padding: 50px 0;
-		}
-
-		&__sentence {
-			width: 550px;
-		}
-	}
-	.visual2 {
-		width: 550px;
-		height: 350px;
-		background-image: image-url('lesson.jpg');
-		background-size: cover;
-		margin:0 100px;
-		float: left;
-	}
 	.registration-button {
 		width: 160px;
 		margin: 30px auto;
@@ -166,5 +134,10 @@ li {
 	width: 500px;
 	height: 300px;
 	margin: 0 auto;
+}
+
+@media screen and (max-width:425px) {
+	
+
 }
 

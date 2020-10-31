@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-5">
-    <h2>Sign up</h2>
+    <h1>Sign up</h1>
   </div>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -8,43 +8,43 @@
 
 
     <div class="row my-3">
-      <div class="col-md-4 offset-md-1">
-        <p>お名前</p>
+      <div class="col-md-4 offset-md-2">
+        <h5>お名前</h5>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <%= f.text_field :name,class: "form-control", autofocus: true, autocomplete: "name" %>
       </div>
     </div>
 
     <div class="row my-3">
-      <div class="col-md-4 offset-md-1">
-        <p>メールアドレス</p>
+      <div class="col-md-4 offset-md-2">
+        <h5>メールアドレス</h5>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <%= f.email_field :email,class: "form-control", autofocus: true, autocomplete: "email" %>
       </div>
     </div>
 
     <div class="row my-3">
-      <div class="col-md-4 offset-md-1">
-        <p>パスワード(6文字以上)</p>
+      <div class="col-md-4 offset-md-2">
+        <h5>パスワード(6文字以上)</h5>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <%= f.password_field :password,class: "form-control", autofocus: true, autocomplete: "password" %>
       </div>
     </div>
 
     <div class="row my-3">
-      <div class="col-md-4 offset-md-1">
-        <p>パスワード(確認用）</p>
+      <div class="col-md-4 offset-md-2">
+        <h5>パスワード(確認用）</h5>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <%= f.password_field :password,class: "form-control", autofocus: true, autocomplete: "password" %>
       </div>
     </div>
 
-    <div class="row mt-3">
-      <div class="col-md-4 offset-md-5 my-3">
+    <div class="row mt-5">
+      <div class="link-center">
         <%= f.submit "Log in",class: "button-submit" %>
       </div>
     </div>
@@ -54,7 +54,7 @@
 
 
   <div class="row my-5">
-    <div class ="col-md-4 offset-md-4">
+    <div class ="link-center">
       <h5><%= link_to "アカウントをお持ちの方はこちら", new_user_session_path,class:"button-wide"%></h5>
     </div>
   </div>

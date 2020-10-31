@@ -7,6 +7,7 @@
     <script src="https://kit.fontawesome.com/188b0a3462.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
@@ -31,15 +32,15 @@
             </ul>
         </nav>
         <% else %>
-          <li class="nav-item__link">
+          <h4 class="nav-item__link">
             <%= link_to "ABOUT US", root_path %>
-          </li>
-          <li class="nav-item__link">
+          </h4>
+          <h4 class="nav-item__link">
             <%= link_to "新規登録", new_user_registration_path %>
-          </li>
-          <li class="nav-item__link">
+          </h4>
+          <h4 class="nav-item__link">
             <%= link_to "ログイン", new_user_session_path %>
-          </li>
+          </h4>
         <% end %>
       </ul>
 
