@@ -13,8 +13,6 @@
 		<p class ="alert error-message-box"><%= flash[:validate_image] %></p>
 	<% end %>
 
-
-
 	<%= form_with model:@lesson, url:confirm_lessons_path, method: :post, data: {remote: false} do |f| %>
 		<div class="row my-4">
 			<div class="col-md-10 offset-md-1">

@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
 		comment = current_user.comments.new(comment_params)
 		comment.lesson_id = @lesson.id
 		comment.save
+		
 	end
 
 	def destroy

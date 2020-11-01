@@ -4,13 +4,19 @@ class ReviewsController < ApplicationController
 		review = current_user.reviews.new(review_params)
 		review.reviewer_id = current_user.id
 		review.user_id = @user.id
-		review.save
-		redirect_to user_reviews_path
+		if review.save
+		 	redirect_to user_reviews_path
+		else
+			all_lessons = current_user.lessons.only_active
+			@lessons = all_lessons.page(params[:page]).reverse_order
+			flash[:validate_review] = "空欄の箇所があるか、レビューが100文字以上です"
+			render 'users/show'
+		end
 	end
 
 	def index
-		user = User.find(params[:user_id])
-		@reviews = user.reviews
+		@user = User.find(params[:user_id])
+		@reviews = @user.reviews
 	end
 
 	private

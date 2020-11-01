@@ -3,6 +3,11 @@
 		<div class = "row mt-5">
 			<h1 class = "headline-center">レビュー</h1>
 		</div>
+		<div class = "row">
+			<div class = "link-button-sm">
+				<%= link_to "戻る", user_path(@user.id) %>
+			</div>
+		</div>
 		<% @reviews.each do |review| %>
 			<!-- レビューした人の情報を取り出す -->
 			<% reviewer = User.find(review.reviewer_id) %>

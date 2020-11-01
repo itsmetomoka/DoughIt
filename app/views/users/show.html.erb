@@ -1,9 +1,8 @@
 <div class="container">
 
 	<div class="row mt-5 mx-5">
-		<div class="col-md-4">
 			<h3><%= @user.name%>さんのページ</h3>
-		</div>
+			<div class="average-review-rating" data-score=<%= @average_review %>></div>
 	</div>
 	<div class="profile-box">
 		<div class="row mt-5 mx-5">
@@ -15,8 +14,8 @@
 					<%= @user.introduction %>
 				</div>
 				<div class = "row">
-					<div class ="col-md-4 offset-md-4">
-						<%= link_to 'レビューをみる',user_reviews_path(user_id: @user.id), class:"button-submit-sm" %>
+					<div class ="link-button-sm">
+						<%= link_to 'レビューをみる',user_reviews_path(user_id: @user.id) %>
 					</div>
 				</div>
 			</div>
@@ -42,5 +41,15 @@
 			<% end %>
 		</div>
 	</div>
-
 </div>
+
+
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

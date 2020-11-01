@@ -4,6 +4,11 @@ class UsersController < ApplicationController
 		@user= User.find(params[:id])
 		all_lessons = current_user.lessons.only_active
 		@lessons = all_lessons.page(params[:page]).reverse_order
+		if @user.reviews.blank?
+			@average = 0
+		else
+			@average = @user.reviews.average(:rate).round(2)
+	end
 	end
 
 	def edit

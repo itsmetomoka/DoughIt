@@ -2,9 +2,21 @@
 	<div class = "row mt-5 mx-5">
 		<h4 class = "headline-center">レビューを投稿する</h4>
 	</div>
+	<div class ="row-my-3">
+		<div class = "col-md-8 offset-md-2">
+			<% if flash[:validate_review] %>
+				<p class ="alert error-message-box"><%= flash[:validate_review] %></p>
+			<% end %>
+		</div>
+	</div>
+	<div class = "row my-3">
+		<div class = "col-md-8 offset-md-2">
+			<%= render 'devise/shared/error', sth: user %>
+		</div>
+	</div>
 	<div class = "row mt-5">
 		<div class = "col-md-4 offset-md-3">
-			<div id="rating-form"></div>
+			<div class="rating-form"></div>
   	</div>
 	</div>
 	<div class = "row mt-3">
@@ -21,9 +33,10 @@
 
 
 <script>
-  $('#rating-form').raty({
+  $('.rating-form').raty({
+  	half: true,
     path: '/assets/',
     scoreName: 'review[rate]',
-    half: true,
+    
   });
 </script>
