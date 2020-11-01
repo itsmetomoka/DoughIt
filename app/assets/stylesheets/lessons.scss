@@ -66,6 +66,21 @@ $point-color: #73716d;
 	a {
 		color: white;
 	}
+	a:hover {
+		text-decoration: none;
+		color: #CCCCCC;
+	}
+}
+
+
+.calendar-heading {
+	a {
+		color: $point-color;
+	}
+	a:hover {
+			color: #CCCCCC;
+			text-decoration: none;
+		}
 }
 
 // レッスン詳細ページ

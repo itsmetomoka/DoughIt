@@ -52,13 +52,14 @@ class LessonsController < ApplicationController
 
   def index
     if params[:user_id]
-      user = User.find(params[:user_id])
-      all_lesson = user.lessons.only_active
+      @user = User.find(params[:user_id])
+      all_lesson = @user.lessons.only_active
     else
       all_lesson = Lesson.only_active
     end
     @lessons = all_lesson.page(params[:page]).reverse_order
   end
+
 
   def show
     @lesson = Lesson.find(params[:id])

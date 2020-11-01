@@ -56,6 +56,7 @@ ul {
 }
 
 
+
 // ボタン
 a.button {
 	position: relative;
@@ -144,13 +145,15 @@ a.button-wide:before {
 }
 
 
-.link-button-sm {
+// 右端に寄せたいボタン
+.link-button-sm-right {
   font-size: 20px;
   border-bottom: solid 2px #73716d;
   text-align: center;
+  margin: 0 0 0 auto;
   a {
     color: #73716d;
-    padding: 0 5px;
+    padding: 0 10px;
   }
 
   a:hover {
@@ -158,6 +161,23 @@ a.button-wide:before {
     color: #CCCCCC;
   }
 }
+
+.link-button-sm-center {
+  font-size: 20px;
+  border-bottom: solid 2px #73716d;
+  text-align: center;
+  margin: 0 auto;
+  a {
+    color: #73716d;
+    padding: 0 30px;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: #CCCCCC;
+  }
+}
+
 
 // エラー文
 .error-message-box {
