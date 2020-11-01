@@ -1,10 +1,11 @@
 class ReviewsController < ApplicationController
 	def create
 		@user = User.find(params[:user_id])
-		review = current_user.reviews.new(review_params)
-		review.reviewer_id = current_user.id
-		review.user_id = @user.id
-		if review.save
+		@review = current_user.reviews.new(review_params)
+		@review.reviewer_id = current_user.id
+		@review.user_id = @user.id
+		if @review.save
+			@review.create_review_notification_by(current_user)
 		 	redirect_to user_reviews_path
 		else
 			all_lessons = current_user.lessons.only_active

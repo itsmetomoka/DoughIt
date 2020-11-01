@@ -14,10 +14,17 @@ class User < ApplicationRecord
   has_many :lessons
   has_many :reservations
   has_many :reviews, dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   validates :name, presence: true, length: {in: 2..20}
   validates :introduction, length: {maximum: 300}
   validates :email, presence: true, format: {with: /\A\S+@\S+\.\S+\z/,message: 'が正しくありません'}
+
+
+  
+
+
 
 
 end

@@ -24,7 +24,8 @@ Rails.application.routes.draw do
 		resource :favorites, only: [:create, :destroy, :index]
 		resources :comments, only: [:create, :destroy]
 		resources :reservations, only: [:create, :index]
-		
 	end
-
+	
+	resources :notifications, only: :index
+	delete 'notification' => 'notifications#destroy_all'
 end

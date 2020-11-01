@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_31_055955) do
+ActiveRecord::Schema.define(version: 2020_11_01_090547) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -43,6 +43,19 @@ ActiveRecord::Schema.define(version: 2020_10_31_055955) do
     t.float "latitude"
     t.float "longitude"
     t.boolean "is_active", default: true
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id"
+    t.integer "visited_id"
+    t.integer "lesson_id"
+    t.integer "comment_id"
+    t.integer "favorite_id"
+    t.integer "review_id"
+    t.string "action"
+    t.boolean "is_checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reservations", force: :cascade do |t|

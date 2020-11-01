@@ -1,0 +1,19 @@
+<div class = "container">
+	<div class = "row mt-5">
+		<h3 class="underbar">通知</h3>
+	</div>
+
+	<div class = "row mt-5 ml-5">
+  	<%= link_to notification_path, method: :delete do %>
+      <h5 style="color: black;"><i class="fas fa-trash" style="color: black;"></i>全削除</h5>
+  	<% end %>
+  </div>
+    <hr>
+	<% if @notifications.exists? %>
+	    <div class="users-index">
+	        <%= render @notifications %>
+	    </div>
+	<% else %>
+	    <p>通知はありません</p>
+	<% end %>
+</div>
