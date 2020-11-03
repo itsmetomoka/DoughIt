@@ -1,0 +1,63 @@
+	<div class = "sidebar">
+		<p class = "sidebar__row">
+			<h3 class = "sidebar__row--headline">Search</h3>
+		</p>
+		<p class = "sidebar__row">
+			<div class = "sidebar__row--content">Category</div>
+		</p>
+		<% Lesson.category_names.each do |name, num| %>
+			<p class = "sidebar__row">
+				<div class = "sidebar__row--sub-content">
+					<%= link_to name, search_path(category_name: num)%>
+				</div>
+			</p>
+		<% end %>
+		<p class = "sidebar__row">
+			<div class = "sidebar__row--content">
+				<%= link_to "新着レッスン", lessons_path %>
+			</div>
+		</p>
+		<p class = "sidebar__row">
+			<div class = "sidebar__row--content">
+				<%= link_to "お気に入り", user_favorite_path(current_user.id) %>
+			</div>
+		</p>
+		<p class = "sidebar__row">
+			<div class = "sidebar__row--content">
+				<%= link_to "予約一覧", lesson_reservations_path(current_user.id) %>
+			</div>
+		</p>
+
+		<p class = "sidebar__row">
+			<h3 class = "sidebar__row--headline">My Lesson</h3>
+		</p>
+		<p class = "sidebar__row">
+			<div class = "sidebar__row--content">
+				<%= link_to "レッスンを作る", new_lesson_path %>
+			</div>
+		</p>
+		<p class = "sidebar__row">
+			<div class = "sidebar__row--content">
+				<%= link_to "募集中のレッスン",lessons_path(user_id: current_user.id)%>
+			</div>
+		</p>
+
+		<p class = "sidebar__row">
+			<h3 class = "sidebar__row--headline">Guide</h3>
+		</p>
+		<p class = "sidebar__row">
+			<div class = "sidebar__row--content">
+				<%= link_to "About us", root_path %>
+			</div>
+		</p>
+		<p class = "sidebar__row">
+			<div class = "sidebar__row--content">
+				<%= link_to "マイページ", user_path(current_user.id) %>
+			</div>
+		</p>
+		<p class = "sidebar__row">
+			<div class = "sidebar__row--content">
+				<%= link_to "ログアウト",  destroy_user_session_path, :method=>:delete %>
+			</div>
+		</p>
+	</div>

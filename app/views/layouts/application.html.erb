@@ -43,8 +43,28 @@
           </h4>
         <% end %>
       </ul>
-
     </div>
+    <% if user_signed_in? %>
+      <div class="category-bar">
+        <li class="sub-nav-item">
+          <%= link_to notifications_path ,class:"sub-nav-item__icon" do%>
+            <i class="fas fa-bell fa-2x"></i>
+          <% end %>
+        </li>
+        <li class="sub-nav-item">
+          <%= link_to lesson_reservations_path(current_user.id) ,class:"sub-nav-item__icon" do%>
+            <i class="fas fa-calendar-check fa-2x"></i>
+          <% end %>
+        </li>
+        <li class="sub-nav-item">
+          <%= link_to user_favorite_path(current_user.id) ,class:"sub-nav-item__icon" do%>
+            <i class="fas fa-heart fa-2x"></i>
+          <% end %>
+        </li>
+      </div>
+        
+
+    <% end %>
     <div class="content">
       <%= yield %>
     </div>

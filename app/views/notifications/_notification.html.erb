@@ -1,13 +1,12 @@
 <% visitor = notification.visitor %>
 <% lesson = notification.lesson %>
 
-<div class="user-view clearfix ">
+	<div class="user-view clearfix ">
 
-    <%= image_tag visitor.image.to_s, size: "50x50",class:"rounded-circle img-fluid", fallback: "noimage.png",size:"50x50" %>
-
-  <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+  <%= image_tag visitor.image.to_s,class:"rounded-circle img-fluid", fallback: "noimage.png",size:"50x50" %>
+  <%= notification_form(notification) %><%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
   <br>
   <% if !@comment.nil? %>
-    <p class="moderate-font text-center" style="color: #C0C0C0;"><%= @comment %></p>
+    <p class="moderate-font" style="color: #C0C0C0;"><%= @comment %></p>
   <% end %>
 </div>

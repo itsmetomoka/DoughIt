@@ -1,44 +1,49 @@
 <div class="container">
+	<div class="main-box clearfix">
+		<%= render 'layouts/sidebar' %>
+		<div class = "main-content">
 
-	<div class="row mt-5 mx-5">
-			<h3><%= @user.name%>さんのページ</h3>
-			<div class="average-review-rating" data-score=<%= @average_review %>></div>
-	</div>
-	<div class="profile-box">
-		<div class="row mt-5 mx-5">
-			<div class="col-md-3 offset-md-1">
-				<%= image_tag @user.image.to_s,size: "150x150", class:"rounded-circle" , fallback: "noimage.png",size:"150x150"%>
+			<div class="row mt-5 mx-5">
+					<h3><%= @user.name%>さんのページ</h3>
+					<div class="average-review-rating" data-score=<%= @average_review %>></div>
 			</div>
-			<div class="col-md-6 offset-md-2">
-				<div class = "row">
-					<%= @user.introduction %>
-				</div>
-				<div class = "row">
-					<div class ="link-button-sm-right">
-						<%= link_to 'レビューをみる',user_reviews_path(user_id: @user.id) %>
+			<div class="profile-box">
+				<div class="row mt-5 mx-5">
+					<div class="col-md-3 offset-md-1">
+						<%= image_tag @user.image.to_s,size: "150x150", class:"rounded-circle" , fallback: "noimage.png",size:"150x150"%>
+					</div>
+					<div class="col-md-6 offset-md-2">
+						<div class = "row">
+							<%= @user.introduction %>
+						</div>
+						<div class = "row">
+							<div class ="link-button-sm-right">
+								<%= link_to 'レビューをみる',user_reviews_path(user_id: @user.id) %>
+							</div>
+						</div>
 					</div>
 				</div>
+				<% if @user.id != current_user.id %>
+					<%= render 'reviews/form', user: @user %>
+				<% end %>
+				<div class="row my-5 mx-5">
+					<div class="underbar">
+						<h4><%= @user.name%>さんの教室一覧</h4>
+					</div>
+				</div>
+				<%= render 'lessons/list', lessons: @lessons %>
 			</div>
-		</div>
-		<% if @user.id != current_user.id %>
-			<%= render 'reviews/form', user: @user %>
-		<% end %>
-		<div class="row mt-5 mx-5">
-			<div class="col-md-4 offset-md-4">
-				<h4><%= @user.name%>さんの教室一覧</h4>
-			</div>
-		</div>
-		<%= render 'lessons/list', lessons: @lessons %>
-	</div>
 
-	<div class="row my-5">
-		<div class="col-md-3">
-			<%= link_to "TOP", top_path, class:"button-submit" %>
-		</div>
-		<div class="col-md-2 offset-md-6">
-			<% if @user == current_user %>
-				<%= link_to "編集する", edit_user_path(@user.id), class:"button-submit-sm" %>
-			<% end %>
+			<div class="row my-5">
+				<div class="col-md-3">
+					<%= link_to "TOP", top_path, class:"button-submit" %>
+				</div>
+				<div class="col-md-2 offset-md-6">
+					<% if @user == current_user %>
+						<%= link_to "編集する", edit_user_path(@user.id), class:"button-submit-sm" %>
+					<% end %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

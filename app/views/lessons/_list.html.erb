@@ -1,6 +1,6 @@
-<div class="row mt-5 mx-5">
+<div class="row mx-5">
 	<% lessons.each do |lesson| %>
-			<div class="col-md-3">
+			<div class="col-md-4">
 				<%= link_to lesson_path(lesson.id) do %>
 					<%= image_tag lesson.image.to_s,size:"250x180", class:"img-fluid" %>
 				<% end %>

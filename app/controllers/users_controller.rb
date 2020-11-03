@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+	before_action :authenticate_user!
 	def show
 		@user= User.find(params[:id])
 		all_lessons = current_user.lessons.only_active

@@ -1,48 +1,51 @@
-<div class="container">
-	<%= render 'table', lesson: @lesson %>
-	<% if @lesson.user_id == current_user.id %>
-		<div class ="row mt-5">
-			<h3 class ="underbar">予約者一覧</h3>
-		</div>
-		<!-- 予約した人がいた場合、リンク先がプロフィールのアイコンを表示 -->
-		<% if @lesson.reservations.exists? %>
-			<div class ="row mt-4 mx-5">
-				<% @lesson.reservations.each do |reservation| %>
-					<div class="reservation-user">
-						<% unless reservation.user.nil? %>
-							<%= link_to user_path(reservation.user_id) do %>
-								<%= image_tag reservation.user.image.to_s, size:'80x80', class:'rounded-circle img-fluid', fallback: "noimage.png" %>
-							<% end %>
-						<% else %>
-							<%= image_tag 'no-user.jpg', size: '80x80', class:'rounded-circle img-fluid' %>
+<div class = "container">
+	<div class="main-box clearfix">
+		<%= render 'layouts/sidebar' %>
+		<div class = "main-content">
+			<%= render 'table', lesson: @lesson %>
+			<% if @lesson.user_id == current_user.id %>
+				<div class ="row mt-5">
+					<h3 class ="underbar">予約者一覧</h3>
+				</div>
+				<!-- 予約した人がいた場合、リンク先がプロフィールのアイコンを表示 -->
+				<% if @lesson.reservations.exists? %>
+					<div class ="row mt-4 mx-5">
+						<% @lesson.reservations.each do |reservation| %>
+							<div class="reservation-user">
+								<% unless reservation.user.nil? %>
+									<%= link_to user_path(reservation.user_id) do %>
+										<%= image_tag reservation.user.image.to_s, size:'80x80', class:'rounded-circle img-fluid', fallback: "noimage.png" %>
+									<% end %>
+								<% else %>
+									<%= image_tag 'no-user.jpg', size: '80x80', class:'rounded-circle img-fluid' %>
+								<% end %>
+							</div>
 						<% end %>
 					</div>
+				<% else %>
+				<!-- 予約した人がいなかった場合 -->
+					<div class="row my-4 mx-5">
+						<h4 class ="heighlighter">予約したユーザーはいません</h4>
+					</div>
 				<% end %>
+			<% end %>
+			<div class ="row mt-5 mx-5">
+				<%= render 'map', lesson: @lesson %>
 			</div>
-		<% else %>
-		<!-- 予約した人がいなかった場合 -->
-			<div class="row my-4 mx-5">
-				<h4 class ="heighlighter">予約したユーザーはいません</h4>
-			</div>
-		<% end %>
-	<% end %>
-	<div class ="row mt-5 mx-5">
-		<%= render 'map', lesson: @lesson %>
-	</div>
 
 
-	
-	<%= render 'users/profile', user: @lesson.user %>
-	
-	<div class="comment-headline">
-		<div class="comment-headline__center">
-				<h3>コメント</h3>
+			<%= render 'users/profile', user: @lesson.user %>
+			<div class="comment-headline">
+				<div class="comment-headline__center">
+						<h3>コメント</h3>
+				</div>
+			</div>
+			<div id = 'js-comment-list'>
+				<%= render 'comments/list', lesson: @lesson %>
+			</div>
+			<div id = 'js-comment-form'>
+				<%= render 'comments/form', lesson: @lesson %>
+			</div>
 		</div>
-	</div>
-	<div id = 'js-comment-list'>
-		<%= render 'comments/list', lesson: @lesson %>
-	</div>
-	<div id = 'js-comment-form'>
-		<%= render 'comments/form', lesson: @lesson %>
 	</div>
 </div>

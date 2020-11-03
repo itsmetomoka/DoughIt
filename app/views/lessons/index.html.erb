@@ -1,16 +1,19 @@
-
-	<div class="container">
-		<div class="row my-5">
-			<div class="col-md-4 offset-md-4">
-				<div class="underbar">
-					<% if params[:user_id] %>
-						<h2><%= @user.name %> さんのレッスン</h2>
-					<% else %>
-						<h2>レッスン一覧</h2>
-					<% end %>
+<div class = "container">
+	<div class="main-box clearfix">
+		<%= render 'layouts/sidebar' %>
+		<div class = "main-content">
+			<div class="container">
+				<div class="row my-5">
+					<div class="underbar">
+						<% if params[:user_id] %>
+							<h2><%= @user.name %> さんのレッスン</h2>
+						<% else %>
+							<h2>レッスン一覧</h2>
+						<% end %>
+					</div>
 				</div>
+				<%= render 'list', lessons: @lessons %>
 			</div>
 		</div>
-		<%= render 'list', lessons: @lessons %>
 	</div>
-
+</div>

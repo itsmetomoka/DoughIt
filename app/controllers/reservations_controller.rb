@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-
+	before_action :authenticate_user!
 	def create
 		@lesson = Lesson.find(params[:lesson_id])
 		unless current_user.reservations.exists?(lesson_id: params[:lesson_id])

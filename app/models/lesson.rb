@@ -23,6 +23,8 @@ class Lesson < ApplicationRecord
 		validates :content #, length: {in: 20..200}
 		validates :event_date
 		validates :deadline
+    validates :category_name
+    validates :max_attendees
 	end
 
   validate :deadline_should_be_before_event_date

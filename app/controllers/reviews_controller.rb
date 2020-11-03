@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+	before_action :authenticate_user!
 	def create
 		@user = User.find(params[:user_id])
 		@review = current_user.reviews.new(review_params)

@@ -1,79 +1,64 @@
-<div class="container-fluid">
-	<div class="row category-bar">
-		<% Lesson.category_names.each do |name, num| %>
-			<div class="col-md-2 offset-md-1">
-				<%= link_to name, search_path(category_name: num)%>
+
+
+<div class = "container">
+	<div class = "top-main-visual clearfix">
+		<div class = "top-main-visual__left">
+			<%= image_tag 'top-main.jpg', class:'img-fluid' %>
+		</div>
+		<div class = "top-main-visual__right">
+			<div class = "main-search">
+				<%= render 'searches/search-box'%>
 			</div>
-		<% end %>
-	</div>
-</div>
-
-<%= link_to "通知", notifications_path %>
-
-<%= render 'searches/search-box'%>
-<div class="container">
-	<%= render 'users/profile', user: @user %>
-	<%= month_calendar events: @lessons do |date, lessons| %>
-	  <%= date.day %>
-	  <% lessons.each do |lesson| %>
-	  	<!-- 自分が開くレッスンの表示 -->
-	  	<% if lesson.user_id == current_user.id %>
-	  	<div class = "calender-event">
-	      <%= link_to lesson_path(lesson.id) do %>
-	        <%= lesson.name %>
-	     </div>
-	      <% end %>
-	     <!-- 予約したレッスンの表示 -->
-	    <% elsif lesson.reservations.exists? %>
-	    	<% lesson.reservations.each do |reservation| %>
-	    		<% if reservation.user_id == current_user.id %>
-	    		<div class = "calender-event">
-		      	<%= link_to lesson_path(lesson.id) do %>
-		        	<%= lesson.name %>
-		      </div>
-		      	<% end %>
-		      <% end %>
-		    <% end %>
-	    <% end %>
-	  <% end %>
-	<% end %>
-
-	<div class="row mt-5">
-		<div class="underbar">
-			<h1>いいねしたレッスン</h1>
-		</div>
-		</div>
-		<div class="row mt-5 mx-5">
-			<% @favorites.each do |favorite| %>
-				<% lesson = Lesson.find_by(id: favorite.lesson_id) %>
-				<div class="col-md-3">
-					<%= link_to lesson_path(lesson.id) do %>
-						<%= image_tag lesson.image.to_s, size:"250x180",class:"img-fluid" %>
-					<% end %>
-					<%= lesson.name %>
-				</div>
-			<% end %>
-		</div>
-
-
-	<div class="row mt-5">
 			<div class="underbar">
 				<h1>新着教室</h1>
 			</div>
-	</div>
-	<div class="row mt-5 mx-5">
-		<% @lessons.last(4).each do |lesson| %>
-			<div class="col-md-3">
-				<%= link_to lesson_path(lesson.id) do %>
-					<%= image_tag lesson.image.to_s, size:"250x180",class:"img-fluid" %>
+			<div class="row mt-5">
+				<% @lessons.last(6).each do |lesson| %>
+					<div class="col-md-6">
+						<%= link_to lesson_path(lesson.id) do %>
+							<%= image_tag lesson.image.to_s, size:"150x120",class:"img-fluid" %>
+						<% end %>
+						<%= lesson.name %>
+					</div>
 				<% end %>
-				<%= lesson.name %>
 			</div>
-		<% end %>
+			<div class="row my-5 mx-5">
+				<div class="link-button-sm-center">
+					<%= link_to "教室一覧を見る", lessons_path %>
+				</div>
+			</div>
 	</div>
-	<div class="row my-5 mx-5">
-		<div class="link-button-sm-right">
-			<%= link_to "教室一覧を見る", lessons_path %>
-		</div>
+</div>
+
+<div class="main-box clearfix">
+
+	<%= render 'layouts/sidebar' %>
+
+	<div class = "main-content">
+		<%= render 'users/profile', user: @user %>
+		<%= month_calendar events: @lessons do |date, lessons| %>
+		  <%= date.day %>
+		  <% lessons.each do |lesson| %>
+		  	<!-- 自分が開くレッスンの表示 -->
+		  	<% if lesson.user_id == current_user.id %>
+		  	<div class = "calender-event">
+		      <%= link_to lesson_path(lesson.id) do %>
+		        <%= lesson.name %>
+		     </div>
+		      <% end %>
+		     <!-- 予約したレッスンの表示 -->
+		    <% elsif lesson.reservations.exists? %>
+		    	<% lesson.reservations.each do |reservation| %>
+		    		<% if reservation.user_id == current_user.id %>
+		    		<div class = "calender-event">
+			      	<%= link_to lesson_path(lesson.id) do %>
+			        	<%= lesson.name %>
+			      </div>
+			      	<% end %>
+			      <% end %>
+			    <% end %>
+		    <% end %>
+		  <% end %>
+		<% end %>
 	</div>
 </div>

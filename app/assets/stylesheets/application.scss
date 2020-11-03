@@ -31,6 +31,98 @@ $point-color: #73716d;
 ul {
   list-style: none;
 }
+
+a {
+  color: $point-color;
+}
+
+a:hover {
+  color: $sub-color;
+  text-decoration: none;
+}
+
+.table-image {
+  width: 50px;
+}
+
+// ナビゲーション
+
+.category-bar {
+  width: 100%;
+  height: 50px;
+  background-color: rgba(69,79,92,0.5);
+  padding-right: 250px;
+
+  a {
+    color: white;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #CCCCCC;
+  }
+}
+
+.sub-nav-item {
+  float: right;
+
+  &__icon i {
+    margin: 7px;
+  }
+}
+
+// サイドバー
+.main-box {
+  margin: 0 auto;
+}
+.sidebar {
+  float: left;
+  width: 200px;
+  margin-right: 50px;
+  margin-top: 50px;
+
+  &__row {
+    float: none;
+    &--headline {
+    border-bottom : solid 2px $point-color;
+    text-align: center;
+    }
+    &--sub-content {
+      margin-left: 20px;
+      border-bottom: solid 1px #EEEEEE;
+
+      a {
+        color: $point-color;
+      }
+
+      a:hover {
+        color:$sub-color;
+        text-decoration: none;
+      }
+    }
+
+    &--content {
+      border-bottom: solid 1px #EEEEEE;
+      a {
+        color: $point-color;
+      }
+
+      a:hover {
+        color:$sub-color;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+.main-content {
+  width: 800px;
+  float: left;
+  margin-top: 40px;
+}
+
+
+
 // ページネーション
 
 .pagination span{
@@ -54,96 +146,6 @@ ul {
 .content {
   min-height: 600px;
 }
-
-
-
-// ボタン
-a.button {
-	position: relative;
-	display: block;
-	width: 180px;
-	padding: 10px;
-	text-align: center;
-	font-weight: bold;
-	text-decoration: none;
-	color: $point-color;
-
-}
-a.button:before {
-	position: absolute;
-	content: '';
-	width: 100%;
-	height: 2px;
-	top:100%;
-	left: 0;
-	background: $point-color;
-
-}
-
-a.button-wide {
-	position: relative;
-	display: block;
-	width: 400px;
-	padding: 10px;
-	text-align: center;
-	font-weight: bold;
-	text-decoration: none;
-	color: $point-color;
-}
-a.button-wide:before {
-	position: absolute;
-	content: '';
-	width: 100%;
-	height: 2px;
-	top:100%;
-	left: 0;
-	background: $point-color;
-
-}
-
-// サブミットボタン
-.button-submit-sm {
-
-	display: block;
-	width: 150px;
-	padding: 5px;
-	text-align: center;
-	font-weight: bold;
-  color: $point-color;
-} 
-.button-submit-sm:before {
-	position: absolute;
-	content: '';
-	width: 100%;
-	height: 2px;
-	top:100%;
-	left: 0;
-	background: $point-color;
-}
-
-.button-submit {
-  position: relative;
-  display: block;
-  width: 300px;
-  padding: 10px;
-  text-align: center;
-  font-weight: bold;
-  text-decoration: none;
-  color: $point-color;
-}
-.button-submit:before {
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 2px;
-  top:100%;
-  left: 0;
-  background: $point-color;
-}
-.button-center {
-  margin: 0 auto;
-}
-
 
 // 右端に寄せたいボタン
 .link-button-sm-right {
@@ -178,6 +180,25 @@ a.button-wide:before {
   }
 }
 
+.button-submit {
+  position: relative;
+  display: block;
+  width: 300px;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  color: $point-color;
+}
+.button-submit:before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 2px;
+  top:100%;
+  left: 0;
+  background: $point-color;
+}
 
 // エラー文
 .error-message-box {
@@ -401,7 +422,12 @@ nav.globalMenuSp.active {
 	width: 100%;
 	height: 100px;
 	background-color: $sub-color;
+
+  &__logo {
+    margin-left: 50px;
+  }
 }
+
 
 .nav-item {
 	list-style: none;
@@ -470,3 +496,26 @@ footer {
 .headline-center {
   margin: 0 auto;
 }
+
+// ログインページ
+
+.header-title {
+ text-align: center;
+ margin: 50px 0;
+
+}
+
+
+
+.home-left {
+  width: 50%;
+  float:left;
+  border-right: solid 1px $point-color;
+
+}
+
+.home-right {
+  width: 50%;
+  float:left;
+}
+

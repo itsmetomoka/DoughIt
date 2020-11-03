@@ -1,11 +1,20 @@
 <div class="container">
-	<div class="row mt-5">
-		<div class = "col-md-4 offset-md-4">
-			<h2>作成が完了しました</h2>
+	<div class="main-box clearfix">
+		<%= render 'layouts/sidebar' %>
+		<div class = "main-content">
+				<div class="row mt-5 mb-3">
+					<div class = "underbar">
+						<h2>作成完了</h2>
+					</div>
+				</div>
+				<h5 class = "text-center">
+					作成されたレッスンが公開されました
+				</h5>
+				<%= render 'table', lesson: @lesson %>
+				<div class ="row mt-5">
+					<%= link_to "TOPに戻る",top_path, class: "button button-center" %>
+				</div>
+
 		</div>
-	</div>
-	<%= render 'table', lesson: @lesson %>
-	<div class ="row mt-5">
-		<%= link_to "TOPに戻る",top_path, class: "button button-center" %>
 	</div>
 </div>

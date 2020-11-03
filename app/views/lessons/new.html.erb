@@ -1,107 +1,89 @@
 <div class="container">
-	<div class="row mt-5 my-5">
-		<div class="col-md-6 offset-md-3">
-			<div class="border_bottom">
-				<h1>レッスン開講入力フォーム</h1>
+	<div class="main-box clearfix">
+		<%= render 'layouts/sidebar' %>
+		<div class = "main-content">
+			<div class="row mt-5 my-5">
+
+					<div class="underbar">
+						<h1>レッスン開講入力フォーム</h1>
+					</div>
+
 			</div>
+			<% if @lesson.errors.any? %>
+				<%= render 'devise/shared/error', sth: @lesson %>
+			<% end %>
+			<% if flash[:validate_image] %>
+				<p class ="alert error-message-box"><%= flash[:validate_image] %></p>
+			<% end %>
+
+			<%= form_with model:@lesson, url:confirm_lessons_path, method: :post, data: {remote: false} do |f| %>
+				<div class="row my-4">
+					<div class="col-md-10 offset-md-1">
+						<div class="row">
+							<div class="lesson-image-box">
+								<% if @lesson.image.present? %>
+								  <%= image_tag @lesson.image.url,size:"500x300", id: :img_prev %>
+								<% else %>
+								  <%= image_tag "noimage.png",size:"500x300", id: :img_prev %>
+								<% end %>
+							</div>
+						</div>
+						<div class="row my-3">
+							<div class="col-md-4 offset-md-6">
+								<%= f.file_field :image, id: :lesson_img %>
+								<%= f.hidden_field :image_cache %>
+							</div>
+						</div>
+						<div class="row my-5 mx-5">
+							<div class= "col-md-10 offset-md-1">
+								<%= f.text_field :name,class:"form-control",placeholder: "レッスン名" %>
+							</div>
+						</div>
+						<div class="row my-5 mx-5">
+							<div class= "col-md-10 offset-md-1">
+								<%=  f.text_area :content, class:"form-control",placeholder: "レッスン内容" %>
+							</div>
+						</div>
+						<div class="row my-5 mx-5">
+							<div class="col-md-10 offset-md-1">
+								<%= f.select :category_name, Lesson.category_names.keys.map {|k| [k, k]}, include_blank: "レッスンカテゴリー" %>
+							</div>
+						</div>
+						<div class="row my-5 mx-5">
+							<div class="col-md-10 offset-md-1">
+								<%= f.text_field :event_date, class:"form-control datetimepicker-input", id: "event_date", data: {toggle: "datetimepicker", target: "#event_date"},placeholder: "開催日" %>
+							</div>
+						</div>
+						<div class="row my-5 mx-5">
+							<div class="col-md-10 offset-md-1">
+								<%= f.text_field :deadline, class:"form-control datetimepicker-input", id: "deadline", data: {toggle: "datetimepicker", target: "#deadline"},placeholder: "募集締め切り日" %>
+							</div>
+						</div>
+						<div class="row my-5 mx-5">
+							<div class="col-md-10 offset-md-1">
+								<%#= f.select :max_attendees, [*(1..10)], {selected: 1}, include_blank: "参加可能人数" %>
+								<%= f.number_field :max_attendees, min: 1, placeholder: "最大参加可能人数"%>
+							</div>
+						</div>
+						<div class="row my-5 mx-5">
+							<div class="col-md-10 offset-md-1">
+								<%= f.text_field :tuition, class:"form-control",placeholder: "受講料" %>
+
+							</div>
+						</div>
+						<div class="row my-5 mx-5">
+							<div class="col-md-10 offset-md-1">
+								<%= f.text_area :address, class:"form-control",placeholder: "住所" %>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row my-5">
+					<div class="link-center">
+						<%= f.submit "確認画面に進む", class:"button-submit" %>
+					</div>
+				</div>
+			<% end %>
 		</div>
 	</div>
-	<% if @lesson.errors.any? %>
-		<%= render 'devise/shared/error', sth: @lesson %>
-	<% end %>
-	<% if flash[:validate_image] %>
-		<p class ="alert error-message-box"><%= flash[:validate_image] %></p>
-	<% end %>
-
-	<%= form_with model:@lesson, url:confirm_lessons_path, method: :post, data: {remote: false} do |f| %>
-		<div class="row my-4">
-			<div class="col-md-10 offset-md-1">
-				<div class="row">
-					<div class="lesson-image-box">
-						<% if @lesson.image.present? %>
-						  <%= image_tag @lesson.image.url,size:"500x300", id: :img_prev %>
-						<% else %>
-						  <%= image_tag "noimage.png",size:"500x300", id: :img_prev %>
-						<% end %>
-					</div>
-				</div>
-				<div class="row my-3">
-					<div class="col-md-4 offset-md-6">
-						<%= f.file_field :image, id: :lesson_img %>
-						<%= f.hidden_field :image_cache %>
-					</div>
-				</div>
-				<div class="row my-5 mx-5">
-					<div class= "col-md-3 offset-md-1">
-						<h4>レッスン名</h4>
-					</div>
-					<div class= "col-md-4 offset-md-2">
-						<%= f.text_field :name,class:"form-control" %>
-					</div>
-				</div>
-				<div class="row my-5 mx-5">
-					<div class= "col-md-3 offset-md-1">
-						<h4>レッスン内容</h4>
-					</div>
-					<div class= "col-md-4 offset-md-2">
-						<%=  f.text_area :content, class:"form-control" %>
-					</div>
-				</div>
-				<div class="row my-5 mx-5">
-					<div class="col-md-3 offset-md-1">
-						<h4>カテゴリー</h4>
-					</div>
-					<div class="col-md-4 offset-md-2">
-						<%= f.select :category_name, Lesson.category_names.keys.map {|k| [k, k]} %>
-					</div>
-				</div>
-				<div class="row my-5 mx-5">
-					<div class="col-md-3 offset-md-1">
-						<h4>開催日</h4>
-					</div>
-					<div class="col-md-4 offset-md-2">
-						<%= f.text_field :event_date, class:"form-control datetimepicker-input", id: "event_date", data: {toggle: "datetimepicker", target: "#event_date"} %>
-					</div>
-				</div>
-				<div class="row my-5 mx-5">
-					<div class="col-md-3 offset-md-1">
-						<h4>募集締め切り</h4>
-					</div>
-					<div class="col-md-4 offset-md-2">
-						<%= f.text_field :deadline, class:"form-control datetimepicker-input", id: "deadline", data: {toggle: "datetimepicker", target: "#deadline"} %>
-					</div>
-				</div>
-				<div class="row my-5 mx-5">
-					<div class="col-md-3 offset-md-1">
-						<h4>参加可能人数</h4>
-					</div>
-					<div class="col-md-3 offset-md-2">
-						<%= f.select :max_attendees, [*(1..10)], {selected: 1} %>
-					</div>
-				</div>
-				<div class="row my-5 mx-5">
-					<div class="col-md-3 offset-md-1">
-						<h4>受講料</h4>
-					</div>
-					<div class="col-md-4 offset-md-2">
-						<%= f.text_field :tuition, class:"form-control" %>
-					</div>
-				</div>
-				<div class="row my-5 mx-5">
-					<div class="col-md-3 offset-md-1">
-						<h4>場所</h4>
-					</div>
-					<div class="col-md-4 offset-md-2">
-						<%= f.text_area :address, class:"form-control" %>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row my-5">
-			<div class="link-center">
-				<%= f.submit "確認画面に進む", class:"button-submit" %>
-			</div>
-		</div>
-	<% end %>
-
 </div>

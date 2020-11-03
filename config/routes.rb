@@ -11,8 +11,10 @@ Rails.application.routes.draw do
 	get 'users/check' => 'users#check'
 	patch 'users/withdrawal' => 'users#withdrawal'
 
+
 	resources :users, only: [:edit, :update, :show] do
 		resources :reviews, only: [:create, :destroy, :index]
+		get 'favorite' => 'favorites#index'
 	end
 
 

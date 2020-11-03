@@ -1,84 +1,88 @@
 <div class="container">
-	<div class="row mt-5 mx-5">
-		<div class="col-md-4 offset-md-4">
-			<h2>レッスン内容確認</h2>
-		</div>
-	</div>
-
-	<%= form_with model:@lesson, url:lessons_path, method: :post, data: {remote: false} do |f| %>
-		<div class="row my-5">
-			<div class="lesson-image-box">
-				<%#= image_tag(@lesson.image.url,:size =>'500x300') %>
-				<%= image_tag @lesson.image.url,size: '500x300' %>
+	<div class="main-box clearfix">
+		<%= render 'layouts/sidebar' %>
+		<div class = "main-content">
+			<div class="row mt-5 mx-5">
+				<div class="underbar">
+					<h2>レッスン内容確認</h2>
+				</div>
 			</div>
-		</div>
-		<div class="row my-5">
-			<div class="col-md-6 offset-md-3">
-				<table class="table table-bordered">
-					<tr>
-						<th>レッスン名</th>
-						<td><%= @lesson.name %></td>
-					</tr>
-					<tr>
-						<th>内容</th>
-						<td><%= @lesson.content %></td>
-					</tr>
-					<tr>
-						<th>カテゴリー</th>
-						<td><%= @lesson.category_name %></td>
-					</tr>
-					<tr>
-						<th>開催日時</th>
-						<td><%= l @lesson.event_date %></td>
-					</tr>
-					<tr>
-						<th>開催場所</th>
-						<td><%= @lesson.address %></td>
-					</tr>
-					<tr>
-						<th>受講料</th>
-						<td><%= @lesson.tuition.to_s(:delimited) %></td>
-					</tr>
-					<tr>
-						<th>最大参加可能人数</th>
-						<td><%= @lesson.max_attendees %></td>
-					</tr>
-					<tr>
-						<th>募集締め切り日</th>
-						<td><%= l @lesson.deadline %></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-		<div class="row my-5">
-			<div class="link-center">
-				<%= f.hidden_field :name, :value => @lesson.name %>
-				<%= f.hidden_field :content, :value => @lesson.content %>
-				<%= f.hidden_field :category_name, :value => @lesson.category_name %>
-				<%= f.hidden_field :event_date, :value => @lesson.event_date %>
-				<%= f.hidden_field :address, :value => @lesson.address %>
-				<%= f.hidden_field :tuition, :value => @lesson.tuition %>
-				<%= f.hidden_field :max_attendees, :value=> @lesson.max_attendees %>
-				<%= f.hidden_field :deadline, :value => @lesson.deadline %>
-				<%= f.hidden_field :image_cache %>
-				<%= f.submit "公開する", class:"button-submit" %>
-			</div>
-		</div>
-	<% end %>
-	<div class = "row my-5">
-		<div class="link-center">
-				<%= form_with model:@lesson, url:new_lessons_path, method: :post, data: {remote: false} do |f| %>
-					<%= f.hidden_field :name, :value => @lesson.name %>
-					<%= f.hidden_field :content, :value => @lesson.content %>
-					<%= f.hidden_field :category_name, :value => @lesson.category_name %>
-					<%= f.hidden_field :event_date, :value => @lesson.event_date %>
-					<%= f.hidden_field :address, :value => @lesson.address %>
-					<%= f.hidden_field :tuition, :value => @lesson.tuition %>
-					<%= f.hidden_field :max_attendees, :value=> @lesson.max_attendees %>
-					<%= f.hidden_field :deadline, :value => @lesson.deadline %>
-					<%= f.hidden_field :image_cache %>
-					<%= f.submit "戻る", class:"button-submit" %>
+			<%= form_with model:@lesson, url:lessons_path, method: :post, data: {remote: false} do |f| %>
+				<div class="row my-5">
+					<div class="lesson-image-box">
+						<%#= image_tag(@lesson.image.url,:size =>'500x300') %>
+						<%= image_tag @lesson.image.url,size: '500x300' %>
+					</div>
+				</div>
+				<div class="row my-5">
+					<div class="col-md-6 offset-md-3">
+						<table class="table table-bordered">
+							<tr>
+								<th>レッスン名</th>
+								<td><%= @lesson.name %></td>
+							</tr>
+							<tr>
+								<th>内容</th>
+								<td><%= @lesson.content %></td>
+							</tr>
+							<tr>
+								<th>カテゴリー</th>
+								<td><%= @lesson.category_name %></td>
+							</tr>
+							<tr>
+								<th>開催日時</th>
+								<td><%= l @lesson.event_date %></td>
+							</tr>
+							<tr>
+								<th>開催場所</th>
+								<td><%= @lesson.address %></td>
+							</tr>
+							<tr>
+								<th>受講料</th>
+								<td><%= @lesson.tuition.to_s(:delimited) %></td>
+							</tr>
+							<tr>
+								<th>最大参加可能人数</th>
+								<td><%= @lesson.max_attendees %></td>
+							</tr>
+							<tr>
+								<th>募集締め切り日</th>
+								<td><%= l @lesson.deadline %></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="row my-5">
+					<div class="link-center">
+						<%= f.hidden_field :name, :value => @lesson.name %>
+						<%= f.hidden_field :content, :value => @lesson.content %>
+						<%= f.hidden_field :category_name, :value => @lesson.category_name %>
+						<%= f.hidden_field :event_date, :value => @lesson.event_date %>
+						<%= f.hidden_field :address, :value => @lesson.address %>
+						<%= f.hidden_field :tuition, :value => @lesson.tuition %>
+						<%= f.hidden_field :max_attendees, :value=> @lesson.max_attendees %>
+						<%= f.hidden_field :deadline, :value => @lesson.deadline %>
+						<%= f.hidden_field :image_cache %>
+						<%= f.submit "公開する", class:"button-submit" %>
+					</div>
+				</div>
 			<% end %>
+			<div class = "row my-5">
+				<div class="link-center">
+						<%= form_with model:@lesson, url:new_lessons_path, method: :post, data: {remote: false} do |f| %>
+							<%= f.hidden_field :name, :value => @lesson.name %>
+							<%= f.hidden_field :content, :value => @lesson.content %>
+							<%= f.hidden_field :category_name, :value => @lesson.category_name %>
+							<%= f.hidden_field :event_date, :value => @lesson.event_date %>
+							<%= f.hidden_field :address, :value => @lesson.address %>
+							<%= f.hidden_field :tuition, :value => @lesson.tuition %>
+							<%= f.hidden_field :max_attendees, :value=> @lesson.max_attendees %>
+							<%= f.hidden_field :deadline, :value => @lesson.deadline %>
+							<%= f.hidden_field :image_cache %>
+							<%= f.submit "戻る", class:"button-submit" %>
+					<% end %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

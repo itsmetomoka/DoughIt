@@ -1,4 +1,6 @@
 class LessonsController < ApplicationController
+  before_action :authenticate_user!, except:[:about]
+  
   def top
     @lessons = Lesson.all
     @user = current_user
