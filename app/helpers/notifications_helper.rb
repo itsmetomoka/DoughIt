@@ -19,4 +19,8 @@ module NotificationsHelper
     end
   end
 
+  def notifications_is_checked
+    @notifications = current_user.passive_notifications.where(is_checked: false)
+  end
+
 end

@@ -70,6 +70,22 @@ a:hover {
   }
 }
 
+
+.header-bell {
+  position: absolute;
+  width: 60px;
+  &__icon {
+    position: absolute;
+  }
+
+  &__badge {
+    position: absolute;
+    margin-top:10px;
+    margin-left: 20px;
+    color: $sub-color;
+  }
+}
+
 // サイドバー
 .main-box {
   margin: 0 auto;

@@ -5,9 +5,9 @@ class UsersController < ApplicationController
 		all_lessons = current_user.lessons.only_active
 		@lessons = all_lessons.page(params[:page]).reverse_order
 		if @user.reviews.blank?
-			@average = 0
+			@average_review = 0
 		else
-			@average = @user.reviews.average(:rate).round(2)
+			@average_review = @user.reviews.average(:rate).round(2)
 	end
 	end
 

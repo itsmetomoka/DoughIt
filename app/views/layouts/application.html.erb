@@ -48,7 +48,14 @@
       <div class="category-bar">
         <li class="sub-nav-item">
           <%= link_to notifications_path ,class:"sub-nav-item__icon" do%>
-            <i class="fas fa-bell fa-2x"></i>
+            <% if notifications_is_checked.any? %>
+              <div class = "header-bell">
+                <i class="fas fa-bell fa-2x header-bell__icon"></i>
+                <span class="fas fa-circle header-bell__badge", data-fa-transform="shrink-8 right-6"></span>
+              </div>
+            <% else %>
+              <i class="fas fa-bell fa-2x"></i>
+            <% end %>
           <% end %>
         </li>
         <li class="sub-nav-item">

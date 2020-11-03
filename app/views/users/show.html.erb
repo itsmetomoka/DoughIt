@@ -6,6 +6,11 @@
 			<div class="row mt-5 mx-5">
 					<h3><%= @user.name%>さんのページ</h3>
 					<div class="average-review-rating" data-score=<%= @average_review %>></div>
+					<% if @user == current_user %>
+						<div class = "link-button-sm-right">
+							<%= link_to "編集する", edit_user_path(@user.id)%>
+						</div>
+					<% end %>
 			</div>
 			<div class="profile-box">
 				<div class="row mt-5 mx-5">
@@ -17,7 +22,7 @@
 							<%= @user.introduction %>
 						</div>
 						<div class = "row">
-							<div class ="link-button-sm-right">
+							<div class ="link-button-sm-center">
 								<%= link_to 'レビューをみる',user_reviews_path(user_id: @user.id) %>
 							</div>
 						</div>
@@ -33,17 +38,6 @@
 				</div>
 				<%= render 'lessons/list', lessons: @lessons %>
 			</div>
-
-			<div class="row my-5">
-				<div class="col-md-3">
-					<%= link_to "TOP", top_path, class:"button-submit" %>
-				</div>
-				<div class="col-md-2 offset-md-6">
-					<% if @user == current_user %>
-						<%= link_to "編集する", edit_user_path(@user.id), class:"button-submit-sm" %>
-					<% end %>
-				</div>
-			</div>
 		</div>
 	</div>
 </div>
@@ -52,9 +46,11 @@
 <script>
   $('.average-review-rating').raty({
     readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
     score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
+      return $(this).attr('data-score')
+    }
   });
 </script>
