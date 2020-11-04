@@ -16,7 +16,8 @@ class FavoritesController < ApplicationController
     end
 
     def index
-        @lessons = Lesson.where(user_id: current_user.id)
+        all_lessons = current_user.favorite_lessons.only_active
+        @lessons = all_lessons.page(params[:page]).reverse_order
     end
 
 

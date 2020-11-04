@@ -11,6 +11,7 @@ class User < ApplicationRecord
   # アソシエーション
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_lessons, through: :favorites,source: :lesson
   has_many :lessons
   has_many :reservations
   has_many :reviews, dependent: :destroy

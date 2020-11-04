@@ -4,6 +4,7 @@
 			<%= link_to lesson_path(lesson.id) do %>
 				<%= image_tag lesson.image.to_s, class:"lesson-img" %>
 			<% end %>
+			<br>
 			<%= lesson.name %>
 		</div>
 	<% end %>
@@ -13,5 +14,6 @@
 		<%= paginate lessons %>
 	</div>
 </div>
+
 
 

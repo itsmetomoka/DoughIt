@@ -107,14 +107,19 @@ $point-color: #73716d;
 	}
 
 	.lesson-box > .lesson-child {
-		width: 50%;
+		width: 33%;
+	}
+	.lesson-child {
+		margin-bottom: 50px;
 	}
 
 	img.lesson-img {
 		max-width: 95%;
 		height: auto;
 	}
-
+	img.lesson-img:hover {
+  filter: opacity(75%);
+	}
 
 
 

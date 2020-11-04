@@ -23,15 +23,17 @@
 							<th>レッスン内容</th>
 						</tr>
 						<% @reservations.each do |reservation| %>
-							<tr>
-								<td>
-									<%= link_to lesson_path(reservation.lesson.id) do %>
-										<%= reservation.lesson.name %>
-									<% end %>
-								</td>
-								<td><%= l reservation.lesson.event_date %></td>
-								<td><%= reservation.lesson.content %></td>
-							</tr>
+							<% unless reservation.lesson.event_date <= DateTime.now %>
+								<tr>
+									<td>
+										<%= link_to lesson_path(reservation.lesson.id) do %>
+											<%= reservation.lesson.name %>
+										<% end %>
+									</td>
+									<td><%= l reservation.lesson.event_date %></td>
+									<td><%= reservation.lesson.content %></td>
+								</tr>
+							<% end %>
 						<% end %>
 					</table>
 				</div>
