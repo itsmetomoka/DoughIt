@@ -1,46 +1,30 @@
+
 <% unless user.nil? %>
-	<div class="container">
-		<div class="row mt-3 mx-5">
-			<div class="profile-box">
-				<div class="row mt-5 mx-2">
-					<div class="col-md-3 offset-md-1">
-						<%= link_to user_path(user.id) do %>
-							<%= image_tag user.image.to_s,size: "150x150", class:"rounded-circle" , fallback: "noimage.png" %>
-						<% end %>
-					</div>
-					<div class="col-md-5 offset-md-1">
-						<div class="row mb-3">
-							<%= user.name %><br>
-						</div>
-						<div class="row mt-3 mb-5">
-							<%= user.introduction %>
-						</div>
-						<% if user.id == current_user.id %>
-							<div class="row my-5">
-								<div class="link-button-sm-right">
-									<%= link_to "マイページへ", user_path(current_user.id) %>
-								</div>
-							</div>
-						<% else %>
-							<div class="row my-5">
-								<div class="link-button-sm-right">
-									<%= link_to lessons_path(user_id: user.id) do %>
-										<%= user.name %>さんのレッスン
-									<% end %>
-								</div>
-							</div>
-						<% end %>
-					</div>
+	<div class="profile-box-home">
+		<div class = "profile-box-child-left">
+			<%= link_to user_path(user.id) do %>
+				<%= image_tag user.image.to_s, class:"rounded-circle profile-box-img" , fallback: "noimage.png" %>
+			<% end %>
+		</div>
+		<div class = "profile-box-child-right">
+			<p class = "profile-box-child-right__name"><%= user.name%></p>
+			<p class = "profile-box-child-right__introduction"><%= user.introduction%></p>
+		
+			<% if user.id == current_user.id %>
+				<div class="link-button-sm-right">
+					<%= link_to "マイページへ", user_path(current_user.id), class:"button-font" %>
 				</div>
-			</div>
+			<% else %>
+				<div class="link-button-sm-right">
+					<%= link_to lessons_path(user_id: user.id) do %>
+						<%= user.name %>さんのレッスン
+					<% end %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 <% else %>
-	<div class="container">
-		<div class="row my-5">
-			<div class = "underbar">
-				<h4>こちらのユーザーは退会しました</h4>
-			</div>
-		</div>
+	<div class = "underbar">
+		<h4>こちらのユーザーは退会しました</h4>
 	</div>
 <% end %>

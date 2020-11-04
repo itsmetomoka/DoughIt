@@ -17,4 +17,21 @@
 	}
 }
 
+.notification-time {
+		float: right;
+	}
 
+@media screen and (max-width:425px) {
+	.notification-box {
+		margin-bottom: 400px;
+	}
+
+
+	.notification{
+		width: 100%;
+	}
+
+
+
+
+}

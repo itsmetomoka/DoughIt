@@ -4,12 +4,51 @@
 $sub-color: #CCCCCC;
 $point-color: #73716d;
 
-.profile-box {
+.profile-box-home {
+	width: 100%;
+	display: flex;
 	border: 2px solid $point-color;
 	margin: 50px auto;
 	padding-bottom: 30px;
 }
 
+.profile-box-home > .profile-box-child-right {
+	width: 70%;
+}
+
+.profile-box-home > .profile-box-child-left {
+	width: 30%;
+
+}
+
 .average-review-rating {
 	margin-left: 30px;
+}
+
+.profile-box-child-left {
+	margin-top: 20px;
+}
+
+
+img.rounded-circle.profile-box-img {
+	max-width: 100%;
+	height: auto;
+}
+
+.profile-box-child-right {
+	&__name {
+		font-size: 30px;
+		margin-top: 10px;
+	}
+
+	&__introduction {
+		font-size: 20px;
+	}
+}
+
+
+@media screen and (max-width:425px) {
+
+
+
 }

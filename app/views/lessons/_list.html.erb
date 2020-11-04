@@ -1,15 +1,17 @@
-<div class="row mx-5">
+<div class="lesson-box">
 	<% lessons.each do |lesson| %>
-			<div class="col-md-4">
-				<%= link_to lesson_path(lesson.id) do %>
-					<%= image_tag lesson.image.to_s,size:"250x180", class:"img-fluid" %>
-				<% end %>
-				<%= lesson.name %>
-			</div>
+		<div class="lesson-child">
+			<%= link_to lesson_path(lesson.id) do %>
+				<%= image_tag lesson.image.to_s, class:"lesson-img" %>
+			<% end %>
+			<%= lesson.name %>
+		</div>
 	<% end %>
 </div>
-<div class="row mt-5">
+<div class="row my-5">
 	<div class="link-center">
 		<%= paginate lessons %>
 	</div>
 </div>
+
+

@@ -1,39 +1,37 @@
 
 
 <div class = "container">
-	<div class = "top-main-visual clearfix">
-		<div class = "top-main-visual__left">
-			<%= image_tag 'top-main.jpg', class:'img-fluid' %>
+	<div class = "top-main-visual top-home">
+		<div class = "top-main-visual__left top-child-left">
+			<%= image_tag 'top-main.jpg', class:'top-main-img' %>
 		</div>
-		<div class = "top-main-visual__right">
-			<div class = "main-search">
-				<%= render 'searches/search-box'%>
-			</div>
-			<div class="underbar">
-				<h1>新着教室</h1>
-			</div>
-			<div class="row mt-5">
-				<% @lessons.last(6).each do |lesson| %>
-					<div class="col-md-6">
-						<%= link_to lesson_path(lesson.id) do %>
-							<%= image_tag lesson.image.to_s, size:"150x120",class:"img-fluid" %>
-						<% end %>
-						<%= lesson.name %>
-					</div>
-				<% end %>
-			</div>
-			<div class="row my-5 mx-5">
-				<div class="link-button-sm-center">
-					<%= link_to "教室一覧を見る", lessons_path %>
+		<div class = "top-child-right">
+			<div class = "top-main-visual__right">
+				<div class = "main-search">
+					<%= render 'searches/search-box'%>
 				</div>
+				<div class="underbar">
+					<h1>新着教室</h1>
+				</div>
+				<div class="lesson-box">
+					<% @lessons.last(6).each do |lesson| %>
+						<div class="lesson-child">
+							<%= link_to lesson_path(lesson.id) do %>
+								<%= image_tag lesson.image.to_s, class:"lesson-img" %>
+							<% end %>
+							<%= lesson.name %>
+						</div>
+					<% end %>
+				</div>
+					<div class="link-button-sm-center">
+						<%= link_to "教室一覧を見る", lessons_path,class:"button-font" %>
+					</div>
 			</div>
+		</div>
 	</div>
-</div>
 
-<div class="main-box clearfix">
-
+<div class="main-box">
 	<%= render 'layouts/sidebar' %>
-
 	<div class = "main-content">
 		<%= render 'users/profile', user: @user %>
 		<%= month_calendar events: @lessons do |date, lessons| %>

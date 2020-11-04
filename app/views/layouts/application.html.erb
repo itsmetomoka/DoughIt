@@ -7,7 +7,7 @@
     <script src="https://kit.fontawesome.com/188b0a3462.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
   </head>
 
   <body>
@@ -31,21 +31,11 @@
               <li><%= link_to "ログアウト", destroy_user_session_path, :method=>:delete %></li>
             </ul>
         </nav>
-        <% else %>
-          <h4 class="nav-item__link">
-            <%= link_to "ABOUT US", root_path %>
-          </h4>
-          <h4 class="nav-item__link">
-            <%= link_to "新規登録", new_user_registration_path %>
-          </h4>
-          <h4 class="nav-item__link">
-            <%= link_to "ログイン", new_user_session_path %>
-          </h4>
         <% end %>
       </ul>
     </div>
-    <% if user_signed_in? %>
-      <div class="category-bar">
+    <div class="category-bar">
+      <% if user_signed_in? %>
         <li class="sub-nav-item">
           <%= link_to notifications_path ,class:"sub-nav-item__icon" do%>
             <% if notifications_is_checked.any? %>
@@ -68,10 +58,18 @@
             <i class="fas fa-heart fa-2x"></i>
           <% end %>
         </li>
-      </div>
-        
+      <% else %>
+        <div class = "nav-item">
+          <h4 class="nav-item__link">
+            <%= link_to "新規登録", new_user_registration_path %>
+          </h4>
+          <h4 class="nav-item__link">
+            <%= link_to "ログイン", new_user_session_path %>
+          </h4>
+        </div>
+      <% end %>
+    </div>
 
-    <% end %>
     <div class="content">
       <%= yield %>
     </div>

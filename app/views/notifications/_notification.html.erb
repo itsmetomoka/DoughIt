@@ -4,8 +4,10 @@
 	<div class="user-view clearfix ">
 
   <%= image_tag visitor.image.to_s,class:"rounded-circle img-fluid", fallback: "noimage.png",size:"50x50" %>
-  <%= notification_form(notification) %><%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
-  <br>
+  <%= notification_form(notification) %><br>
+  <div class = "notification-time">
+  	<%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
+  </div>
   <% if !@comment.nil? %>
     <p class="moderate-font" style="color: #C0C0C0;"><%= @comment %></p>
   <% end %>
