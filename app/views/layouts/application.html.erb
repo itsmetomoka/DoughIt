@@ -66,6 +66,9 @@
           <h4 class="nav-item__link">
             <%= link_to "ログイン", new_user_session_path %>
           </h4>
+          <h4 class="nav-item__link">
+            <%= link_to '(ポートフォリオ閲覧)', users_guest_sign_in_path, method: :post %>
+          </h4>
         </div>
       <% end %>
     </div>

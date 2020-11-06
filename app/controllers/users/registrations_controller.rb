@@ -8,7 +8,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
-
+  # ゲストユーザーは削除しない様に注意を促す
+　
   # POST /resource
   # def create
   #   super

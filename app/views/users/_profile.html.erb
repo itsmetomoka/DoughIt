@@ -9,7 +9,7 @@
 		<div class = "profile-box-child-right">
 			<p class = "profile-box-child-right__name"><%= user.name%></p>
 			<p class = "profile-box-child-right__introduction"><%= user.introduction%></p>
-		
+
 			<% if user.id == current_user.id %>
 				<div class="link-button-sm-right">
 					<%= link_to "マイページへ", user_path(current_user.id), class:"button-font" %>

@@ -73,6 +73,7 @@ class LessonsController < ApplicationController
     @lesson = current_user.lessons.last
   end
 
+
   private
   def lesson_params
     params.require(:lesson).permit(:user_id, :name, :event_date, :tuition, :content, :address, :latitude, :longitude, :deadline, :max_attendees, :category_name, :image, :image_cache, :is_active)

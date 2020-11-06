@@ -5,6 +5,9 @@
 	<% if @user.errors.any? %>
 		<%= render 'devise/shared/error', sth: @user %>
 	<% end %>
+	<% if flash[:alert] %>
+    <p class ="edit-alert error-message-box"><%= flash[:alert] %></p>
+  <% end %>
 
 
 	<%= form_for(@user) do |f| %>
