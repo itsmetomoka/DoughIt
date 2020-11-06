@@ -19,12 +19,13 @@ class Lesson < ApplicationRecord
 
 	with_options presence: true do
 		validates :tuition
-		validates :name, length: {maximum:100}
-		validates :content #, length: {in: 20..200}
+		validates :name, length: {in: 5..50}
+		validates :content, length: {in: 20..200}
 		validates :event_date
 		validates :deadline
     validates :category_name
     validates :max_attendees
+    validates :address, length: {in: 5..100}
 	end
 
   validate :deadline_should_be_before_event_date
