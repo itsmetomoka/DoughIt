@@ -15,6 +15,7 @@
         <div class="row my-3">
           <div class="col-md-11">
             <%= f.password_field :password,class: "form-control", autocomplete: "current-password", placeholder: "パスワード" %>
+            <%= link_to "=>忘れた方はこちらから",new_password_path(resource_name) %>
           </div>
         </div>
         <div class="row mt-5">
@@ -26,9 +27,9 @@
     </div>
     <div class = "new-child home-right">
       <h3 class = "text-center">会員登録がお済みでない方</h3>
-      <div class="row mt-5">
-        <div class = "link-button-sm-center">
-          <h5><%= link_to "新規会員", new_user_registration_path, class:"button-font" %></h5>
+      <div class = "devise-margin">
+        <div class = "button-submit-square">
+          <%= link_to "新規会員", new_user_registration_path, class:"button-submit-link" %>
         </div>
       </div>
     </div>

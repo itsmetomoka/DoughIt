@@ -247,7 +247,18 @@ li {
 		padding-top: 100px;
 	}
 
-	
+	.button-classic {
+		border: solid 1px $point-color;
+		background-color: $point-color;
+		width: 200px;
+		padding: 15px;
+		text-align: center;
+		margin: 30px auto;
+	}
+
+	.button-classic-link {
+		color: white;
+	}
 
 @media screen and (max-width:425px) {
 

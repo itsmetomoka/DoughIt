@@ -223,6 +223,7 @@ a:hover {
   font-weight: bold;
   text-decoration: none;
   color: $point-color;
+  margin: 0 auto;
 }
 .button-submit:before {
   position: absolute;
@@ -231,7 +232,32 @@ a:hover {
   height: 2px;
   top:100%;
   left: 0;
-  background: $point-color;
+}
+
+.devise-margin {
+  margin-top: 189px;
+}
+
+
+.button-submit-square {
+  border: solid 1px $point-color;
+  width: 300px;
+  padding: 9px;
+  border-radius: 0.2em;
+  text-align: center;
+  margin: 0 auto;
+  background-color: rgb(239, 239, 239);
+}
+.button-submit-square:hover {
+  background-color: rgba(211, 211, 211, 0.6);
+}
+
+.button-submit-link {
+  font-size: 18px;
+  font-weight: bold;
+}
+.button-submit-link:hover {
+  color:$point-color;
 }
 
 // エラー文
@@ -553,6 +579,21 @@ footer {
   float:left;
 }
 
+  // パスワードリマインド
+  .password-box {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 100px;
+  }
+  .mail-for-password {
+    width: 60%;
+    margin: 50px auto;
+  }
+
+  .link-for-member {
+    margin-top: 150px;
+  }
+
 
 @media screen and (max-width:425px) {
 
@@ -602,5 +643,12 @@ footer {
     float: left;
     margin-top: 40px;
   }
+
+  .link-for-member {
+    padding-top: 50px;
+    border-top: solid 1px $sub-color;
+  }
+
+
 
 }

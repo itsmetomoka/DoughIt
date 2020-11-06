@@ -40,8 +40,10 @@
 	</div>
 </div>
 <div class = "button">
-	<div class="link-button-sm-center">
-		<%= link_to "新規登録",new_user_registration_path,class:'button-font' %>
-		<%= link_to '(ポートフォリオ閲覧)', users_guest_sign_in_path, method: :post,class:'button-font' %>
+	<div class="button-classic">
+		<%= link_to "新規登録",new_user_registration_path, class: "button-classic-link"%>
 	</div>
+	<div class="button-classic">
+	<%= link_to '(ポートフォリオ閲覧)', users_guest_sign_in_path, method: :post,class:'button-classic-link' %>
+  </div>
 </div>

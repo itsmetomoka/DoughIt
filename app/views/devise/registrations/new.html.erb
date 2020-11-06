@@ -44,10 +44,12 @@
 
 
     <div class = "new-child home-right">
-      <h3 class = "text-center">アカウントをお持ちの方</h3>
-      <div class="row mt-5">
-        <div class = "link-button-sm-center">
-          <h5><%= link_to "ログイン", new_user_session_path, class:"button-font" %></h5>
+      <div class = "link-for-member">
+        <h3 class = "text-center">アカウントをお持ちの方</h3>
+        <div class="row mt-5">
+          <div class = "button-submit-square">
+            <%= link_to "ログイン", new_user_session_path, class:"button-submit-link" %>
+          </div>
         </div>
       </div>
     </div>

@@ -1,78 +1,66 @@
 <div class="container">
-	<div class="row mt-5 mx-5">
-		<h2>編集ページ</h2>
-	</div>
-	<% if @user.errors.any? %>
-		<%= render 'devise/shared/error', sth: @user %>
-	<% end %>
-	<% if flash[:alert] %>
-    <p class ="edit-alert error-message-box"><%= flash[:alert] %></p>
-  <% end %>
-
-
-	<%= form_for(@user) do |f| %>
-
-		<div class="row my-5 mx-5">
-			<div class="col-md-6">
-				<div class="row">
-					<div class="col-md-4 offset-md-4">
-						<% if @user.image.present? %>
-						  <%= image_tag @user.image.url,size:"200x200", id: :img_prev, class: "rounded-circle" %>
-						<% else %>
-						  <%= image_tag "noimage.png",size:"200x200", id: :img_prev, class: "rounded-circle" %>
-						<% end %>
-					</div>
-				</div>
-				<div class="row mt-4">
-					<div class="col-md-6 offset-md-3">
-						<%= f.file_field :image, id: :lesson_img %>
-					</div>
-				</div>
+	<div class="main-box clearfix">
+		<%= render 'layouts/sidebar' %>
+		<div class = "main-content">
+			<div class="row mt-5 mx-5">
+				<h2>編集ページ</h2>
 			</div>
-			<div class="col-md-6">
-				<div class="row mt-3">
-			    <div class="col-md-5 offset-md-1">
-			      <p>お名前</p>
-			    </div>
-			    <div class="col-md-5">
-			      <%= f.text_field :name,class: "form-control", autofocus: true, autocomplete: "name" %>
-			    </div>
-			  </div>
-				<div class="row mt-3">
-	      	<div class="col-md-5 offset-md-1">
-	       		<p>メールアドレス</p>
-	      	</div>
-		      <div class="col-md-5">
-		        <%= f.email_field :email,class: "form-control", autofocus: true, autocomplete: "email" %>
+			<% if @user.errors.any? %>
+				<%= render 'devise/shared/error', sth: @user %>
+			<% end %>
+			<% if flash[:alert] %>
+		    <p class ="edit-alert error-message-box"><%= flash[:alert] %></p>
+		  <% end %>
+
+
+			<%= form_for(@user) do |f| %>
+
+				<div class="row my-5 mx-5">
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-4 offset-md-3">
+								<% if @user.image.present? %>
+								  <%= image_tag @user.image.url,size:"200x200", id: :img_prev, class: "rounded-circle" %>
+								<% else %>
+								  <%= image_tag "noimage.png",size:"200x200", id: :img_prev, class: "rounded-circle" %>
+								<% end %>
+							</div>
+						</div>
+						<div class="row mt-4">
+							<div class="col-md-6 offset-md-3">
+								<%= f.file_field :image, id: :lesson_img %>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="row mt-3">
+					      <%= f.text_field :name,class: "form-control", autofocus: true, autocomplete: "name", placeholder: "お名前" %>
+					  </div>
+						<div class="row mt-3">
+				      <%= f.email_field :email,class: "form-control", autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
+			    	</div>
+			    	<div class="row mt-3">
+				        <%= f.text_area :introduction,class: "form-control", autofocus: true, autocomplete: "introduction", placeholder:"自己紹介文を入れましょう!" %>
+			    	</div>
+			  	</div>
+				</div>
+
+
+		   
+		    <!-- 保存/退会ボタン -->
+		      <div class="button-center">
+		        <%= f.submit "編集内容を保存する",class: "button-submit" %>
 		      </div>
-	    	</div>
-	    	<div class="row mt-3">
-	      	<div class="col-md-5 offset-md-1">
-	       		<p>自己紹介</p>
-	      	</div>
-		      <div class="col-md-5">
-		        <%= f.text_area :introduction,class: "form-control", autofocus: true, autocomplete: "introduction" %>
+
+
+		      <!-- 退会ページ作成後ルート直す -->
+		    <div class="row my-5">
+		      <div class="button-submit-square">
+		        <%= link_to "退会する", users_check_path, class: "button-submit-link" %>
 		      </div>
-	    	</div>
-	  	</div>
+		    </div>
+
+			<% end %>
 		</div>
-
-
-   
-    <!-- 保存/退会ボタン -->
-    <div class="row my-5">
-      <div class="col-md-2 offset-md-5">
-        <%= f.submit "編集内容を保存する",class: "button-submit" %>
-      </div>
-    </div>
-
-      <!-- 退会ページ作成後ルート直す -->
-    <div class="row mt-5">
-      <div class="col-md-2 offset-10">
-        <%= link_to "退会する", users_check_path, class: "button-submit" %>
-      </div>
-    </div>
-
-	  <% end %>
-	
+	</div>
 </div>
