@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 	}
 	root 'lessons#about'
 	get 'top' => 'lessons#top'
-
+	get 'lessons/history' => 'lessons#history'
 	get 'lessons/complete' => 'lessons#complete'
 	get 'search' => 'searches#search'
 	get 'users/check' => 'users#check'

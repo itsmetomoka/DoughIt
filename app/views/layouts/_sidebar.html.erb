@@ -41,6 +41,11 @@
 				<%= link_to "募集中のレッスン",lessons_path(user_id: current_user.id)%>
 			</div>
 		</p>
+		<p class = "sidebar__row">
+			<div class = "sidebar__row--content">
+				<%= link_to "過去のレッスン",lessons_history_path(user_id: current_user.id)%>
+			</div>
+		</p>
 
 		<p class = "sidebar__row">
 			<h3 class = "sidebar__row--headline">Guide</h3>

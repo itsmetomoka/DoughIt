@@ -36,6 +36,15 @@ img.rounded-circle.profile-box-img {
 	margin-left: 5px;
 }
 
+img.rounded-circle.profile-box-img:hover {
+	filter: opacity(75%);
+}
+
+img.rounded-circle.img-fluid:hover {
+  filter: opacity(75%);
+	}
+
+
 .profile-box-child-right {
 	&__name {
 		font-size: 30px;

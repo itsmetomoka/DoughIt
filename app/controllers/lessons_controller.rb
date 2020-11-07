@@ -73,6 +73,11 @@ class LessonsController < ApplicationController
     @lesson = current_user.lessons.last
   end
 
+  def history
+    all_lesson = current_user.lessons.not_active
+    @lessons = all_lesson.page(params[:page]).reverse_order
+  end
+
 
   private
   def lesson_params

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	before_action :check_guest, only: [:update, :withdrawal]
 	def show
 		@user= User.find(params[:id])
-		all_lessons = current_user.lessons.only_active
+		all_lessons = @user.lessons.only_active
 		@lessons = all_lessons.page(params[:page]).reverse_order
 		if @user.reviews.blank?
 			@average_review = 0
