@@ -73,10 +73,7 @@ a:hover {
 
   margin-right: 200px;
 }
-.nav-item {
-  padding-top: 10px;
-  float: right;
-}
+
 
 .header-bell {
   position: absolute;
@@ -489,6 +486,8 @@ nav.globalMenuSp.active {
 
 
 .nav-item {
+  float: right;
+  padding-top: 10px;
 	list-style: none;
 	overflow: hidden;
 	padding-right: 100px;
@@ -496,6 +495,7 @@ nav.globalMenuSp.active {
 	&__link {
 		float: left;
 		padding-left: 30px;
+    font-size: 29px;
 
 	}
 
@@ -603,6 +603,13 @@ footer {
 
   .sub-nav-item:first-child {
   margin-right: 0;
+  }
+  .nav-item {
+    padding-right: 25px;
+  }
+  .nav-item__link{
+    font-size: 20px;
+    padding-left: 10px;
   }
   .new-home {
     display: flex;

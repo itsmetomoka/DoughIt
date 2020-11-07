@@ -23,7 +23,6 @@
           <span></span>
           <span></span>
         </div>
-
         <nav class="globalMenuSp">
             <ul>
               <li><%= link_to "トップページ", top_path %></li>
@@ -60,15 +59,15 @@
         </div>
       <% else %>
         <div class = "nav-item">
-          <h4 class="nav-item__link">
+          <p class="nav-item__link">
             <%= link_to "新規登録", new_user_registration_path %>
-          </h4>
-          <h4 class="nav-item__link">
+          </p>
+          <p class="nav-item__link">
             <%= link_to "ログイン", new_user_session_path %>
-          </h4>
-          <h4 class="nav-item__link">
+          </p>
+          <p class="nav-item__link">
             <%= link_to '(ポートフォリオ閲覧)', users_guest_sign_in_path, method: :post %>
-          </h4>
+          </p>
         </div>
       <% end %>
     </div>
