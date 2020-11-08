@@ -25,7 +25,7 @@ rails_env = Rails.env.to_sym
 set :environment, rails_env
 # ログの出力先ファイルを設定
 set :output, 'log/cron.log'
-every 2.minute do
+every 60.minutes do
   begin
     runner "Batch::EditLessons.edit_lessons"
   rescue => e
