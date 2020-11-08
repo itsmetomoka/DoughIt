@@ -68,10 +68,56 @@ describe 'ユーザーのテスト' do
       end
     end
     context '他人の編集画面への遷移' do
-      it '遷移できない' do
+      it '自分の画面が表示' do
         visit edit_user_path(test_user2)
+        expect(current_path).to eq('/users/1/edit')
+      end
+    end
+    context '表示の確認' do
+      before do
+        visit edit_user_path(user)
+      end
+      it '編集ページと表示される' do
+        expect(page).to have_content('編集ページ')
+      end
+      it '編集フォームに名前が表示されている' do
+        expect(page).to have_field 'user[name]', with: user.name
+      end
+      it '画像編集フォームが表示される' do
+        expect(page).to have_field 'user[image]'
+      end
+      it '自己紹介編集フォームに自分の自己紹介が表示される' do
+        expect(page).to have_field 'user[introduction]', with: user.introduction
+      end
+      it '編集に成功する' do
+        click_button '編集内容を保存する'
         expect(current_path).to eq('/users/' + user.id.to_s)
       end
+      it '編集に失敗する' do
+        fill_in 'user[name]', with: ''
+        click_button '編集内容を保存する'
+        expect(page).to have_content 'エラー'
+      end
+    end
+  end
+  describe '詳細画面のテスト' do
+    before do
+      visit user_path(user)
+    end
+    context '表示の確認' do
+      it 'ページ名が表示される' do
+        expect(page).to have_content(user.name + 'さんのページ')
+      end
+      it '名前さんのレッスンと表示される' do
+        expect(page).to have_content(user.name + 'さんのレッスン')
+      end
+      it 'レッスン画像のリンク先が正しい' do
+        expect(page).to have_link '', href: lesson_path(lesson)
+      end
+      it 'レッスン名が表示される' do
+        expect(page).to have_content(lesson.name)
+      end
+
     end
   end
 end

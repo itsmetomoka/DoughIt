@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 		if @user.update(user_params)
 			redirect_to user_path(current_user.id)
 		else
-			@user.errors.full_messsages.each do |message|
+			@user.errors.full_messages.each do |message|
 				pp message
 			end
 			render :edit

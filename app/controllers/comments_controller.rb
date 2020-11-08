@@ -10,8 +10,6 @@ before_action :authenticate_user!
 	end
 
 
-	def destroy
-	end
 
 	private
 	def comment_params

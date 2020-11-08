@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
 
 	resources :users, only: [:edit, :update, :show] do
-		resources :reviews, only: [:create, :destroy, :index]
+		resources :reviews, only: [:create, :index]
 		get 'favorite' => 'favorites#index'
 	end
 
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 			post 'confirm' => 'lessons#confirm'
 		end
 		resource :favorites, only: [:create, :destroy, :index]
-		resources :comments, only: [:create, :destroy]
+		resources :comments, only: :create
 		resources :reservations, only: [:create, :index]
 	end
 	

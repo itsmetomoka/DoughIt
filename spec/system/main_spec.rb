@@ -21,9 +21,13 @@ describe 'ユーザー権限のテスト'  do
         visit new_lesson_path
         expect(current_path).to eq('/users/sign_in')
       end
+      it 'カテゴリー検索画面に遷移できない' do
+        visit search_path
+        expect(current_path).to eq('/users/sign_in')
+      end
     end
   end
-  describe 'ログインしてない場合ユーザー関連のURLにアクセス'do
+  describe 'ログインしてない場合'do
     context 'ユーザー関連のURLにアクセス' do
       it 'ユーザー詳細画面' do
         visit user_path(user.id)
@@ -42,6 +46,7 @@ describe 'ユーザー権限のテスト'  do
         expect(current_path).to eq('/users/sign_in')
       end
     end
+
   end
 end
 
