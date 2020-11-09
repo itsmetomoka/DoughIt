@@ -2,7 +2,7 @@
 	<div class="main-box clearfix">
 		<%= render 'layouts/sidebar' %>
 		<div class = "main-content">
-			<%= render 'table', lesson: @lesson %>
+			<%= render 'detail', lesson: @lesson %>
 			<% if @lesson.user_id == current_user.id %>
 				<div class ="row mt-5">
 					<h3 class ="underbar">予約者一覧</h3>
