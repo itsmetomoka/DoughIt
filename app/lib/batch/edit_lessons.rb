@@ -5,8 +5,8 @@ class Batch::EditLessons
     lessons.each do |lesson|
     	if lesson.max_attendees <= lesson.reservations.count || lesson.deadline < DateTime.now
 				lesson.update(is_active: 0)
+        p "予約不可能なレッスンを削除しました。"
 			end
 		end
-    p "予約不可能なレッスンを削除しました。"
   end
 end
