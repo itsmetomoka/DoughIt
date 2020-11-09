@@ -16,7 +16,7 @@
  */
 @import "bootstrap";
 @import "tempusdominus-bootstrap-4.css";
-
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
 * {
   margin: 0;
   padding: 0;
@@ -592,6 +592,46 @@ footer {
   .link-for-member {
     margin-top: 150px;
   }
+
+
+// レッスンソート機能
+  .lesson-sort-box {
+    border-top: solid 1px $point-color;
+    border-bottom: solid 1px $point-color;
+
+    &__command {
+      margin: 50px 0px 0px 50px;
+
+
+      &--headline {
+        font-size: 23px;
+        margin-right: 20px;
+        display: inline-block;
+        font-family: 'Noto Sans JP', sans-serif;
+      }
+
+      &--select {
+        margin-right: 20px;
+        display: inline-block;
+        font-family: 'Noto Sans JP', sans-serif;
+      }
+    }
+
+  }
+
+  .search-button {
+    width: 100px;
+    padding: 5px;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    margin: 20px auto;
+    background-color: $point-color;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+
 
 
 @media screen and (max-width:425px) {

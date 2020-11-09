@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 	get 'lessons/history' => 'lessons#history'
 	get 'lessons/complete' => 'lessons#complete'
 	get 'search' => 'searches#search'
+	get 'categorize' => 'searches#categorize'
 	get 'users/check' => 'users#check'
 	patch 'users/withdrawal' => 'users#withdrawal'
 	devise_scope :user do
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
 		collection do
 			post :new, path: :new, as: :new, action: :back
 			post 'confirm' => 'lessons#confirm'
+
 		end
 		resource :favorites, only: [:create, :destroy, :index]
 		resources :comments, only: :create

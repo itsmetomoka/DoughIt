@@ -123,6 +123,18 @@ class Lesson < ApplicationRecord
     notification.save if notification.valid?
   end
 
+  def self.categorize(selection)
+    case selection
+    when 'early'
+      return all.order(event_date: :DESC)
+    when 'late'
+      return all.order(event_date: :ASC)
+    when 'new'
+      return all.order(created_at: :DESC)
+    when 'old'
+      return all.order(created_at: :ASC)
+    end
+  end
 
 
 

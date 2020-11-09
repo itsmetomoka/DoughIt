@@ -13,4 +13,16 @@ class SearchesController < ApplicationController
 	end
 
 
+
+	def categorize
+    selection = params[:keyword]
+    if params[:not_active] == '1'
+      all_lesson = Lesson.categorize(selection)
+    else
+      all_lesson = Lesson.categorize(selection).only_active
+    end
+    @lessons = all_lesson.page(params[:page]).reverse_order
+  end
+
+
 end
