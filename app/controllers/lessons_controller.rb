@@ -2,7 +2,7 @@ class LessonsController < ApplicationController
   before_action :authenticate_user!, except:[:about]
   
   def top
-    @lessons = Lesson.all
+    @lessons = Lesson.only_active
     @user = current_user
     @reserved_lessons = current_user.reservations
     @favorites = Favorite.where(user_id: current_user.id)
