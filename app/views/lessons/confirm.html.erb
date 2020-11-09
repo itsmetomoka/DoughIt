@@ -15,11 +15,11 @@
 					</div>
 				</div>
 				<div class="row my-5">
-					<div class="col-md-6 offset-md-3">
+					<div class="col-md-8 offset-md-2">
 						<table class="table table-bordered">
 							<tr>
-								<th>レッスン名</th>
-								<td><%= @lesson.name %></td>
+								<th class = "table-th">レッスン名</th>
+								<td class = "table-dt"><%= @lesson.name %></td>
 							</tr>
 							<tr>
 								<th>内容</th>
@@ -42,7 +42,7 @@
 								<td><%= @lesson.tuition.to_s(:delimited) %></td>
 							</tr>
 							<tr>
-								<th>最大参加可能人数</th>
+								<th>最大参加人数</th>
 								<td><%= @lesson.max_attendees %></td>
 							</tr>
 							<tr>

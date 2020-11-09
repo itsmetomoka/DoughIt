@@ -16,26 +16,28 @@
 			</div>
 			<div class="row my-5">
 				<div class="col-md-8 offset-md-2">
-					<table class ="table table-hover">
-						<tr>
-							<th>レッスン名</th>
-							<th>開催日時</th>
-							<th>レッスン内容</th>
-						</tr>
-						<% @reservations.each do |reservation| %>
-							<% unless reservation.lesson.event_date <= DateTime.now %>
-								<tr>
-									<td>
-										<%= link_to lesson_path(reservation.lesson.id) do %>
-											<%= reservation.lesson.name %>
-										<% end %>
-									</td>
-									<td><%= l reservation.lesson.event_date %></td>
-									<td><%= reservation.lesson.content %></td>
-								</tr>
+					<div class = "row">
+						<table class ="table table-hover">
+							<tr>
+								<th class = "table-lesson">レッスン名</th>
+								<th class = "table-date">開催日時</th>
+								<th class = 'table-content'>レッスン内容</th>
+							</tr>
+							<% @reservations.each do |reservation| %>
+								<% unless reservation.lesson.event_date <= DateTime.now %>
+									<tr>
+										<td>
+											<%= link_to lesson_path(reservation.lesson.id) do %>
+												<%= reservation.lesson.name %>
+											<% end %>
+										</td>
+										<td><%= l reservation.lesson.event_date %></td>
+										<td><%= reservation.lesson.content %></td>
+									</tr>
+								<% end %>
 							<% end %>
-						<% end %>
-					</table>
+						</table>
+					</div>
 				</div>
 			</div>
 			<div class = "link-button-sm-center">
