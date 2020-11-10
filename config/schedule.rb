@@ -27,7 +27,8 @@ set :environment, rails_env
 set :output, 'log/cron.log'
 every 2.minutes do
   begin
-    runner "Batch::EditLessons.edit_lessons"
+  	runner 'Batch::EditLessons.edit_lessons', :environment => 'production'
+
   rescue => e
     Rails.logger.error("aborted rails runner")
     raise e
