@@ -2,6 +2,7 @@ class Batch::EditLessons
   def self.edit_lessons
     # 投稿を全て削除
     lessons = Lesson.all
+    p lessons.count
     lessons.each do |lesson|
       p　"参加人数"
       p lesson.max_attendees <= lesson.reservations.count
