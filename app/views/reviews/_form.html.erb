@@ -35,7 +35,9 @@
 <script>
   $('.rating-form').raty({
   	half: true,
-    path: '/assets/',
+    starOn: "<%= image_url('star-on.png') %>",
+    starOff: "<%= image_url('star-off.png') %>",
+    starHalf: "<%= image_url('star-half.png') %>",
     scoreName: 'review[rate]',
     
   });
