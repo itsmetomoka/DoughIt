@@ -11,8 +11,8 @@ class Lesson < ApplicationRecord
 
 	enum category_name: {洋食: 0, 和食: 1, パン: 2, ケーキ: 3}
 
-  scope :only_active, -> { where(is_active: 1) }
-  scope :not_active, -> { where(is_active: 0) }
+  scope :only_active, -> { where(is_active: true) }
+  scope :not_active, -> { where(is_active: false) }
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
