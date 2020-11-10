@@ -1,12 +1,21 @@
 <%= form_with model: @lesson, url:categorize_path, method: :get, local: true do |form| %>
 	<div class = "lesson-sort-box">
 		<div class = "lesson-sort-box__command">
+			<p class = "lesson-sort-box__command--headline">絞り込み</p>
+			<p class = "lesson-sort-box__command--select">
+				<%= form.select :category, [['ジャンル選択', 'all'],['洋食', 'western'],['和食','japanese'],['パン','bread'],['ケーキ','cake']] %>
+			</p>
+			<p class = "lesson-sort-box__command--select">
+			 	<%= form.date_field :date %>
+			</p>
+		</div>
+		<div class = "lesson-sort-box__command">
 			<p class = "lesson-sort-box__command--headline">並び替え</p>
 			<p class = "lesson-sort-box__command--select">
 				<%= form.check_box :not_active %>予約終了のレッスンも表示
 			</p>
 			<p class = "lesson-sort-box__command--select">
-				<%= form.select :keyword, [['開催日が早い順', 'early'],['開催日が遅い順','late'],['新着順','new'],['投稿順','old']] %>
+				<%= form.select :sort, [['開催日が早い順', 'early'],['開催日が遅い順','late'],['新着順','new'],['投稿順','old']] %>
 			</p>
 		</div>
 		<div class="link-center">

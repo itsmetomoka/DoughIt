@@ -15,14 +15,28 @@ class SearchesController < ApplicationController
 
 
 	def categorize
-    selection = params[:keyword]
-    if params[:not_active] == '1'
-      all_lesson = Lesson.categorize(selection)
-    else
-      all_lesson = Lesson.categorize(selection).only_active
-    end
-    @lessons = all_lesson.page(params[:page]).reverse_order
-  end
+    sort = params[:sort]
+    category = params[:category]
+    date = params[:date]
 
+    unless date.empty?
+	    if params[:not_active] == '1'
+	     	sort_lesson = Lesson.sort(sort, category)
+	     	all_lesson = sort_lesson.where(event_date: date.in_time_zone.all_day)
+	    else
+	      sort_lesson = Lesson.sort(sort, category).only_active
+	      all_lesson = sort_lesson.where(event_date: date.in_time_zone.all_day)
+	    end
+	    @lessons = all_lesson.page(params[:page]).reverse_order
+	  else
+	  	if params[:not_active] == '1'
+	     	sort_lesson = Lesson.sort(sort, category)
+	    else
+	      sort_lesson = Lesson.sort(sort, category).only_active
+	    end
+	    @lessons = sort_lesson.page(params[:page]).reverse_order
+	  end
+
+  end
 
 end

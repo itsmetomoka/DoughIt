@@ -123,16 +123,61 @@ class Lesson < ApplicationRecord
     notification.save if notification.valid?
   end
 
-  def self.categorize(selection)
-    case selection
-    when 'early'
-      return all.order(event_date: :DESC)
-    when 'late'
-      return all.order(event_date: :ASC)
-    when 'new'
-      return all.order(created_at: :DESC)
-    when 'old'
-      return all.order(created_at: :ASC)
+  def self.sort(sort, category)
+    if category == 'western'
+      lessons = Lesson.where(category_name: 0)
+      if sort == 'early'
+        sort_lesson = lessons.order(event_date: :DESC)
+      elsif sort == 'late'
+        sort_lesson = lessons.order(event_date: :ASC)
+      elsif sort == 'new'
+        sort_lesson = lessons.order(created_at: :DESC)
+      elsif sort == 'old'
+        sort_lesson = lessons.order(created_at: :ASC)
+      end
+    elsif category == 'japanese'
+      lessons = Lesson.where(category_name: 1)
+      if sort == 'early'
+        sort_lesson = lessons.order(event_date: :DESC)
+      elsif sort == 'late'
+        sort_lesson = lessons.order(event_date: :ASC)
+      elsif sort == 'new'
+        sort_lesson = lessons.order(created_at: :DESC)
+      elsif sort == 'old'
+        sort_lesson = lessons.order(created_at: :ASC)
+      end
+    elsif category == 'bread'
+      lessons = Lesson.where(category_name: 2)
+      if sort == 'early'
+        sort_lesson = lessons.order(event_date: :DESC)
+      elsif sort == 'late'
+        sort_lesson = lessons.order(event_date: :ASC)
+      elsif sort == 'new'
+        sort_lesson = lessons.order(created_at: :DESC)
+      elsif sort == 'old'
+        sort_lesson = lessons.order(created_at: :ASC)
+      end
+    elsif category == 'cake'
+      lessons = Lesson.where(category_name: 3)
+      if sort == 'early'
+        sort_lesson = lessons.order(event_date: :DESC)
+      elsif sort == 'late'
+        sort_lesson = lessons.order(event_date: :ASC)
+      elsif sort == 'new'
+        sort_lesson = lessons.order(created_at: :DESC)
+      elsif sort == 'old'
+        sort_lesson = lessons.order(created_at: :ASC)
+      end
+    else
+      if sort == 'early'
+        all_lesson = all.order(event_date: :DESC)
+      elsif sort == 'late'
+        all_lesson = all.order(event_date: :ASC)
+      elsif sort == 'new'
+        all_lesson = all.order(created_at: :DESC)
+      elsif sort == 'old'
+        all_lesson = all.order(created_at: :ASC)
+      end
     end
   end
 
