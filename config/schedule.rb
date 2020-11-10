@@ -25,7 +25,7 @@ rails_env = ENV['RAILS_ENV'] || :development
 set :environment, rails_env
 # ログの出力先ファイルを設定
 set :output, 'log/cron.log'
-every 2.minutes do
+every 30.minutes do
   begin
   	runner 'Batch::EditLessons.edit_lessons'
 
