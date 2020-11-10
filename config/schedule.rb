@@ -20,14 +20,14 @@
 # Learn more: http://github.com/javan/whenever
 
 require File.expand_path(File.dirname(__FILE__) + "/environment")
-rails_env = Rails.env.to_sym
+rails_env = ENV['RAILS_ENV'] || :development
 # 環境を設定
 set :environment, rails_env
 # ログの出力先ファイルを設定
 set :output, 'log/cron.log'
 every 2.minutes do
   begin
-  	runner 'Batch::EditLessons.edit_lessons', :environment => 'production'
+  	runner 'Batch::EditLessons.edit_lessons'
 
   rescue => e
     Rails.logger.error("aborted rails runner")
