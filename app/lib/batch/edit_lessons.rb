@@ -4,7 +4,7 @@ class Batch::EditLessons
     lessons = Lesson.all
     p lessons.count
     lessons.each do |lesson|
-      p　"参加人数"
+      p "参加人数"
       p lesson.max_attendees <= lesson.reservations.count
       p "日付"
       p lesson.deadline < DateTime.now
