@@ -5,7 +5,7 @@ class Lesson < ApplicationRecord
 	belongs_to :user
   has_many :notifications, dependent: :destroy
 
-  
+
 	attr_accessor :image_cache
 	mount_uploader :image, ImageUploader
 
@@ -29,31 +29,6 @@ class Lesson < ApplicationRecord
     validates :address, length: {in: 5..100}
 	end
 
-  validate :deadline_should_be_before_event_date
-  validate :event_date_should_be_after_today
-  validate :deadline_shoud_be_after_today
-
-
-	# 募集締め切りが開催日よりも前の日付か
-  def deadline_should_be_before_event_date
-    if deadline.present? && event_date.present? && self.event_date < self.deadline
-      errors.add(:deadline, "の日付を正しく記入してください。")
-    end
-  end
-
-# 開催日が当日以降であるか
-  def event_date_should_be_after_today
-    if event_date.present? && self.event_date < DateTime.now
-  	   errors.add(:event_date, "は今日以降に設定してください")
-    end
-  end
-
-# 募集締め切り日が当日以降であるか
-  def deadline_shoud_be_after_today
-    if deadline.present? && self.deadline < DateTime.now
-  	 errors.add(:deadline, "は今日以降に設定してください")
-    end
-  end
 
 # カレンダー
   def start_time
