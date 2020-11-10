@@ -13,5 +13,6 @@ class Batch::EditLessons
         p "予約不可能なレッスンを削除しました。"
 			end
 		end
+    p '表示されるか'
   end
 end
