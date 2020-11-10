@@ -10,17 +10,17 @@
 					<%= link_to :back do %>
 						戻る
 					<% end %>
-			  	<%= link_to notification_path, method: :delete do %>
+			  	<%= link_to notification_path, method: :delete, data: {remote: true} do %>
 			    	<i class="fas fa-trash"></i>全削除
 			  	<% end %>
 			  </h5>
 			    <hr>
 				<% if @notifications.exists? %>
-				    <div class="users-index">
-				        <%= render @notifications %>
-				    </div>
+			    <div class="notification-delete">
+			      <%= render @notifications %>
+			    </div>
 				<% else %>
-				    <h5 class = "text-center">通知はありません</h5>
+				   <h5 class = "text-center">通知はありません</h5>
 				<% end %>
 			</div>
 		</div>
