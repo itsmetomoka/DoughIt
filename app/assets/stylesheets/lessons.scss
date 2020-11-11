@@ -62,7 +62,7 @@ $point-color: #73716d;
 	}
 
 	.lesson-headline {
-		margin-top: 100px;
+		margin-top: 30px;
 	}
 
 // ========== トップページ ============
@@ -267,6 +267,11 @@ li {
 
 	.table-th {
 		width: 140px;
+	}
+
+	.no-lessons {
+		text-align: center;
+		padding-top: 100px;
 	}
 
 @media screen and (max-width:425px) {

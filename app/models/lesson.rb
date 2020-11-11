@@ -1,15 +1,15 @@
 class Lesson < ApplicationRecord
-	has_many :comments, dependent: :destroy
-	has_many :favorites, dependent: :destroy
-	has_many :reservations, dependent: :destroy
-	belongs_to :user
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :reservations, dependent: :destroy
+  belongs_to :user
   has_many :notifications, dependent: :destroy
 
 
-	attr_accessor :image_cache
-	mount_uploader :image, ImageUploader
+  attr_accessor :image_cache
+  mount_uploader :image, ImageUploader
 
-	enum category_name: {洋食: 0, 和食: 1, パン: 2, ケーキ: 3}
+  enum category_name: {洋食: 0, 和食: 1, パン: 2, ケーキ: 3}
 
   scope :only_active, -> { where(is_active: true) }
   scope :not_active, -> { where(is_active: false) }
@@ -18,16 +18,16 @@ class Lesson < ApplicationRecord
   after_validation :geocode, if: :address_changed?
 
 
-	with_options presence: true do
-		validates :tuition
-		validates :name, length: {in: 5..50}
-		validates :content, length: {in: 20..200}
-		validates :event_date
-		validates :deadline
+  with_options presence: true do
+    validates :tuition
+    validates :name, length: {in: 5..50}
+    validates :content, length: {in: 20..200}
+    validates :event_date
+    validates :deadline
     validates :category_name
     validates :max_attendees
     validates :address, length: {in: 5..100}
-	end
+  end
   
   validate :deadline_should_be_before_event_date
   validate :event_date_should_be_after_today
@@ -58,16 +58,16 @@ class Lesson < ApplicationRecord
 
 # カレンダー
   def start_time
-  	self.event_date
+    self.event_date
   end
 
   # 検索機能
   def self.search(word)
-  	@lesson = Lesson.where("name LIKE?","%#{word}%")
+    @lesson = Lesson.where("name LIKE?","%#{word}%")
   end
 
   def self.search(category)
-  	@lesson = Lesson.where("category_name LIKE?","#{category}")
+    @lesson = Lesson.where("category_name LIKE?","#{category}")
   end
 
   # いいね機能
@@ -124,64 +124,42 @@ class Lesson < ApplicationRecord
     notification.save if notification.valid?
   end
 
-  def self.sort(sort, category)
-    if category == 'western'
-      lessons = Lesson.where(category_name: 0)
-      if sort == 'early'
-        sort_lesson = lessons.order(event_date: :DESC)
-      elsif sort == 'late'
-        sort_lesson = lessons.order(event_date: :ASC)
-      elsif sort == 'new'
-        sort_lesson = lessons.order(created_at: :DESC)
-      elsif sort == 'old'
-        sort_lesson = lessons.order(created_at: :ASC)
-      end
-    elsif category == 'japanese'
-      lessons = Lesson.where(category_name: 1)
-      if sort == 'early'
-        sort_lesson = lessons.order(event_date: :DESC)
-      elsif sort == 'late'
-        sort_lesson = lessons.order(event_date: :ASC)
-      elsif sort == 'new'
-        sort_lesson = lessons.order(created_at: :DESC)
-      elsif sort == 'old'
-        sort_lesson = lessons.order(created_at: :ASC)
-      end
-    elsif category == 'bread'
-      lessons = Lesson.where(category_name: 2)
-      if sort == 'early'
-        sort_lesson = lessons.order(event_date: :DESC)
-      elsif sort == 'late'
-        sort_lesson = lessons.order(event_date: :ASC)
-      elsif sort == 'new'
-        sort_lesson = lessons.order(created_at: :DESC)
-      elsif sort == 'old'
-        sort_lesson = lessons.order(created_at: :ASC)
-      end
-    elsif category == 'cake'
-      lessons = Lesson.where(category_name: 3)
-      if sort == 'early'
-        sort_lesson = lessons.order(event_date: :DESC)
-      elsif sort == 'late'
-        sort_lesson = lessons.order(event_date: :ASC)
-      elsif sort == 'new'
-        sort_lesson = lessons.order(created_at: :DESC)
-      elsif sort == 'old'
-        sort_lesson = lessons.order(created_at: :ASC)
-      end
-    else
-      if sort == 'early'
-        all_lesson = all.order(event_date: :DESC)
-      elsif sort == 'late'
-        all_lesson = all.order(event_date: :ASC)
-      elsif sort == 'new'
-        all_lesson = all.order(created_at: :DESC)
-      elsif sort == 'old'
-        all_lesson = all.order(created_at: :ASC)
-      end
+  # 並び替え
+  def self.sort(sort, category, date, user_id)
+    if sort == 'early'
+      lessons = Lesson.order(event_date: :DESC)
+    elsif sort == 'late'
+      lessons = Lesson.order(event_date: :ASC)
+    elsif sort == 'new'
+      lessons = Lesson.order(created_at: :DESC)
+    elsif sort == 'old'
+      lessons = Lesson.order(created_at: :ASC)
     end
+
+  # ジャンル絞り込み
+    if category == 'western'
+      sort_lesson = lessons.where(category_name: 0)
+    elsif category == 'japanese'
+      sort_lesson = lessons.where(category_name: 1)
+    elsif category == 'bread'
+      sort_lesson = lessons.where(category_name: 2)
+    elsif category == 'cake'
+      sort_lesson = lessons.where(category_name: 3)
+    else
+      sort_lesson = lessons
+    end
+
+  # 日付とユーザーで絞り込み
+    if date.empty? && user_id.empty?
+      all_lesson = sort_lesson
+    elsif date.empty? && user_id.present?
+      all_lesson = sort_lesson.where(user_id: user_id)
+    elsif date.present? && user_id.empty?
+      all_lesson = sort_lesson.where(event_date: date.in_time_zone.all_day)
+    else
+      all_lesson = sort_lesson.where(event_date: date.in_time_zone.all_day, user_id: user_id)
+    end
+
   end
-
-
 
 end

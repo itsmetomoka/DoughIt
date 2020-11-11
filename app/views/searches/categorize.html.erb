@@ -4,14 +4,20 @@
 		<div class = "main-content">
 			<div class="container">
 					<div class = "lesson-headline">
-						<% if params[:user_id] %>
-							<h2><%= @user.name %> さんのレッスン</h2>
+						<% unless params[:user_id].empty? %>
+							<h2><%= @user.name %>さんのレッスン</h2>
 						<% else %>
 							<h2>レッスン一覧</h2>
 						<% end %>
 					</div>
 				<%= render 'searches/sort-box' %>
-				<%= render 'lessons/list', lessons: @lessons %>
+				<% if @lessons.exists? %>
+					<%= render 'lessons/list', lessons: @lessons %>
+				<% else %>
+					<h5 class = "no-lessons">
+						該当するレッスンはありませんでした
+					</h5>
+				<% end %>
 			</div>
 		</div>
 	</div>
