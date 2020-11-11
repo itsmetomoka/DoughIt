@@ -2,7 +2,7 @@
 	<div class="main-box clearfix">
 		<%= render 'layouts/sidebar' %>
 		<div class = "main-content">
-
+		
 			<% if flash[:validate] %>
 				<p class ="alert error-message-box"><%= flash[:validate] %></p>
 			<% end %>
@@ -13,24 +13,35 @@
 			</div>
 
 			<div class="row my-5">
+				<div class = "reservation-sort">
+					<%= form_with model: @reservation, url:lesson_reservations_path, method: :get, local: true do |form| %>
+						<div class = "reservation-sort__key">
+							<%= form.select :sort, [['予約順', 'old'],['開催日順','date']] %>
+						</div>
+						<div class = "reservation-sort__button">
+							<%= form.submit '並び替える' %>
+						</div>
+					<% end %>
+				</div>
 				<div class="col-md-8 offset-md-2">
 					<div class = "row">
+
 						<table class ="table table-hover">
 							<tr>
 								<th class = "table-lesson">レッスン名</th>
 								<th class = "table-date">開催日時</th>
 								<th class = 'table-content'>レッスン内容</th>
 							</tr>
-							<% @reservations.each do |reservation| %>
-								<% unless reservation.lesson.event_date <= DateTime.now %>
+							<% @lessons.each do |lesson| %>
+								<% unless lesson.event_date <= DateTime.now %>
 									<tr>
 										<td>
-											<%= link_to lesson_path(reservation.lesson.id) do %>
-												<%= reservation.lesson.name %>
+											<%= link_to lesson_path(lesson.id) do %>
+												<%= lesson.name %>
 											<% end %>
 										</td>
-										<td><%= l reservation.lesson.event_date %></td>
-										<td><%= reservation.lesson.content %></td>
+										<td><%= l lesson.event_date %></td>
+										<td><%= lesson.content %></td>
 									</tr>
 								<% end %>
 							<% end %>
@@ -38,7 +49,7 @@
 					</div>
 				</div>
 				<div class="link-center">
-					<%= paginate @reservations %>
+					<%= paginate @lessons %>
 				</div>
 			</div>
 			<div class = "link-button-sm-center">

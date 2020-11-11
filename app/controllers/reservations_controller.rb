@@ -15,7 +15,15 @@ class ReservationsController < ApplicationController
 	end
 
 	def index
-		@reservations = current_user.reservations.page(params[:page]).reverse_order
+		sort = params[:sort]
+		reserved_lessons = current_user.reserved_lessons
+		if params[:sort] == 'date'
+			all_lessons = reserved_lessons.order(event_date: :DESC)
+		else
+			all_lessons = reserved_lessons
+		end
+		@lessons = all_lessons.page(params[:page]).reverse_order
+
 	end
 
 

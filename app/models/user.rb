@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :favorite_lessons, through: :favorites,source: :lesson
   has_many :lessons
   has_many :reservations
+  has_many :reserved_lessons, through: :reservations, source: :lesson
   has_many :reviews, dependent: :destroy
   has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy

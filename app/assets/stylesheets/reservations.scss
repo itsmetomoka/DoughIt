@@ -9,3 +9,18 @@
 .table-date {
 	width: 150px;
 }
+
+.reservation-sort {
+	margin-left: 50%;
+	&__key {
+		display: inline-block;
+		font-size: 23px;
+
+	}
+
+	&__button {
+		display: inline-block;
+
+	}
+}
+
