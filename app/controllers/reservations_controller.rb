@@ -15,7 +15,7 @@ class ReservationsController < ApplicationController
 	end
 
 	def index
-		@reservations = current_user.reservations
+		@reservations = current_user.reservations.page(params[:page]).reverse_order
 	end
 
 
