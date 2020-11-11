@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
-
+	before_action :check_guest, only: [:update, :withdrawal]
 	def show
 		@user= User.find(params[:id])
 		all_lessons = @user.lessons.only_active
@@ -44,6 +44,12 @@ class UsersController < ApplicationController
 	end
 
 
-
+  def check_guest
+    if current_user.email == 'guest@example.com'
+    	@user = current_user
+    	flash[:alert] = "ゲストユーザーの方は変更/削除はできません"
+      render :edit
+    end
+  end
 
 end
