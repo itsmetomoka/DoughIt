@@ -23,7 +23,7 @@ class ReservationsController < ApplicationController
 			all_lessons = reserved_lessons
 		end
 		@lessons = all_lessons.page(params[:page]).reverse_order
-
+		@lessons_calendar = Lesson.all
 	end
 
 

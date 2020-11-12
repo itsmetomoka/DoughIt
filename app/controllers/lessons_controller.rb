@@ -6,6 +6,8 @@ class LessonsController < ApplicationController
     @user = current_user
     @reserved_lessons = current_user.reservations
     @favorites = Favorite.where(user_id: current_user.id)
+    # カレンダーには過去のレッスンも表示する
+    @lessons_calendar = Lesson.all
   end
 
   def about

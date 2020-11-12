@@ -34,29 +34,6 @@
 	<%= render 'layouts/sidebar' %>
 	<div class = "main-content">
 		<%= render 'users/profile', user: @user %>
-		<%= month_calendar events: @lessons do |date, lessons| %>
-		  <%= date.day %>
-		  <% lessons.each do |lesson| %>
-		  	<!-- 自分が開くレッスンの表示 -->
-		  	<% if lesson.user_id == current_user.id %>
-		  	<div class = "calender-event">
-		      <%= link_to lesson_path(lesson.id) do %>
-		        <%= lesson.name %>
-		     </div>
-		      <% end %>
-		     <!-- 予約したレッスンの表示 -->
-		    <% elsif lesson.reservations.exists? %>
-		    	<% lesson.reservations.each do |reservation| %>
-		    		<% if reservation.user_id == current_user.id %>
-		    		<div class = "calender-event">
-			      	<%= link_to lesson_path(lesson.id) do %>
-			        	<%= lesson.name %>
-			      	<% end %>
-			      </div>
-			      <% end %>
-			    <% end %>
-		    <% end %>
-		  <% end %>
-		<% end %>
+		<%= render 'simple_calendar/lesson-calendar', lessons: @lessons_calendar %>
 	</div>
 </div>
