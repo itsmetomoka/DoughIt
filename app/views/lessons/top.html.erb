@@ -10,8 +10,8 @@
 				<div class = "main-search">
 					<%= render 'searches/search-box'%>
 				</div>
-				<div class="underbar">
-					<h1>新着教室</h1>
+				<div class="new-lesson-headline">
+					<p class = "new-lesson-headline__text">新着教室</p>
 				</div>
 				<div class="lesson-box">
 					<% @lessons.last(6).each do |lesson| %>
@@ -23,8 +23,8 @@
 						</div>
 					<% end %>
 				</div>
-					<div class="link-button-sm-center">
-						<%= link_to "教室一覧を見る", lessons_path,class:"button-font" %>
+					<div class="button-classic">
+						<%= link_to "教室一覧", lessons_path,class:"button-classic-link" %>
 					</div>
 			</div>
 		</div>

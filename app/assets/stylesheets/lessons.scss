@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// アバウトページ
+
 $point-color: #73716d;
 	.clearfix::after {
   content: "";
@@ -11,7 +11,18 @@ $point-color: #73716d;
   clear: both;
 }
 
+.new-lesson-headline {
+	background-color: $point-color;
 
+	&__text {
+		color:white;
+		font-size: 20px;
+	}
+}
+
+
+
+// アバウトページ　
 	.main-visual {
 		background-image: image-url('chopstick.jpg');
 		background-size: cover;
@@ -49,6 +60,44 @@ $point-color: #73716d;
 		margin: 0 auto;
 	}
 }
+	.sub-visual {
+		display: flex;
+		width: 90%;
+		margin: 0 auto;
+		justify-content: center;
+  	align-items: center;
+
+	}
+	.sub-visual > .introduction1 {
+		width: 50%;
+		margin: 10px;
+		
+
+		&__bread {
+		max-width: 85%;
+		margin: 0 auto;
+		}
+	}
+
+	.sub-visual2 {
+		display: flex;
+		width: 90%;
+		margin: 0 auto;
+		justify-content: center;
+  	align-items: center;
+	}
+	.sub-visual2 > .introduction2 {
+		width: 50%;
+		margin:10px;
+
+
+		&__kitchen {
+		width: 85%;
+		height: 300px;
+		margin: 0 auto;
+		}
+	}
+
 
 
 	.registration-button {
@@ -140,6 +189,26 @@ $point-color: #73716d;
 }
 
 // レッスン詳細ページ
+
+	.lesson-detail {
+		width: 90%;
+		margin: 50px auto;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+  	align-items: center;
+	}
+
+	.lesson-detail-text {
+		width: 80%;
+		margin: 0 auto;
+	}
+
+	.lesson-underbar {
+		margin-top: 50px;
+		border-bottom: solid 1px black ;
+	}
+
 	.profile-box {
 		border: 2px solid #660000;
 		width: 100%;
@@ -202,9 +271,37 @@ li {
 // 新規作成ページ
 
 .lesson-image-box {
-	width: 500px;
-	height: 300px;
 	margin: 0 auto;
+
+
+}
+.img-button {
+	margin-top: 30px;
+}
+
+img#img_prev {
+		max-height: 300px;
+	}
+
+#lesson_img {
+	position: relative;
+  display: block;
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 60%;
+}
+
+#lesson_img:before {
+	color: white;
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 2px;
+  top:100%;
+  left: 0;
 }
 
 
@@ -212,45 +309,7 @@ li {
 	width: 30px;
 }
 
-// ＝＝＝＝＝アバウトページ＝＝＝＝＝＝＝
-	.sub-visual {
-		display: flex;
-		width: 90%;
-		margin: 0 auto;
-	}
-	.sub-visual > .introduction1 {
-		width: 50%;
-		margin: 10px;
 
-		&__bread {
-		width: 85%;
-		height: 300px;
-		margin: 0 auto;
-		}
-	}
-
-	.introduction1__highlight {
-		padding-top: 100px;
-	}
-	.sub-visual2 {
-		display: flex;
-		width: 90%;
-		margin: 50px auto;
-	}
-	.sub-visual2 > .introduction2 {
-		width: 50%;
-		margin-top: 50px;
-
-
-		&__kitchen {
-		width: 85%;
-		height: 300px;
-		margin: 0 auto;
-		}
-	}
-	.introduction2__highlight {
-		padding-top: 100px;
-	}
 
 	.button-classic {
 		border: solid 1px $point-color;
@@ -273,6 +332,44 @@ li {
 		text-align: center;
 		padding-top: 100px;
 	}
+
+@media screen and (max-width:768px) {
+	.lesson-box {
+		width: 90%;
+		margin: 50px auto;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.lesson-box > .lesson-child {
+		width: 50%;
+	}
+	.lesson-child {
+		margin-bottom: 30px;
+	}
+
+	img.lesson-img {
+		max-width: 95%;
+		height: auto;
+	}
+	img.lesson-img:hover {
+  filter: opacity(75%);
+	}
+
+	.lesson-detail {
+		width: 100%;
+		margin: 50px auto;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+  	align-items: center;
+	}
+
+	.lesson-detail > .lesson-detail-content {
+		width: 100%;
+	}
+
+}
 
 @media screen and (max-width:425px) {
 
@@ -315,7 +412,6 @@ li {
 		width: 100%;
 	}
 	.sub-visual > .introduction1 {
-		width: 100%;
 		margin: 0;
 	}
 
@@ -327,6 +423,8 @@ li {
 		height: auto;
 		max-width:100%;
 	}
+
+
 
 	.sub-visual2 {
 		display: flex;

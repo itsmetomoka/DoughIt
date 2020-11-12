@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $sub-color: #CCCCCC;
 $point-color: #73716d;
-
+ 
 .profile-box-home {
 	width: 100%;
 	display: flex;
@@ -13,11 +13,11 @@ $point-color: #73716d;
 }
 
 .profile-box-home > .profile-box-child-right {
-	width: 70%;
+	width: 60%;
 }
 
 .profile-box-home > .profile-box-child-left {
-	width: 30%;
+	width: 40%;
 
 }
 
@@ -31,9 +31,7 @@ $point-color: #73716d;
 
 
 img.rounded-circle.profile-box-img {
-	max-width: 90%;
-	height: auto;
-	margin-left: 5px;
+	margin-left: 30px;
 }
 
 img.rounded-circle.profile-box-img:hover {
@@ -49,10 +47,12 @@ img.rounded-circle.img-fluid:hover {
 	&__name {
 		font-size: 30px;
 		margin-top: 10px;
+		text-align: center;
 	}
 
 	&__introduction {
 		font-size: 20px;
+		text-align: center;
 	}
 }
 

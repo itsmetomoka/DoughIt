@@ -631,7 +631,24 @@ footer {
     font-family: 'Noto Sans JP', sans-serif;
   }
 
+@media screen and (max-width:770px) {
+.new-home {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
 
+  .new-home > .new-child {
+    width: 100%;
+  }
+  .home-left {
+    border-right: solid 0px $point-color;
+  }
+
+  .home-right {
+    margin-top: 100px;
+  }
+}
 
 
 @media screen and (max-width:425px) {
