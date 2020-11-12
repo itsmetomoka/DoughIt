@@ -21,13 +21,16 @@ class LessonsController < ApplicationController
     @lesson = current_user.lessons.new(lesson_params)
     # 入力フォームに画像以外の不備がないか確認
     if @lesson.invalid?
+      # 復元できるように値を渡す準備をする
+      @lesson.image_cache = @lesson.image.cache_name
       render :new
     else
       # new画面に戻った後画像を変更していなければ画像をcacheを使って復元
       if !@lesson.image.present? && @lesson.image_cache.present?
         @lesson.image.retrieve_from_cache! @lesson.image_cache
-        #画像が入っていなければ戻る
-      elsif !@lesson.image.present?&& params[:lesson][:image].blank?
+        #画像が選択されていなければバリデーションをかける
+        # (モデルに定義するとキャッシュで復元できる場合でも空欄とみなされるため）
+      elsif @lesson.image.blank?&& @lesson.image_cache.blank?
         flash[:validate_image] = "画像を選択してください"
         render :new
       end
@@ -47,6 +50,7 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = current_user.lessons.new(lesson_params)
+    # もう一度キャッシュを使って復元する
     @lesson.image.retrieve_from_cache! @lesson.image_cache
     @lesson.save
     redirect_to lessons_complete_path
