@@ -45,12 +45,16 @@
 						</div>
 						<div class="row my-5 mx-5">
 							<div class="col-md-10 offset-md-1">
-								<%= f.text_field :event_date, class:"form-control datetimepicker-input", id: "event_date", data: {toggle: "datetimepicker", target: "#event_date"},placeholder: "開催日" %>
+								<%= f.label :event_date, "開催日" %>
+								<%= f.datetime_field :event_date, class: "form-control",placeholder: "開催日"%>
+								<%#= f.text_field :event_date, class:"form-control datetimepicker-input", id: "event_date", data: {toggle: "datetimepicker", target: "#event_date"},placeholder: "開催日" %>
 							</div>
 						</div>
 						<div class="row my-5 mx-5">
 							<div class="col-md-10 offset-md-1">
-								<%= f.text_field :deadline, class:"form-control datetimepicker-input", id: "deadline", data: {toggle: "datetimepicker", target: "#deadline"},placeholder: "募集締め切り日" %>
+								<%= f.label :deadline, "募集締め切り" %>
+								<%= f.datetime_field :deadline, class: "form-control", placeholder: "募集締め切り日"%>
+								<%#= f.text_field :deadline, class:"form-control datetimepicker-input", id: "deadline", data: {toggle: "datetimepicker", target: "#deadline"},placeholder: "募集締め切り日" %>
 							</div>
 						</div>
 						<div class="row my-5 mx-5">
