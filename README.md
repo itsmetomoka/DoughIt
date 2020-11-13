@@ -20,7 +20,7 @@
 
 ### ER図
 
-[画面遷移-ページ2.pdf](https://github.com/itsmetomoka/DoughIt/files/5535569/-.2.pdf)
+<img width="1225" alt="スクリーンショット 2020-11-13 17 35 12" src="https://user-images.githubusercontent.com/68732682/99046906-c8619700-25d6-11eb-998f-de63f5d44f57.png">
 
 ### 機能
 *予約機能
