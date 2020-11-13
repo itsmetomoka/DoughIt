@@ -26,13 +26,11 @@ set :environment, rails_env
 # ログの出力先ファイルを設定
 set :output, 'log/cron.log'
 every 30.minutes do
-  begin
-  	runner 'Batch::EditLessons.edit_lessons'
+  runner 'Batch::EditLessons.edit_lessons'
 
-  rescue => e
-    Rails.logger.error("aborted rails runner")
-    raise e
-  end
+rescue => e
+  Rails.logger.error("aborted rails runner")
+  raise e
 end
 
 # bundle exec rails runner Batch::EditLessons.edit_lessons

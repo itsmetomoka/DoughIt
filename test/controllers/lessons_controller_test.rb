@@ -30,5 +30,4 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
     get lessons_complete_url
     assert_response :success
   end
-
 end

@@ -1,8 +1,9 @@
 require 'rails_helper'
 
-describe 'ユーザー権限のテスト'  do
+describe 'ユーザー権限のテスト' do
   let!(:user) { create(:user) }
   let!(:lesson) { create(:lesson, user: user) }
+
   describe 'ログインしていない場合' do
     context 'レッスン関連のURLにアクセス' do
       it 'トップ画面に遷移できない' do
@@ -27,7 +28,8 @@ describe 'ユーザー権限のテスト'  do
       end
     end
   end
-  describe 'ログインしてない場合'do
+
+  describe 'ログインしてない場合' do
     context 'ユーザー関連のURLにアクセス' do
       it 'ユーザー詳細画面' do
         visit user_path(user.id)
@@ -46,8 +48,5 @@ describe 'ユーザー権限のテスト'  do
         expect(current_path).to eq('/users/sign_in')
       end
     end
-
   end
 end
-
-

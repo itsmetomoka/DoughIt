@@ -5,6 +5,7 @@ describe 'ユーザー認証のテスト' do
     before do
       visit new_user_registration_path
     end
+
     context '新規登録画面に遷移' do
       it '新規登録に成功する' do
         fill_in 'user[name]', with: Faker::Internet.username(specifier: 5)
@@ -24,13 +25,17 @@ describe 'ユーザー認証のテスト' do
       end
     end
   end
+
   describe 'ユーザーログイン' do
     let(:user) { create(:user) }
+
     before do
       visit new_user_session_path
     end
+
     context 'ログイン画面に遷移' do
       let(:test_user) { user }
+
       it 'ログインに成功する' do
         fill_in 'user[email]', with: test_user.email
         fill_in 'user[password]', with: test_user.password
@@ -54,12 +59,14 @@ describe 'ユーザーのテスト' do
   let(:user) { create(:user) }
   let!(:test_user2) { create(:user) }
   let!(:lesson) { create(:lesson, user: user) }
+
   before do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
     click_button 'Log in'
   end
+
   describe '編集のテスト' do
     context '自分の編集画面への遷移' do
       it '遷移できる' do
@@ -67,16 +74,19 @@ describe 'ユーザーのテスト' do
         expect(current_path).to eq('/users/' + user.id.to_s + '/edit')
       end
     end
+
     context '他人の編集画面への遷移' do
       it '自分の画面が表示' do
         visit edit_user_path(test_user2)
         expect(current_path).to eq('/users/1/edit')
       end
     end
+
     context '表示の確認' do
       before do
         visit edit_user_path(user)
       end
+
       it '編集ページと表示される' do
         expect(page).to have_content('編集ページ')
       end
@@ -100,10 +110,12 @@ describe 'ユーザーのテスト' do
       end
     end
   end
+
   describe '詳細画面のテスト' do
     before do
       visit user_path(user)
     end
+
     context '表示の確認' do
       it 'ページ名が表示される' do
         expect(page).to have_content(user.name + 'さんのページ')
@@ -117,7 +129,6 @@ describe 'ユーザーのテスト' do
       it 'レッスン名が表示される' do
         expect(page).to have_content(lesson.name)
       end
-
     end
   end
 end
