@@ -3,9 +3,8 @@ class ReservationsController < ApplicationController
   def create
     @lesson = Lesson.find(params[:lesson_id])
     if current_user.reservations.exists?(lesson_id: params[:lesson_id])
-      @reservations = current_user.reservations
       flash[:validate] = "既にこちらのレッスンは予約しています"
-      render :index
+      redirect_to lesson_reservations_path
     else
       @reservation = current_user.reservations.new(reservation_params)
       @reservation.save

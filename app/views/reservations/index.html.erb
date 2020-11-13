@@ -32,7 +32,7 @@
 								<th class = "table-date">開催日時</th>
 								<th class = 'table-content'>レッスン内容</th>
 							</tr>
-							<% @lessons.each do |lesson| %>
+							<% @lessons_calendar.each do |lesson| %>
 								<% unless lesson.event_date <= DateTime.now %>
 									<tr>
 										<td>
