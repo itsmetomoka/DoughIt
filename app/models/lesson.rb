@@ -126,9 +126,9 @@ class Lesson < ApplicationRecord
     elsif sort == 'late'
       lessons = Lesson.order(event_date: :ASC)
     elsif sort == 'new'
-      lessons = Lesson.order(created_at: :DESC)
-    elsif sort == 'old'
       lessons = Lesson.order(created_at: :ASC)
+    elsif sort == 'old'
+      lessons = Lesson.order(created_at: :DESC)
     end
 
     # ジャンル絞り込み
