@@ -61,6 +61,10 @@ class LessonsController < ApplicationController
       all_lesson = Lesson.only_active
     end
     @lessons = all_lesson.page(params[:page]).reverse_order
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

@@ -11,7 +11,9 @@
 						<% end %>
 					</div>
 				<%= render 'searches/sort-box' %>
-				<%= render 'list', lessons: @lessons %>
+				<div class = "lessons-list">
+					<%= render partial:'list' %>
+				</div>
 			</div>
 		</div>
 	</div>
