@@ -12,9 +12,13 @@
 						<% end %>
 					</div>
 				</div>
-				<%= render 'list', lessons: @lessons %>
+				<div class = "lessons-list">
+					<%= render 'list', lessons: @lessons, remote: true %>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+
 

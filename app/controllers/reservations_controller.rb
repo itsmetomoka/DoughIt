@@ -14,7 +14,6 @@ class ReservationsController < ApplicationController
   end
 
   def index
-
     reserved_lessons = current_user.reserved_lessons
     if params[:sort] == 'date'
       all_lessons = reserved_lessons.order(event_date: :DESC)
@@ -22,6 +21,10 @@ class ReservationsController < ApplicationController
       all_lessons = reserved_lessons
     end
     @lessons = all_lessons.page(params[:page]).reverse_order
+    respond_to do |format|
+      format.html
+      format.js
+    end
     @lessons_calendar = Lesson.all
   end
 

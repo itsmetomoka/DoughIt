@@ -155,4 +155,6 @@ class Lesson < ApplicationRecord
       all_lesson = sort_lesson.where(event_date: date.in_time_zone.all_day, user_id: user_id)
     end
   end
+
+
 end

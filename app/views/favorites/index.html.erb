@@ -6,7 +6,9 @@
 			<div class = "row">
 				<h2 class="underbar">いいねしたレッスン</h2>
 			</div>
-			<%= render 'lessons/list', lessons: @lessons %>
+			<div class = "lessons-list">
+				<%= render 'lessons/list', lessons: @lessons %>
+			</div>
 		</div>
 	</div>
 </div>

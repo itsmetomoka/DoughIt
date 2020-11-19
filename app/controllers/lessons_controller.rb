@@ -78,6 +78,10 @@ class LessonsController < ApplicationController
   def history
     all_lesson = current_user.lessons.not_active
     @lessons = all_lesson.page(params[:page]).reverse_order
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

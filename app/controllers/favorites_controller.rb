@@ -16,5 +16,10 @@ class FavoritesController < ApplicationController
   def index
     all_lessons = current_user.favorite_lessons.only_active
     @lessons = all_lessons.page(params[:page]).reverse_order
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 end
+

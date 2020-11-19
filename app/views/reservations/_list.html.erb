@@ -1,0 +1,30 @@
+<div class="col-md-8 offset-md-2">
+	<div class = "row">
+
+		<table class ="table table-hover">
+			<tr>
+				<th class = "table-lesson">レッスン名</th>
+				<th class = "table-date">開催日時</th>
+				<th class = 'table-content'>レッスン内容</th>
+			</tr>
+			<% @lessons.each do |lesson| %>
+				<% unless lesson.event_date <= DateTime.now %>
+					<tr>
+						<td>
+							<%= link_to lesson_path(lesson.id) do %>
+								<%= lesson.name %>
+							<% end %>
+						</td>
+						<td><%= l lesson.event_date %></td>
+						<td><%= lesson.content %></td>
+					</tr>
+				<% end %>
+			<% end %>
+		</table>
+	</div>
+</div>
+<div class = "row">
+	<div class="link-center">
+		<%= paginate @lessons, remote: true %>
+	</div>
+</div>
