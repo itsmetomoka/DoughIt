@@ -1,5 +1,6 @@
 class LessonsController < ApplicationController
   before_action :authenticate_user!, except: [:about]
+  before_action :new_lessons, only: [:confirm, :back, :create]
 
   def top
     @lessons = Lesson.only_active
@@ -18,7 +19,6 @@ class LessonsController < ApplicationController
   end
 
   def confirm
-    @lesson = current_user.lessons.new(lesson_params)
     # 入力フォームに画像以外の不備がないか確認
     if @lesson.invalid?
       # 復元できるように値を渡す準備をする
@@ -39,14 +39,12 @@ class LessonsController < ApplicationController
   end
 
   def back
-    @lesson = current_user.lessons.new(lesson_params)
     @lesson.image.retrieve_from_cache! @lesson.image_cache
     @lesson.image_cache = @lesson.image.cache_name
     render :new
   end
 
   def create
-    @lesson = current_user.lessons.new(lesson_params)
     # もう一度キャッシュを使って復元する
     @lesson.image.retrieve_from_cache! @lesson.image_cache
     @lesson.save
@@ -72,6 +70,7 @@ class LessonsController < ApplicationController
   end
 
   def complete
+    # ログインユーザーの作成した最新のレッスンを表示する
     @lesson = current_user.lessons.last
   end
 
@@ -85,6 +84,11 @@ class LessonsController < ApplicationController
   end
 
   private
+
+  # レッスンの内容を受け取る
+  def new_lessons
+    @lesson = current_user.lessons.new(lesson_params)
+  end
 
   def lesson_params
     params.require(:lesson).permit(:user_id, :name, :event_date, :tuition, :content,
