@@ -2,7 +2,6 @@
 	<div class="main-box clearfix">
 		<%= render 'layouts/sidebar' %>
 		<div class = "main-content">
-		
 			<% if flash[:validate] %>
 				<p class ="alert error-message-box"><%= flash[:validate] %></p>
 			<% end %>
@@ -23,9 +22,9 @@
 						</div>
 					<% end %>
 				</div>
-				<div class = "list-reservations">
-					<%= render 'list', lessons:@lessons %>
-				</div>
+			</div>
+			<div class = "list-reservations">
+				<%= render 'list', lessons:@lessons %>
 			</div>
 			<%= render'simple_calendar/lesson-calendar', lessons: @lessons_calendar %>
 			<div class = "link-button-sm-center">
