@@ -1,28 +1,8 @@
 <div class = "container">
 	<div class="main-box clearfix">
 		<%= render 'layouts/sidebar' %>
-		<div class = "main-content notification-box">
-			<div class = "row mt-5">
-				<h3 class="underbar-headline">通知</h3>
-			</div>
-			<div class = "notification">
-				<h5 class = "notification__button">
-					<%= link_to :back do %>
-						戻る
-					<% end %>
-			  	<%= link_to notification_path, method: :delete, data: {remote: true} do %>
-			    	<i class="fas fa-trash"></i>全削除
-			  	<% end %>
-			  </h5>
-			    <hr>
-				<% if @notifications.exists? %>
-			    <div class="notification-delete">
-			      <%= render @notifications %>
-			    </div>
-				<% else %>
-				   <h5 class = "text-center">通知はありません</h5>
-				<% end %>
-			</div>
+		<div class="main-content">
+			<%= render 'list',remote: true %>
 		</div>
 	</div>
 </div>
