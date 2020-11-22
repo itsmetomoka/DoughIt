@@ -410,9 +410,11 @@ img#img_prev {
 		display: flex;
 		flex-wrap: wrap;
 		width: 100%;
+		margin-bottom: 50px;
 	}
 	.sub-visual > .introduction1 {
 		margin: 0;
+		width: 100%;
 	}
 
 
@@ -430,7 +432,7 @@ img#img_prev {
 		display: flex;
 		flex-wrap: wrap-reverse;
 		width: 100%;
-
+		margin-bottom: 50px;
 	}
 
 	.sub-visual2 > .introduction2 {

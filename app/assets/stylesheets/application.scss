@@ -268,9 +268,8 @@ a:hover {
 }
 
 .underbar {
-  border-bottom: 3px solid #660000;
-  text-align: center;
-  margin: auto;
+  border-bottom:1px solid $point-color;
+  margin-top: 10px;
   padding: 0 10px;
 }
 

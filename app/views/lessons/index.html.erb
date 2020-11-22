@@ -3,13 +3,11 @@
 		<%= render 'layouts/sidebar' %>
 		<div class = "main-content">
 			<div class="container">
-					<div class = "lesson-headline">
-						<% if params[:user_id] %>
-							<h2><%= @user.name %> さんのレッスン</h2>
-						<% else %>
-							<h2>レッスン一覧</h2>
-						<% end %>
-					</div>
+				<% if params[:user_id] %>
+					<h2><%= @user.name %> さんのレッスン</h2>
+				<% else %>
+					<h2>レッスン一覧</h2>
+				<% end %>
 				<%= render 'searches/sort-box' %>
 				<div class = "lessons-list">
 					<%= render partial:'list' %>
