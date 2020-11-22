@@ -3,7 +3,17 @@
 		<div class = "lesson-sort-box__command">
 			<p class = "lesson-sort-box__command--headline">絞り込み</p>
 			<p class = "lesson-sort-box__command--select">
-				<%= form.select :category, [['ジャンル選択', 'all'],['洋食', 'western'],['和食','japanese'],['パン','bread'],['ケーキ','cake']] %>
+				<% if params[:category_name] == "0" %>
+					<%= form.select :category, [['洋食', 'western'],['和食','japanese'],['パン','bread'],['ケーキ','cake']] %>
+				<% elsif params[:category_name] == "1" %>
+					<%= form.select :category, [['和食','japanese'],['洋食', 'western'],['パン','bread'],['ケーキ','cake']] %>
+				<% elsif params[:category_name] == "2" %>
+					<%= form.select :category, [['パン','bread'],['洋食', 'western'],['和食','japanese'],['ケーキ','cake']] %>
+				<% elsif params[:category_name] == "3" %>
+					<%= form.select :category, [['ケーキ','cake'],['洋食', 'western'],['和食','japanese'],['パン','bread']] %>
+				<% else %>
+					<%= form.select :category, [['ジャンル選択', 'all'],['洋食', 'western'],['和食','japanese'],['パン','bread'],['ケーキ','cake']] %>
+				<% end %>
 			</p>
 			<p class = "lesson-sort-box__command--select">
 			 	<%= form.date_field :date %>
