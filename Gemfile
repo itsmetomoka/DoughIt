@@ -77,7 +77,7 @@ gem 'jquery-rails'
 # 画像投稿
 gem 'carrierwave'
 gem 'mini_magick'
-
+gem 'fog'
 # 論理削除
 gem 'paranoia'
 
