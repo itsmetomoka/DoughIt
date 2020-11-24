@@ -9,7 +9,7 @@ class LessonsController < ApplicationController
     @favorites = Favorite.where(user_id: current_user.id)
     # カレンダーには過去のレッスンも表示する
     @lessons_calendar = Lesson.all
-    @image_url = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/store/" + @user.id + "-thumbnail."
+    # @image_url = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/store/" + @user.id + "-thumbnail."
   end
 
   def about
@@ -69,7 +69,7 @@ class LessonsController < ApplicationController
   def show
     @lesson = Lesson.find(params[:id])
     @user = @lesson.user
-    @image_url = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/store/" + @user.id + "-thumbnail."
+    # @image_url = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/store/" + @user.id + "-thumbnail."
   end
 
   def complete

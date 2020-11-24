@@ -3,7 +3,8 @@
 	<div class="profile-box-home">
 		<div class = "profile-box-child-left">
 			<%= link_to user_path(user.id) do %>
-				<%= image_tag image_url, size: "150x150", class:"rounded-circle profile-box-img", fallback: "noimage.png" %>
+				<%= image_tag user.image.to_s, size: "150x150", class:"rounded-circle profile-box-img", fallback: "noimage.png" %>
+				<%#= image_tag image_url, size: "150x150", class:"rounded-circle profile-box-img", fallback: "noimage.png" %>
 			<% end %>
 		</div>
 		<div class = "profile-box-child-right">
