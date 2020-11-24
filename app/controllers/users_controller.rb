@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     all_lessons = @user.lessons.only_active
     @lessons = all_lessons.page(params[:page]).reverse_order
+    @image_url = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/store/" + @user.id + "-thumbnail."
     if @user.reviews.blank?
       @average_review = 0
     else
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
+      sleep(3)
       redirect_to user_path(current_user.id)
     else
       @user.errors.full_messages.each do |message|
