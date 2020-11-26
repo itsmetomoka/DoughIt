@@ -15,18 +15,12 @@
 								<!-- 退会しているユーザーではないかチェック -->
 								<% unless reservation.user.nil? %>
 									<%= link_to user_path(reservation.user_id) do %>
-										<% if reservation.user.image_file_name.nil? %>
-											<% no_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/noimage.png" %>
-											<%= image_tag no_image, size: "80x80", class:"rounded-circle profile-box-img" %>
-										<% else %>
-											<% image_url = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + reservation.user.id.to_s + '/' + reservation.user.image_file_name %>
-											<%= image_tag image_url, size: "80x80", class:"rounded-circle profile-box-img" %>
-										<% end %>
+										<%= render 'users/user-image', user: reservation.user %>
 									<% end %>
 									<!-- 退会しているユーザーのユーザー詳細ページには飛べない -->
 								<% else %>
 									<% no_user = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/no-user.jpg" %>
-									<%= image_tag no_user, size: '80x80', class:'rounded-circle img-fluid' %>
+									<%= image_tag no_user, size: '50x50', class:'rounded-circle img-fluid' %>
 								<% end %>
 							</div>
 						<% end %>

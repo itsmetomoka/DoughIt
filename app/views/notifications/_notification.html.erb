@@ -2,21 +2,11 @@
 <% unless notification.visitor.id == current_user.id %>
 	<% visitor = notification.visitor %>
 	<% lesson = notification.lesson %>
-
-		<div class="user-view clearfix ">
-	  <% if visitor.image_file_name.nil? %>
-	  	<% no_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/noimage.png" %>
-			<%= image_tag no_image, size: "50x50", class:"rounded-circle profile-box-img" %>
-		<% else %>
-			<% image_url = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + visitor.id.to_s + '/' + visitor.image_file_name %>
-			<%= image_tag image_url, size: "50x50", class:"rounded-circle profile-box-img" %>
-		<% end %>
+	<div class="user-view clearfix ">
+	  <%= render 'users/user-image', user: visitor %>
 	  <%= notification_form(notification) %><br>
 	  <div class = "notification-time">
 	  	<%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
 	  </div>
-	  <% if !@comment.nil? %>
-	    <p class="moderate-font" style="color: #C0C0C0;"><%= @comment %></p>
-	  <% end %>
 	</div>
 <% end %>

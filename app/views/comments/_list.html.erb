@@ -10,15 +10,27 @@
 					</div>
 				</div>
 				<div class="col-md-1">
-					<%= image_tag comment.user.image.to_s, size: "50x50",class:"rounded-circle img-fluid", fallback: "noimage.png"%>
+					<% if comment.user.image_file_name.nil? %>
+						<% no_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/noimage.png" %>
+						<%= image_tag no_image, size: "50x50", class:"rounded-circle profile-box-img" %>
+					<% else %>
+						<% user_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + comment.user.id.to_s + '/' + comment.user.image_file_name %>
+						<%= image_tag user_image, size: "50x50", class:"rounded-circle profile-box-img" %>
+					<% end %>
 				</div>
 			</div>
 		<% else %>
 			<div class="row mt-3">
-				<div class="col-md-1 offset-md-2">
-					<%= image_tag comment.user.image.to_s, size: "50x50",class:"rounded-circle img-fluid", fallback: "noimage.png" %>
+				<div class="col-md-1 offset-md-1">
+					<% if comment.user.image_file_name.nil? %>
+						<% no_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/noimage.png" %>
+						<%= image_tag no_image, size: "50x50", class:"rounded-circle profile-box-img" %>
+					<% else %>
+						<% user_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + comment.user.id.to_s + '/' + comment.user.image_file_name %>
+						<%= image_tag user_image, size: "50x50", class:"rounded-circle profile-box-img" %>
+					<% end %>
 				</div>
-				<div class="col-md-7">
+				<div class="col-md-5 offset-md-1">
 					<div class="row">
 						<%= link_to comment.user.name,user_path(comment.user.id) %>
 					</div>

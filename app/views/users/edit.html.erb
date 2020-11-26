@@ -5,16 +5,11 @@
 			<div class="row mt-5 mx-5">
 				<h2>編集ページ</h2>
 			</div>
-
 				<%= render 'devise/shared/error', sth: @user %>
-
 			<% if flash[:alert] %>
 		    <p class ="edit-alert error-message-box"><%= flash[:alert] %></p>
 		  <% end %>
-
-
 			<%= form_for(@user) do |f| %>
-
 				<div class="row my-5 mx-5">
 					<div class="col-md-6">
 						<div class="row">
@@ -34,7 +29,7 @@
 					</div>
 					<div class="col-md-6">
 						<div class="row mt-3">
-					      <%= f.text_field :name,class: "form-control", autofocus: true, autocomplete: "name", placeholder: "お名前" %>
+					    <%= f.text_field :name,class: "form-control", autofocus: true, autocomplete: "name", placeholder: "お名前" %>
 					  </div>
 						<div class="row mt-3">
 				      <%= f.email_field :email,class: "form-control", autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
@@ -44,22 +39,15 @@
 			    	</div>
 			  	</div>
 				</div>
-
-
-		   
 		    <!-- 保存/退会ボタン -->
-		      <div class="button-center">
-		        <%= f.submit "編集内容を保存する",class: "button-submit" %>
-		      </div>
-
-
-		      <!-- 退会ページ作成後ルート直す -->
+	      <div class="button-center">
+	        <%= f.submit "編集内容を保存する",class: "button-submit" %>
+	      </div>
 		    <div class="row my-5">
 		      <div class="button-submit-square">
 		        <%= link_to "退会する", users_check_path, class: "button-submit-link" %>
 		      </div>
 		    </div>
-
 			<% end %>
 		</div>
 	</div>
