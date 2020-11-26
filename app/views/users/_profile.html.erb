@@ -5,7 +5,8 @@
 			<%= link_to user_path(user.id) do %>
 				<%#= image_tag user.image.to_s, size: "150x150", class:"rounded-circle profile-box-img", fallback: "noimage.png" %>
 				<% if image_url.nil? %>
-					<%= image_tag "noimage.png",size: "150x150", class:"rounded-circle profile-box-img" %>
+					<% no_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/noimage.png" %>
+					<%= image_tag no_image, size: "150x150", class:"rounded-circle profile-box-img" %>
 				<% else %>
 					<%= image_tag image_url, size: "150x150", class:"rounded-circle profile-box-img" %>
 				<% end %>
