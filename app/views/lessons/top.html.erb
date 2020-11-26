@@ -17,7 +17,7 @@
 					<% @lessons.last(6).each do |lesson| %>
 						<div class="lesson-child">
 							<%= link_to lesson_path(lesson.id) do %>
-								<% lesson_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/lesson/image/" + lesson.id.to_s + '/' + lesson.image_file_name.to_s %>
+								<% lesson_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/lesson/image/" + lesson.id.to_s + '/' + lesson.image_file_name %>
 								<%= image_tag lesson_image, class:"lesson-img" %>
 							<% end %>
 							<%= lesson.name %>
@@ -34,7 +34,7 @@
 <div class="main-box">
 	<%= render 'layouts/sidebar' %>
 	<div class = "main-content">
-		<%= render 'users/profile', user: @user, image_url: @image_url %>
+		<%= render 'users/profile', user: @user, image_url: @user_image %>
 		<%= render 'simple_calendar/lesson-calendar', lessons: @lessons_calendar %>
 	</div>
 </div>

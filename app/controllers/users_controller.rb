@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_guest, only: [:update, :withdrawal]
+  # before_action :check_guest, only: [:update, :withdrawal]
   def show
     @user = User.find(params[:id])
     all_lessons = @user.lessons.only_active
     @lessons = all_lessons.page(params[:page]).reverse_order
-    @image_url = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + @user.id.to_s + '/' + @user.image_file_name
+    unless @user.image_file_name.nil?
+      @user_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + @user.id.to_s + '/' + @user.image_file_name
+    end
     if @user.reviews.blank?
       @average_review = 0
     else
@@ -19,7 +21,9 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.image_file_name = user_params[:image].original_filename
+    unless user_params[:image].nil?
+      @user.image_file_name = user_params[:image].original_filename
+    end
     if @user.update(user_params)
       sleep(3)
       redirect_to user_path(current_user.id)

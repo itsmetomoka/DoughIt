@@ -10,8 +10,7 @@
 					</div>
 				</div>
 				<div class="col-md-1">
-					<% user_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + comment.user.id.to_s + '/' + @user.image_file_name.to_s %>
-					<%= image_tag user_image, size: "50x50",class:"rounded-circle img-fluid", fallback: "noimage.png"%>
+					<%= image_tag comment.user.image.to_s, size: "50x50",class:"rounded-circle img-fluid", fallback: "noimage.png"%>
 				</div>
 			</div>
 		<% else %>

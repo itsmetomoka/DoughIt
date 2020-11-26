@@ -9,7 +9,9 @@ class LessonsController < ApplicationController
     @favorites = Favorite.where(user_id: current_user.id)
     # カレンダーには過去のレッスンも表示する
     @lessons_calendar = Lesson.all
-    @image_url = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + @user.id.to_s + '/' + @user.image_file_name
+    unless @user.image_file_name.nil?
+      @user_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + @user.id.to_s + '/' + @user.image_file_name
+    end
   end
 
   def about
@@ -72,7 +74,9 @@ class LessonsController < ApplicationController
   def show
     @lesson = Lesson.find(params[:id])
     @user = @lesson.user
-    @image_url = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + @user.id.to_s + '/' + @user.image_file_name
+    unless @user.image_file_name.nil?
+      @user_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + @user.id.to_s + '/' + @user.image_file_name
+    end
   end
   def complete
     # ログインユーザーの作成した最新のレッスンを表示する

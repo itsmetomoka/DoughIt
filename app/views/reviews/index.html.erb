@@ -18,7 +18,13 @@
 					<% reviewer = User.find(review.reviewer_id) %>
 					<tr>
 						<td class = "table-image">
-							<%= image_tag reviewer.image.to_s, size: "50x50",class:"rounded-circle", fallback: "noimage.png" %>
+							<% if reviewer.image_file_name.nil? %>
+								<% no_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/noimage.png" %>
+								<%= image_tag no_image,size: "50x50", class:"rounded-circle profile-box-img" %>
+							<% else %>
+								<% user_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + reviewer.id.to_s + '/' + reviewer.image_file_name %>
+								<%= image_tag user_image, size: "50x50", class:"rounded-circle profile-box-img" %>
+							<% end %>
 						</td>
 						<td>
 							<div class="review-rating" data-score="<%= review.rate %>"></div>
@@ -35,6 +41,7 @@
 		</div>
 	</div>
 </div>
+
 
 <script>
   $('.review-rating').raty({
