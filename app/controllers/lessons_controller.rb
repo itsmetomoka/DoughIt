@@ -9,7 +9,7 @@ class LessonsController < ApplicationController
     @favorites = Favorite.where(user_id: current_user.id)
     # カレンダーには過去のレッスンも表示する
     @lessons_calendar = Lesson.all
-    # @image_url = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/store/" + @user.id + "-thumbnail."
+    @image_url = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + @user.id.to_s + '/' + @user.image_file_name
   end
 
   def about
@@ -48,6 +48,9 @@ class LessonsController < ApplicationController
   def create
     # もう一度キャッシュを使って復元する
     @lesson.image.retrieve_from_cache! @lesson.image_cache
+    lesson_image_cache = lesson_params[:image_cache].split('/')
+    @lesson.image_file_name = lesson_image_cache[1]
+    # @lesson.image_file_name = lesson_params[:image_cache]
     @lesson.save
     redirect_to lessons_complete_path
   end
@@ -69,12 +72,13 @@ class LessonsController < ApplicationController
   def show
     @lesson = Lesson.find(params[:id])
     @user = @lesson.user
-    # @image_url = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/store/" + @user.id + "-thumbnail."
+    @image_url = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + @user.id.to_s + '/' + @user.image_file_name
   end
-
   def complete
     # ログインユーザーの作成した最新のレッスンを表示する
     @lesson = current_user.lessons.last
+    @lesson_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/lesson/image/" + @lesson.id.to_s + '/' + @lesson.image_file_name
+
   end
 
   def history
@@ -96,6 +100,6 @@ class LessonsController < ApplicationController
   def lesson_params
     params.require(:lesson).permit(:user_id, :name, :event_date, :tuition, :content,
      :address, :latitude, :longitude, :deadline, :max_attendees, :category_name, :image,
-      :image_cache, :is_active)
+      :image_cache, :is_active, :image_file_name)
   end
 end

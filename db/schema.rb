@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_01_090547) do
+ActiveRecord::Schema.define(version: 2020_11_26_013210) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_11_01_090547) do
     t.float "latitude"
     t.float "longitude"
     t.boolean "is_active", default: true
+    t.string "image_file_name"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -87,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_11_01_090547) do
     t.datetime "updated_at", null: false
     t.boolean "is_active"
     t.datetime "deleted_at"
+    t.string "image_file_name"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
