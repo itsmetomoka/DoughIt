@@ -17,7 +17,7 @@ class Lesson < ApplicationRecord
   after_validation :geocode, if: :address_changed?
 
   with_options presence: true do
-    validates :tuition
+    validates :tuition, numericality: true
     validates :name, length: { in: 5..50 }
     validates :content, length: { in: 20..200 }
     validates :event_date
