@@ -39,22 +39,22 @@
 機能詳細
 https://docs.google.com/spreadsheets/d/1SG6ZrfuwX4_mGyklwoQ7hvsJBisnklqdmlLrzKLPVjw/edit?usp=sharing
 
-###インフラ構造
+### インフラ構造
 <img width="1225" alt="スクリーンショット 2020-11-26 23 43 33" src="https://user-images.githubusercontent.com/68732682/100364481-8a865900-3041-11eb-8e9e-9b3b86380efd.png">
 
-###開発環境
+### 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - 仮想環境：Vagrant,VirtualBox
 
-###本番環境
+### 本番環境
 - AWS (EC2, RDS for MySQL, Route53, CloudWatch, S3, Lambda)
 - MySQL2
 - Nginx, Puma, Capistrano
 
-###使用技術
+### 使用技術
 - 非同期通信(お気に入り、コメント、画像プレビュー画面、ページネーション、通知削除)
 - kaminari(ページネーション)
 - 外部API(Google MapAPI、Geocoding API)
@@ -62,7 +62,7 @@ https://docs.google.com/spreadsheets/d/1SG6ZrfuwX4_mGyklwoQ7hvsJBisnklqdmlLrzKLP
 - whenever(定時処理)
 - HTTPS接続(Certbot)
 
-##使用素材
+## 使用素材
 - フリー素材サイト　photoAC (https://www.photo-ac.com/)
 
 
