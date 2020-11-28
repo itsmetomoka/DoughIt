@@ -50,6 +50,7 @@ class LessonsController < ApplicationController
   def create
     # もう一度キャッシュを使って復元する
     @lesson.image.retrieve_from_cache! @lesson.image_cache
+    # byebug
     lesson_image_cache = lesson_params[:image_cache].split('/')
     @lesson.image_file_name = lesson_image_cache[1]
     # @lesson.image_file_name = lesson_params[:image_cache]

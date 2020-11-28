@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  # before_action :check_guest, only: [:update, :withdrawal]
+  before_action :check_guest, only: [:update, :withdrawal]
   def show
     @user = User.find(params[:id])
     all_lessons = @user.lessons.only_active
