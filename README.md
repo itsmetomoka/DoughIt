@@ -59,6 +59,7 @@ https://docs.google.com/spreadsheets/d/1SG6ZrfuwX4_mGyklwoQ7hvsJBisnklqdmlLrzKLP
 - kaminari(ページネーション)
 - 外部API(Google MapAPI、Geocoding API)
 - Rubocop-airbnb
+- Rspect(１４０以上のテスト）
 - whenever(定時処理)
 - HTTPS接続(Certbot)
 
