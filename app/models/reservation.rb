@@ -8,5 +8,5 @@ class Reservation < ApplicationRecord
     if lesson && lesson.reservations.count >= lesson.max_attendees
       errors.add(:lesson, "は定員数に達しています")
     end
-   end
+  end
 end

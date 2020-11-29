@@ -3,7 +3,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
-
   # S3を使用
   # テストや開発環境の時は、localファイルを使い本番の時のみS３を使用する
   if Rails.env.development?
@@ -24,11 +23,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   def default_url
     'noimage.png'
   end
-  #   # For Rails 3.1+ asset pipeline compatibility:
-  #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  #
-  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  # end
+
 
   # Process files as they are uploaded:
   # process scale: [200, 300]
@@ -47,6 +42,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   def extension_whitelist
     %w(jpg jpeg gif png)
   end
+
   def filename
     original_filename if original_filename
   end

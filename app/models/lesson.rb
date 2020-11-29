@@ -62,7 +62,7 @@ class Lesson < ApplicationRecord
     @lesson = Lesson.where("name LIKE?", "%#{word}%")
   end
 
-  def self.search(category)
+  def self.search_with_category(category)
     @lesson = Lesson.where("category_name LIKE?", "#{category}")
   end
 
@@ -99,7 +99,8 @@ class Lesson < ApplicationRecord
   # コメント
   def create_notification_comment!(current_user, comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
-    temp_ids = Comment.select(:user_id).where(lesson_id: id).where.not(user_id: current_user.id).distinct
+    temp_ids =
+      Comment.select(:user_id).where(lesson_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, comment_id, temp_id['user_id'])
     end
@@ -146,15 +147,13 @@ class Lesson < ApplicationRecord
 
     # 日付とユーザーで絞り込み
     if date.empty? && user_id.empty?
-      all_lesson = sort_lesson
+      sort_lesson
     elsif date.empty? && user_id.present?
-      all_lesson = sort_lesson.where(user_id: user_id)
+      sort_lesson.where(user_id: user_id)
     elsif date.present? && user_id.empty?
-      all_lesson = sort_lesson.where(event_date: date.in_time_zone.all_day)
+      sort_lesson.where(event_date: date.in_time_zone.all_day)
     else
-      all_lesson = sort_lesson.where(event_date: date.in_time_zone.all_day, user_id: user_id)
+      sort_lesson.where(event_date: date.in_time_zone.all_day, user_id: user_id)
     end
   end
-
-
 end

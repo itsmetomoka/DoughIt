@@ -6,7 +6,9 @@ class UsersController < ApplicationController
     all_lessons = @user.lessons.only_active
     @lessons = all_lessons.page(params[:page]).reverse_order
     unless @user.image_file_name.nil?
-      @user_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + @user.id.to_s + '/' + @user.image_file_name
+      @user_image =
+        "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/"
+      + @user.id.to_s + '/' + @user.image_file_name
     end
     if @user.reviews.blank?
       @average_review = 0

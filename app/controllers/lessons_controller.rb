@@ -10,7 +10,9 @@ class LessonsController < ApplicationController
     # カレンダーには過去のレッスンも表示する
     @lessons_calendar = Lesson.all
     unless @user.image_file_name.nil?
-      @user_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + @user.id.to_s + '/' + @user.image_file_name
+      @user_image =
+        "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" +
+        @user.id.to_s + '/' + @user.image_file_name
     end
   end
 
@@ -76,14 +78,18 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
     @user = @lesson.user
     unless @user.image_file_name.nil?
-      @user_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" + @user.id.to_s + '/' + @user.image_file_name
+      @user_image =
+        "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/user/image/" +
+        @user.id.to_s + '/' + @user.image_file_name
     end
   end
+
   def complete
     # ログインユーザーの作成した最新のレッスンを表示する
     @lesson = current_user.lessons.last
-    @lesson_image = "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/lesson/image/" + @lesson.id.to_s + '/' + @lesson.image_file_name
-
+    @lesson_image =
+      "https://pf-doughit-resize.s3-ap-northeast-1.amazonaws.com/uploads/lesson/image/" +
+      @lesson.id.to_s + '/' + @lesson.image_file_name
   end
 
   def history
@@ -104,7 +110,8 @@ class LessonsController < ApplicationController
 
   def lesson_params
     params.require(:lesson).permit(:user_id, :name, :event_date, :tuition, :content,
-     :address, :latitude, :longitude, :deadline, :max_attendees, :category_name, :image,
-      :image_cache, :is_active, :image_file_name)
+                                   :address, :latitude, :longitude, :deadline, :max_attendees,
+                                   :category_name, :image, :image_cache, :is_active,
+                                   :image_file_name)
   end
 end
