@@ -14,6 +14,7 @@ class ReservationsController < ApplicationController
   end
 
   def index
+    @categories = Category.all
     reserved_lessons = current_user.reserved_lessons
     if params[:sort] == 'date'
       all_lessons = reserved_lessons.order(event_date: :DESC)

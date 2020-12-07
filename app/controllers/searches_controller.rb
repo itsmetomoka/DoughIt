@@ -1,11 +1,12 @@
 class SearchesController < ApplicationController
   before_action :authenticate_user!
+  before_action :category_box
   def search
     if params[:word]
       @word = params[:word]
       all_lesson = Lesson.search(@word).only_active
-    elsif params[:category_name]
-      @category = params[:category_name].to_i
+    elsif params[:category_id]
+      @category = params[:category_id].to_i
       all_lesson = Lesson.search_with_category(@category).only_active
     end
     @lessons = all_lesson.page(params[:page]).reverse_order
@@ -14,7 +15,7 @@ class SearchesController < ApplicationController
 
   def categorize
     sort = params[:sort]
-    category = params[:category]
+    category = params[:category_id]
     date = params[:date]
     user_id = params[:user_id]
 
@@ -27,5 +28,9 @@ class SearchesController < ApplicationController
       @user = User.find(user_id)
     end
     @lessons = all_lesson.page(params[:page]).reverse_order
+  end
+
+  def category_box
+    @categories = Category.all
   end
 end

@@ -1,47 +1,47 @@
 <div class = "lesson-detail">
-		<div class = "lesson-detail-content">
-				<%= image_tag lesson.image.to_s,size: "500x300", class:"img-fluid" %>
+	<div class = "lesson-detail-content">
+		<%= image_tag lesson.image.to_s,size: "500x300", class:"img-fluid" %>
+	</div>
+	<div class = "lesson-detail-text">
+		<div class="row mt-3">
+			<h2><%= lesson.name %></h2>
 		</div>
-		<div class = "lesson-detail-text">
-			<div class="row mt-3">
-				<h2><%= lesson.name %></h2>
+		<div class="row mt-2">
+			<h4><%= lesson.content %></h4>
+		</div>
+		<div class="row mt-5">
+			<h5>開催日：<%= l lesson.event_date %></h5>
+		</div>
+		<div class="row mt-2">
+			<h5>開催場所：<%= lesson.address%></h5>
+		</div>
+		<div class="row mt-2">
+			<h5>参加費：<%= lesson.tuition.to_s(:delimited) %>円</h5>
+		</div>
+		<div class="row mt-2">
+			<h5>最大参加人数：<%= lesson.max_attendees.to_s(:delimited) %>名</h5>
+		</div>
+		<div class="row mt-2">
+			<div class ="fav-<%= lesson.id %>">
+				<%= render 'favorites/fav', lesson: lesson %>
 			</div>
-			<div class="row mt-2">
-				<h4><%= lesson.content %></h4>
-			</div>
-			<div class="row mt-5">
-				<h5>開催日：<%= l lesson.event_date %></h5>
-			</div>
-			<div class="row mt-2">
-				<h5>開催場所：<%= lesson.address%></h5>
-			</div>
-			<div class="row mt-2">
-				<h5>参加費：<%= lesson.tuition.to_s(:delimited) %>円</h5>
-			</div>
-			<div class="row mt-2">
-				<h5>最大参加人数：<%= lesson.max_attendees.to_s(:delimited) %>名</h5>
-			</div>
-			<div class="row mt-2">
-				<div class ="fav-<%= lesson.id %>">
-					<%= render 'favorites/fav', lesson: lesson %>
-				</div>
-			<!-- ユーザーが退会していたら表示しない -->
-			<% unless lesson.user.nil? %>
-				<!-- 予約人数が制限に達しておらず、締め切り日も超えていない場合のみ予約ボタンを表示 -->
-				<% if lesson.user_id != current_user.id %>
-					<% if lesson.reservations.count < lesson.max_attendees && DateTime.now < lesson.deadline %>
+		</div>
+		<!-- ユーザーが退会していたら表示しない -->
+		<% unless lesson.user.nil? %>
+			<!-- 予約人数が制限に達しておらず、締め切り日も超えていない場合のみ予約ボタンを表示 -->
+			<% if lesson.user_id != current_user.id %>
+				<% if lesson.reservations.count < lesson.max_attendees && DateTime.now < lesson.deadline %>
 					<div class="row mt-2">
 						<div class = "link-button-sm-center">
-						<%= link_to "予約する",lesson_reservations_path(lesson_id: lesson.id), method: :post, class: "button-font"%>
-					</div>
-					</div>
-					<% else %>
-						<div class="row mt-2">
-							<p class="apologies">現在こちらのレッスンは予約できません。</p>
+							<%= link_to "予約する",lesson_reservations_path(lesson_id: lesson.id), method: :post, class: "button-font"%>
 						</div>
-					<% end %>
+					</div>
+				<% else %>
+					<div class="row mt-2">
+						<p class="apologies">現在こちらのレッスンは予約できません。</p>
+					</div>
 				<% end %>
 			<% end %>
-
-		</div>
+		<% end %>
+	</div>
 </div>

@@ -1,33 +1,7 @@
 <div class = "container">
 	<div class="main-box clearfix">
-		<%= render 'layouts/sidebar' %>
+		<%= render 'layouts/sidebar', categories: @categories %>
 		<div class = "main-content">
-			<% if params[:category_name] %>
-				<div class = "underbar">
-					<h2>カテゴリー検索</h2>
-				</div>
-				<%= render 'sort-box' %>
-				<div class="container">
-					<div class="row mt-5 ml-5">
-						<h4></h4>
-						<%if params[:category_name] == "0" %>
-							<h4>洋食一覧</h4>
-						<%elsif params[:category_name] == "1" %>
-							<h4>和食一覧</h4>
-						<%elsif params[:category_name] == "2" %>
-							<h4>パン一覧</h4>
-						<%elsif params[:category_name] == "3" %>
-							<h4>ケーキ一覧</h4>
-						<% end %>
-						<h4>(全<%= @lessons_count %>件)</h4>
-					</div>
-					<% if @lessons.exists? %>
-						<%= render 'lessons/list', lessons: @lessons %>
-					<% else %>
-						<h5 class= "no-lessons">該当するレッスンはありませんでした</h5>
-					<% end %>
-				</div>
-			<% else %>
 				<div class = "underbar">
 					<h2>検索結果</h2>
 				</div>
@@ -46,6 +20,5 @@
 					<% end %>
 				</div>
 			</div>
-		<% end %>
 	</div>
 </div>

@@ -3,16 +3,16 @@
 		<div class = "lesson-sort-box__command">
 			<p class = "lesson-sort-box__command--headline">絞り込み</p>
 			<p class = "lesson-sort-box__command--select">
-				<% if params[:category_name] == "0" %>
-					<%= form.select :category, [['洋食', 'western'],['和食','japanese'],['パン','bread'],['ケーキ','cake']] %>
-				<% elsif params[:category_name] == "1" %>
-					<%= form.select :category, [['和食','japanese'],['洋食', 'western'],['パン','bread'],['ケーキ','cake']] %>
-				<% elsif params[:category_name] == "2" %>
-					<%= form.select :category, [['パン','bread'],['洋食', 'western'],['和食','japanese'],['ケーキ','cake']] %>
-				<% elsif params[:category_name] == "3" %>
-					<%= form.select :category, [['ケーキ','cake'],['洋食', 'western'],['和食','japanese'],['パン','bread']] %>
+				<% if params[:category_id] == "1" %>
+					<%= form.select :category_id, [['洋食', '1'],['和食','2'],['パン','3'],['ケーキ','4']] %>
+				<% elsif params[:category_id] == "2" %>
+					<%= form.select :category_id, [['和食','3'],['洋食', '1'],['パン','3'],['ケーキ','4']] %>
+				<% elsif params[:category_id] == "3" %>
+					<%= form.select :category_id, [['パン','3'],['洋食', '1'],['和食','2'],['ケーキ','4']] %>
+				<% elsif params[:category_id] == "4" %>
+					<%= form.select :category_id, [['ケーキ','4'],['洋食', '1'],['和食','2'],['パン','3']] %>
 				<% else %>
-					<%= form.select :category, [['ジャンル選択', 'all'],['洋食', 'western'],['和食','japanese'],['パン','bread'],['ケーキ','cake']] %>
+					<%= form.select :category_id, [['ジャンル選択', nil ],['洋食', '1'],['和食','2'],['パン','3'],['ケーキ','4']] %>
 				<% end %>
 			</p>
 			<p class = "lesson-sort-box__command--select">

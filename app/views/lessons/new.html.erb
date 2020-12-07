@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="main-box clearfix">
-		<%= render 'layouts/sidebar' %>
+		<%= render 'layouts/sidebar', categories: @categories %>
 		<div class = "main-content">
 			<div class="lesson-underbar">
 				<h1 class = "lesson-new-headline">レッスン作成</h1>
@@ -40,7 +40,10 @@
 						</div>
 						<div class="row my-5 mx-5">
 							<div class="col-md-10 offset-md-1">
-								<%= f.select :category_name, Lesson.category_names.keys.map {|k| [k, k]}, include_blank: "レッスンカテゴリー" %>
+								<%#= f.select :category_name, Lesson.category_names.keys.map {|k| [k, k]}, include_blank: "レッスンカテゴリー" %>
+								<%#= f.select :category_id, Category.all, :id, :name, {prompt: "レッスンカテゴリ"} %>
+								<%#= f.collection_select(:category_id, :id, :name) %>
+								<%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "カテゴリーを選択してください" %>
 							</div>
 						</div>
 						<div class="row my-5 mx-5">

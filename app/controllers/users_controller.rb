@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :check_guest, only: [:update, :withdrawal]
+  before_action :category_box, except: [:update, :check, :withdrawal]
   def show
     @user = User.find(params[:id])
     all_lessons = @user.lessons.only_active
@@ -50,6 +51,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :introduction, :image, :image_file_name)
+  end
+
+  def category_box
+    @categories = Category.all
   end
 
   def check_guest

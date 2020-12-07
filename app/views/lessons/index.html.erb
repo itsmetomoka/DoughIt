@@ -1,16 +1,22 @@
 <div class = "container">
 	<div class="main-box clearfix">
-		<%= render 'layouts/sidebar' %>
+		<%= render 'layouts/sidebar',categories:@categories %>
 		<div class = "main-content">
 			<div class="container">
 				<% if params[:user_id] %>
 					<h2><%= @user.name %> さんのレッスン</h2>
+				<% elsif params[:category_id] %>
+					<h2><%= @category.name %>一覧</h2>
 				<% else %>
 					<h2>レッスン一覧</h2>
 				<% end %>
 				<%= render 'searches/sort-box' %>
 				<div class = "lessons-list">
-					<%= render partial:'list' %>
+					<% if @lessons.exists? %>
+						<%= render partial:'list' %>
+					<% else %>
+						<h5 class= "no-lessons">該当するレッスンはありませんでした</h5>
+					<% end %>
 				</div>
 			</div>
 		</div>

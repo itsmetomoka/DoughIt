@@ -4,11 +4,11 @@ class Lesson < ApplicationRecord
   has_many :reservations, dependent: :destroy
   belongs_to :user
   has_many :notifications, dependent: :destroy
+  belongs_to :category
+  
 
   attr_accessor :image_cache
   mount_uploader :image, ImageUploader
-
-  enum category_name: { 洋食: 0, 和食: 1, パン: 2, ケーキ: 3 }
 
   scope :only_active, -> { where(is_active: true) }
   scope :not_active, -> { where(is_active: false) }
@@ -22,7 +22,7 @@ class Lesson < ApplicationRecord
     validates :content, length: { in: 20..200 }
     validates :event_date
     validates :deadline
-    validates :category_name
+    #validates :category_id
     validates :max_attendees
     validates :address, length: { in: 5..100 }
   end
@@ -62,9 +62,6 @@ class Lesson < ApplicationRecord
     @lesson = Lesson.where("name LIKE?", "%#{word}%")
   end
 
-  def self.search_with_category(category)
-    @lesson = Lesson.where("category_name LIKE?", "#{category}")
-  end
 
   # いいね機能
   def favorited_by?(user)
@@ -121,7 +118,7 @@ class Lesson < ApplicationRecord
   end
 
   # 並び替え
-  def self.sort(sort, category, date, user_id)
+  def self.sort(sort, category_id, date, user_id)
     if sort == 'early'
       lessons = Lesson.order(event_date: :DESC)
     elsif sort == 'late'
@@ -133,17 +130,19 @@ class Lesson < ApplicationRecord
     end
 
     # ジャンル絞り込み
-    if category == 'western'
-      sort_lesson = lessons.where(category_name: 0)
-    elsif category == 'japanese'
-      sort_lesson = lessons.where(category_name: 1)
-    elsif category == 'bread'
-      sort_lesson = lessons.where(category_name: 2)
-    elsif category == 'cake'
-      sort_lesson = lessons.where(category_name: 3)
-    else
-      sort_lesson = lessons
-    end
+    # if category == 'western'
+    #   sort_lesson = lessons.where(category_id: 0)
+    # elsif category == 'japanese'
+    #   sort_lesson = lessons.where(category_name: 1)
+    # elsif category == 'bread'
+    #   sort_lesson = lessons.where(category_name: 2)
+    # elsif category == 'cake'
+    #   sort_lesson = lessons.where(category_name: 3)
+    # else
+    #   sort_lesson = lessons
+    # end
+
+    sort_lesson = lessons.where(category_id: category_id)
 
     # 日付とユーザーで絞り込み
     if date.empty? && user_id.empty?

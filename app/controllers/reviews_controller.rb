@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
   end
 
   def index
+    @categories = Category.all
     @user = User.find(params[:user_id])
     @reviews = @user.reviews
   end

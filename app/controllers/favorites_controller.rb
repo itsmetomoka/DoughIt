@@ -20,5 +20,6 @@ class FavoritesController < ApplicationController
       format.html
       format.js
     end
+    @categories = Category.all
   end
 end

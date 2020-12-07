@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="main-box clearfix">
-		<%= render 'layouts/sidebar' %>
+		<%= render 'layouts/sidebar', categories: @categories %>
 		<div class = "main-content">
 			<div class="row mt-5 mx-5">
 				<div class="underbar">
@@ -27,7 +27,7 @@
 							</tr>
 							<tr>
 								<th>カテゴリー</th>
-								<td><%= @lesson.category_name %></td>
+								<td><%= @lesson.category.name %></td>
 							</tr>
 							<tr>
 								<th>開催日時</th>
@@ -56,7 +56,7 @@
 					<div class="link-center">
 						<%= f.hidden_field :name, :value => @lesson.name %>
 						<%= f.hidden_field :content, :value => @lesson.content %>
-						<%= f.hidden_field :category_name, :value => @lesson.category_name %>
+						<%= f.hidden_field :category_id, :value => @lesson.category_id %>
 						<%= f.hidden_field :event_date, :value => @lesson.event_date %>
 						<%= f.hidden_field :address, :value => @lesson.address %>
 						<%= f.hidden_field :tuition, :value => @lesson.tuition %>
@@ -72,7 +72,7 @@
 						<%= form_with model:@lesson, url:new_lessons_path, method: :post, data: {remote: false} do |f| %>
 							<%= f.hidden_field :name, :value => @lesson.name %>
 							<%= f.hidden_field :content, :value => @lesson.content %>
-							<%= f.hidden_field :category_name, :value => @lesson.category_name %>
+							<%= f.hidden_field :category_id, :value => @lesson.category_id %>
 							<%= f.hidden_field :event_date, :value => @lesson.event_date %>
 							<%= f.hidden_field :address, :value => @lesson.address %>
 							<%= f.hidden_field :tuition, :value => @lesson.tuition %>
@@ -86,13 +86,3 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
-

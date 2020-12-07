@@ -5,10 +5,10 @@
 		<p class = "sidebar__row">
 			<div class = "sidebar__row--content">Category</div>
 		</p>
-		<% Lesson.category_names.each do |name, num| %>
+		<% categories.each do |category| %>
 			<p class = "sidebar__row">
 				<div class = "sidebar__row--sub-content">
-					<%= link_to name, search_path(category_name: num)%>
+						<%=link_to category.name, lessons_path(category_id: category.id) %>
 				</div>
 			</p>
 		<% end %>
