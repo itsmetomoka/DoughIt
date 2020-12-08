@@ -723,3 +723,21 @@ footer {
 
 
 }
+
+@media screen and (max-width:425px) {
+  .sub-nav-item:last-child {
+  margin-left: 0px;
+  }
+  .nav-item {
+    padding-right: 15px;
+  }
+  .nav-item__link{
+    font-size: 19px;
+    padding-left: 5px;
+  }
+  .new-home {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
