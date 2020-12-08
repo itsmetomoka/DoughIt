@@ -115,6 +115,10 @@ $point-color: #73716d;
 	}
 
 // ========== トップページ ============
+	.top-container {
+		width: 80%;
+		margin: 0 auto;
+	}
 	.top-home {
 		display: flex;
 		width: 100%;
@@ -277,22 +281,17 @@ li {
 
 
 }
-.img-button {
-	margin-top: 30px;
-}
+
 
 img#img_prev {
-		max-height: 300px;
+	max-height: 300px;
 	}
 
 #lesson_img {
-	position: relative;
-  display: block;
   width: 150px;
   padding: 10px;
   text-align: center;
   font-weight: bold;
-  text-decoration: none;
   margin-left: 60%;
 }
 
@@ -336,11 +335,20 @@ img#img_prev {
 	}
 
 @media screen and (max-width:768px) {
-	.lesson-box {
+	.top-container {
 		width: 90%;
+		margin: 0 auto;
+	}
+
+	.lesson-box {
+		width: 100%;
 		margin: 50px auto;
 		display: flex;
 		flex-wrap: wrap;
+	}
+	
+	.top-main-visual__right {
+		width: 100%;
 	}
 
 	.lesson-box > .lesson-child {
@@ -351,12 +359,16 @@ img#img_prev {
 	}
 
 	img.lesson-img {
-		max-width: 95%;
+		width: 95%;
 		height: auto;
 	}
 	img.lesson-img:hover {
   filter: opacity(75%);
 	}
+	#lesson_img {
+
+  margin-left: 30%;
+}
 
 	.lesson-detail {
 		width: 100%;
@@ -501,6 +513,24 @@ img#img_prev {
 		padding-left: 20px;
 	}
 
+	.lesson-box {
+		width: 100%;
+		margin: 50px auto;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.lesson-box > .lesson-child {
+		width: 50%;
+	}
+
+	.lesson-child {
+		margin-bottom: 30px;
+	}
+	img.lesson-img {
+		width: 100%;
+	}
+
 
 
 
@@ -534,6 +564,18 @@ img#img_prev {
 		width: 95%;
 		height: 250px;
 	}
+// 新規作成
+	 #lesson_img {
+  margin-left: 0%;
+}
+
+}
+
+@media screen and (max-width:374px) {
+  .main-visual__text {
+    font-size: 80px
+  }
+
 
 }
 

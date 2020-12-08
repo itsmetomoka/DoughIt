@@ -5,7 +5,7 @@
   	<% if lesson.user_id == current_user.id %>
   	<div class = "calender-event">
       <%= link_to lesson_path(lesson.id) do %>
-        <%= lesson.name %>
+        <%= lesson.name.truncate(5) %>
      </div>
       <% end %>
      <!-- 予約したレッスンの表示 -->
@@ -14,7 +14,7 @@
     		<% if reservation.user_id == current_user.id %>
     		<div class = "calender-event">
 	      	<%= link_to lesson_path(lesson.id) do %>
-	        	<%= lesson.name %>
+	        	<%= lesson.name.truncate(4) %>
 	      	<% end %>
 	      </div>
 	      <% end %>

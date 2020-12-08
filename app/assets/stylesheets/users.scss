@@ -26,12 +26,13 @@ $point-color: #73716d;
 }
 
 .profile-box-child-left {
-	margin-top: 20px;
+
 }
 
 
 img.rounded-circle.profile-box-img {
-	margin-left: 30px;
+	margin: 20px 0 0 30px;
+	width: 150px;
 }
 
 img.rounded-circle.profile-box-img:hover {
@@ -63,6 +64,34 @@ img.rounded-circle.img-fluid:hover {
 
 
 @media screen and (max-width:425px) {
+
+
+	.profile-box-child-left {
+
+	}
+	img.rounded-circle.profile-box-img {
+		width: 100px;
+		margin: 20px auto;
+		display: flex;
+	}
+	.profile-box-home {
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		margin-bottom: 50px;
+	}
+
+	.profile-box-home > .profile-box-child-right {
+		width: 100%;
+	}
+
+	.profile-box-home > .profile-box-child-left {
+		width: 100%;
+
+	}
+
+	.profile-box-child-right{}
+
 
 
 

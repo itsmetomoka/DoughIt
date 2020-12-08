@@ -24,7 +24,7 @@
 								<% end %>
 							</div>
 						</div>
-						<div class = "img-button">
+						<div class = "lesson-button">
 							<%= f.file_field :image, id: :lesson_img %>
 							<%= f.hidden_field :image_cache %>
 						</div>
@@ -40,9 +40,6 @@
 						</div>
 						<div class="row my-5 mx-5">
 							<div class="col-md-10 offset-md-1">
-								<%#= f.select :category_name, Lesson.category_names.keys.map {|k| [k, k]}, include_blank: "レッスンカテゴリー" %>
-								<%#= f.select :category_id, Category.all, :id, :name, {prompt: "レッスンカテゴリ"} %>
-								<%#= f.collection_select(:category_id, :id, :name) %>
 								<%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "カテゴリーを選択してください" %>
 							</div>
 						</div>

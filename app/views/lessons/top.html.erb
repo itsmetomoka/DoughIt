@@ -1,6 +1,5 @@
+<div class = "top-container">
 
-
-<div class = "container">
 	<div class = "top-main-visual top-home">
 		<div class = "top-main-visual__left top-child-left">
 			<%= image_tag 'top-main.jpg', class:'top-main-img' %>
@@ -19,6 +18,7 @@
 							<%= link_to lesson_path(lesson.id) do %>
 								<%= image_tag s3_lesson_image(lesson), class:"lesson-img" %>
 							<% end %>
+							<br>
 							<%= lesson.name %>
 						</div>
 					<% end %>
@@ -30,10 +30,12 @@
 		</div>
 	</div>
 
-<div class="main-box">
-	<%= render 'layouts/sidebar', categories: @categories %>
-	<div class = "main-content">
-		<%= render 'users/profile', user: @user, image_url: @user_image %>
-		<%= render 'simple_calendar/lesson-calendar', lessons: @lessons_calendar %>
+	<div class="main-box">
+		<%= render 'layouts/sidebar', categories: @categories %>
+		<div class = "main-content">
+			<%= render 'users/profile', user: @user, image_url: @user_image %>
+			<%= render 'simple_calendar/lesson-calendar', lessons: @lessons_calendar %>
+		</div>
 	</div>
+
 </div>
