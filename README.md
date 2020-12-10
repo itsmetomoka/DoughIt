@@ -19,8 +19,8 @@
 料理教室を開きたいけど、集客がうまくいかない人が簡単に教室の参加者の募集を投稿でき、教室を探している方は複数の検索項目で簡単にいきたい教室を見つけれるサイトです。
 
 ## ER図
+<img width="1225" alt="スクリーンショット 2020-12-06 21 16 40" src="https://user-images.githubusercontent.com/68732682/101779387-90e3fd00-3b38-11eb-8226-4561c8662157.png">
 
-<img width="1225" alt="スクリーンショット 2020-11-13 17 35 12" src="https://user-images.githubusercontent.com/68732682/99046906-c8619700-25d6-11eb-998f-de63f5d44f57.png">
 
 ## 環境/使用技術
 
@@ -40,7 +40,7 @@
 https://docs.google.com/spreadsheets/d/1SG6ZrfuwX4_mGyklwoQ7hvsJBisnklqdmlLrzKLPVjw/edit?usp=sharing
 
 ### インフラ構造
-<img width="1225" alt="スクリーンショット 2020-12-06 21 16 40" src="https://user-images.githubusercontent.com/68732682/101779387-90e3fd00-3b38-11eb-8226-4561c8662157.png">
+<img width="1225" alt="スクリーンショット 2020-11-26 23 43 33" src="https://user-images.githubusercontent.com/68732682/100364481-8a865900-3041-11eb-8e9e-9b3b86380efd.png">
 
 ### 開発環境
 - OS：Linux(CentOS)
