@@ -22,7 +22,6 @@ class Lesson < ApplicationRecord
     validates :content, length: { in: 20..200 }
     validates :event_date
     validates :deadline
-    #validates :category_id
     validates :max_attendees
     validates :address, length: { in: 5..100 }
   end

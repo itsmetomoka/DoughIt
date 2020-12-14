@@ -94,8 +94,8 @@ describe '投稿のテスト' do
     end
 
     context '投稿の確認' do
-      it 'New bookと表示される' do
-        expect(page).to have_content 'レッスン開講入力フォーム'
+      it 'レッスン作成と表示される' do
+        expect(page).to have_content 'レッスン作成'
       end
       it 'レッスン名フォームが表示される' do
         expect(page).to have_field 'lesson[name]'
@@ -113,7 +113,7 @@ describe '投稿のテスト' do
         expect(page).to have_field 'lesson[max_attendees]'
       end
       it 'カテゴリーフォームが表示される' do
-        expect(page).to have_field 'lesson[category_name]'
+        expect(page).to have_field 'lesson[category_id]'
       end
       it '参加費が表示される' do
         expect(page).to have_field 'lesson[tuition]'

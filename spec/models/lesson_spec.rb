@@ -42,13 +42,6 @@ RSpec.describe 'Lessonモデルのテスト', type: :model do
       end
     end
 
-    context 'categoryカラム' do
-      it '空欄でないこと' do
-        lesson.category_name = ''
-        expect(lesson.valid?).to eq false
-      end
-    end
-
     context 'contentカラム' do
       it '空欄でないこと' do
         lesson.tuition = ''

@@ -34,6 +34,7 @@ class UsersController < ApplicationController
       @user.errors.full_messages.each do |message|
         pp message
       end
+      @categories = Category.all
       render :edit
     end
   end
@@ -60,6 +61,7 @@ class UsersController < ApplicationController
   def check_guest
     if current_user.email == 'guest@example.com'
       @user = current_user
+      @categories = Category.all
       flash[:alert] = "ゲストユーザーの方は変更/削除はできません"
       render :edit
     end
