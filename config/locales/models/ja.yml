@@ -10,7 +10,7 @@ ja:
       lesson:
         name: レッスン名
         content: レッスン内容
-        category_name: カテゴリー
+        category: カテゴリー
         event_date: 開催日時
         deadline: 募集締め切り日
         tuition: 受講料
